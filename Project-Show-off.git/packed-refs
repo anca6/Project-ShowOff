@@ -1,0 +1,6 @@
+# pack-refs with: peeled fully-peeled sorted 
+b411d09c66159dfb1423692ad9caad9a5d55e754 refs/heads/artist
+d63d7c52a82c55223970cc500471ca03580a1832 refs/heads/beta
+d63d7c52a82c55223970cc500471ca03580a1832 refs/heads/designer
+006a2c5294fec8db64167d664f38611c1fb35a68 refs/heads/engineer
+d63d7c52a82c55223970cc500471ca03580a1832 refs/heads/main
