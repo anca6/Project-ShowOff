@@ -40,7 +40,7 @@ public class PlayerShooting : MonoBehaviour
     private void ShootProjectile()
     {
         GameObject closestTarget = FindClosestTarget();
-        if(closestTarget == null)
+        if (closestTarget == null)
         {
             return;
         }
@@ -49,8 +49,14 @@ public class PlayerShooting : MonoBehaviour
         GameObject projectile = Instantiate(projectilePrefab, shootingHand.position, Quaternion.identity);
         Projectile projectileScript = projectile.GetComponent<Projectile>();
 
-        Vector3 directionToTarget = (closestTarget.transform.position - shootingHand.position).normalized;  
+        Vector3 directionToTarget = (closestTarget.transform.position - shootingHand.position).normalized;
         projectileScript.SetTargetDirection(directionToTarget);
+
+        Target target = closestTarget.GetComponent<Target>();
+        if (target != null)
+        {
+            target.MarkAsHit();
+        }
     }
     private GameObject FindClosestTarget()
     {
@@ -58,13 +64,17 @@ public class PlayerShooting : MonoBehaviour
         GameObject closest = null;
         float closestDistance = float.MaxValue;
 
-        foreach(Collider hitCollider in hitColliders)
+        foreach (Collider hitCollider in hitColliders)
         {
-            float distance = Vector3.Distance(transform.position, hitCollider.transform.position);
-            if(distance < closestDistance)
+            Target target = hitCollider.gameObject.GetComponent<Target>();
+            if (target != null && !target.IsHit)
             {
-                closest = hitCollider.gameObject;
-                closestDistance = distance;
+                float distance = Vector3.Distance(transform.position, hitCollider.transform.position);
+                if (distance < closestDistance)
+                {
+                    closest = hitCollider.gameObject;
+                    closestDistance = distance;
+                }
             }
         }
 
