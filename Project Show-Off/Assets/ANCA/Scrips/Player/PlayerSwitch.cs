@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerSwitch : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class PlayerSwitch : MonoBehaviour
 
     private float lastSwitchTime = 0f;
     private float switchCooldown = 1f;
-
+  
     [SerializeField] private List<Transform> possibleCharacters;
 
     private void Start()
@@ -28,38 +29,46 @@ public class PlayerSwitch : MonoBehaviour
         {
             return;
         }
-            int newCharacter = currentCharacter;
 
-            switch (true)
-            {
-                case true when Input.GetKeyUp(KeyCode.Alpha1):
-                    newCharacter = 0; break;
-                case true when Input.GetKeyUp(KeyCode.Alpha2):
-                    newCharacter = 1; break;
-                case true when Input.GetKeyUp(KeyCode.Alpha3):
-                    newCharacter = 2; break;
-            }
-
-            if (newCharacter != currentCharacter)
-            {
-                currentCharacter = newCharacter;
-                Debug.Log($"switched to {currentCharacter + 1}");
-                lastSwitchTime = Time.time;
-                Switch();
-            }
-    }
-
-    private void Switch()
-    {
-        characterTransform = possibleCharacters[currentCharacter];
-        characterTransform.gameObject.SetActive(true);
-        for (int i = 0; i < possibleCharacters.Count; i++)
+        var gamepad = Gamepad.current;
+        if (gamepad == null)
         {
-            if (possibleCharacters[i] != characterTransform)
-            {
-                possibleCharacters[i].gameObject.SetActive(false);
-            }
+            return;
+        }
+
+        if (gamepad.rightShoulder.wasPressedThisFrame)
+        {
+            CycleCharacter(1);
+        }
+        else if (gamepad.leftShoulder.wasPressedThisFrame)
+        {
+            CycleCharacter(-1);
         }
     }
 
+    private void CycleCharacter(int increment)
+    {
+        int newCharacter = currentCharacter + increment;
+        if (newCharacter < 0)
+        {
+            newCharacter = possibleCharacters.Count - 1;
+        }
+        else if (newCharacter >= possibleCharacters.Count)
+        {
+            newCharacter = 0;
+        }
+
+        currentCharacter = newCharacter;
+        Debug.Log($"Switched to monster {currentCharacter + 1}");
+        lastSwitchTime = Time.time;
+        SwitchCharacter(currentCharacter);
+    }
+
+    private void SwitchCharacter(int index)
+    {
+        for (int i = 0; i < possibleCharacters.Count; i++)
+        {
+            possibleCharacters[i].gameObject.SetActive(i == index);
+        }
+    }
 }
