@@ -23,7 +23,7 @@ public class Projectile : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("Collider entered trigger: " + other.name);
+        //Debug.Log("collider entered trigger: " + other.name);
         Target target = other.GetComponent<Target>();
         if (target != null)
         {
@@ -31,7 +31,6 @@ public class Projectile : MonoBehaviour
             MeshRenderer targetRenderer = other.GetComponent<MeshRenderer>();
             if (targetRenderer != null)
             {
-                //Debug.Log("Changing color of the target");
                 targetRenderer.material.color = Color.yellow;
             }
             Destroy(gameObject);
