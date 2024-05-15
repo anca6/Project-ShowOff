@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -11,16 +12,35 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private float shootingRadius = 15f;
     [SerializeField] private LayerMask targetsLayer;
 
-    private void Update()
+    private PlayerControls playerControls;
+    private InputAction shootAction;
+
+    private void Awake()
     {
-        if (Input.GetButtonUp("Fire")){
-            ShootProjectile();
-        }
+        playerControls = new PlayerControls();
+        shootAction = playerControls.Gameplay.Shoot;
+    }
+
+    private void OnEnable()
+    {
+        shootAction.performed += OnShoot;
+        playerControls.Gameplay.Enable();
+    }
+
+    private void OnDisable()
+    {
+        shootAction.performed -= OnShoot;
+        playerControls.Gameplay.Disable();
+    }
+
+    private void OnShoot(InputAction.CallbackContext context)
+    {
+        ShootProjectile();
     }
     private void ShootProjectile()
     {
         GameObject closestTarget = FindClosestTarget();
-        if(closestTarget != null)
+        if(closestTarget == null)
         {
             return;
         }
@@ -34,13 +54,28 @@ public class PlayerShooting : MonoBehaviour
     }
     private GameObject FindClosestTarget()
     {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, shootingRadius, targetsLayer);
         GameObject closest = null;
+        float closestDistance = float.MaxValue;
+
+        foreach(Collider hitCollider in hitColliders)
+        {
+            float distance = Vector3.Distance(transform.position, hitCollider.transform.position);
+            if(distance < closestDistance)
+            {
+                closest = hitCollider.gameObject;
+                closestDistance = distance;
+            }
+        }
+
         return closest;
     }
     private Transform GetClosestHand(Vector3 targetPosition)
     {
-        Transform target = null;
-        return target;
+        float distanceLeftHand = Vector3.Distance(leftHand.position, targetPosition);
+        float distanceRightHand = Vector3.Distance(rightHand.position, targetPosition);
+
+        return distanceLeftHand < distanceRightHand ? leftHand : rightHand;
     }
 
 }

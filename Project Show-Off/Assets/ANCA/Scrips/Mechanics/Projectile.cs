@@ -24,10 +24,10 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Target")) {
-            Renderer targetRenderer = GetComponent<Renderer>();
+            MeshRenderer targetRenderer = other.GetComponent<MeshRenderer>();
             if (targetRenderer != null)
             {
-                targetRenderer.material.color = Color.red;
+                targetRenderer.material.color = Color.yellow;
             }
             Destroy(gameObject);
         }
