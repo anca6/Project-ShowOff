@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerSwitch : MonoBehaviour
 {
     private Transform characterTransform;
-    private int currentCharacter;
+    public int currentCharacter;
 
     private float lastSwitchTime = 0f;
     private float switchCooldown = 1f;

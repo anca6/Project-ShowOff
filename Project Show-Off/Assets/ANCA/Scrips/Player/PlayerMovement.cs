@@ -23,7 +23,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpCooldown;
     private bool canJump = true;
-    private bool isJumping = false;
 
     Rigidbody rb;
     private void Awake()
@@ -70,16 +69,13 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             canJump = false;
-            isJumping = true;
             Invoke(nameof(ResetJump), jumpCooldown);
         }
-
     }
 
     private void ResetJump()
     {
         canJump = true;
-        isJumping = false;
     }
     private bool IsGrounded()
     {

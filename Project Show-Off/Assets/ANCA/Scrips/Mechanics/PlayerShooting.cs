@@ -13,29 +13,21 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private LayerMask targetsLayer;
 
     private PlayerControls playerControls;
-    private InputAction shootAction;
 
     private void Awake()
     {
         playerControls = new PlayerControls();
-        shootAction = playerControls.Gameplay.Shoot;
+        playerControls.Gameplay.Ability.performed += ctx => ShootProjectile();
     }
 
     private void OnEnable()
     {
-        shootAction.performed += OnShoot;
-        playerControls.Gameplay.Enable();
+        playerControls.Enable();
     }
 
     private void OnDisable()
     {
-        shootAction.performed -= OnShoot;
-        playerControls.Gameplay.Disable();
-    }
-
-    private void OnShoot(InputAction.CallbackContext context)
-    {
-        ShootProjectile();
+       playerControls.Disable();
     }
     private void ShootProjectile()
     {
