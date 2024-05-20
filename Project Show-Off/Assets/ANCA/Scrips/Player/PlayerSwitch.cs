@@ -10,8 +10,10 @@ public class PlayerSwitch : MonoBehaviour
 
     private float lastSwitchTime = 0f;
     private float switchCooldown = 1f;
-  
+
     [SerializeField] private List<Transform> possibleCharacters;
+
+    [SerializeField] private PlayerMovement playerMovement;
 
     private void Start()
     {
@@ -21,6 +23,10 @@ public class PlayerSwitch : MonoBehaviour
             currentCharacter = 0;
             characterTransform.gameObject.SetActive(true);
         }
+
+        playerMovement = GetComponent<PlayerMovement>();
+        //playerMovement.enabled = true;  
+   
     }
 
     private void Update()
@@ -69,6 +75,10 @@ public class PlayerSwitch : MonoBehaviour
         for (int i = 0; i < possibleCharacters.Count; i++)
         {
             possibleCharacters[i].gameObject.SetActive(i == index);
+        }
+        if(currentCharacter == 0 || currentCharacter == 2)
+        {
+            playerMovement.enabled = true;
         }
     }
 }
