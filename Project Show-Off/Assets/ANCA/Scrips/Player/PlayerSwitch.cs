@@ -13,7 +13,7 @@ public class PlayerSwitch : MonoBehaviour
 
     [SerializeField] private List<Transform> possibleCharacters;
 
-    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private GameObject playerObj;
 
     private void Start()
     {
@@ -22,11 +22,7 @@ public class PlayerSwitch : MonoBehaviour
             characterTransform = possibleCharacters[0];
             currentCharacter = 0;
             characterTransform.gameObject.SetActive(true);
-        }
-
-        playerMovement = GetComponent<PlayerMovement>();
-        //playerMovement.enabled = true;  
-   
+        }   
     }
 
     private void Update()
@@ -78,7 +74,16 @@ public class PlayerSwitch : MonoBehaviour
         }
         if(currentCharacter == 0 || currentCharacter == 2)
         {
-            playerMovement.enabled = true;
+            BackToDefaultMovement();
         }
+    }
+
+    private void BackToDefaultMovement()
+    {
+        var playerMovement = playerObj.GetComponent<PlayerMovement>();
+        playerMovement.enabled = true;
+
+        var rbPlayer = playerObj.GetComponent<Rigidbody>();
+        rbPlayer.constraints = RigidbodyConstraints.FreezeRotation;
     }
 }
