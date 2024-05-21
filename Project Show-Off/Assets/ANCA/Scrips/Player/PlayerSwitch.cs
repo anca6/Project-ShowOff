@@ -72,18 +72,5 @@ public class PlayerSwitch : MonoBehaviour
         {
             possibleCharacters[i].gameObject.SetActive(i == index);
         }
-        if(currentCharacter == 0 || currentCharacter == 2)
-        {
-            BackToDefaultMovement();
-        }
-    }
-
-    private void BackToDefaultMovement()
-    {
-        var playerMovement = playerObj.GetComponent<PlayerMovement>();
-        playerMovement.enabled = true;
-
-        var rbPlayer = playerObj.GetComponent<Rigidbody>();
-        rbPlayer.constraints = RigidbodyConstraints.FreezeRotation;
     }
 }
