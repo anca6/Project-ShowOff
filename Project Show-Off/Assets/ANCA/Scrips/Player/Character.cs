@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Character : PlayerMovement
 {
+    private PlayerControls playerControls;
+
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float acceleration = 10f;
@@ -14,7 +16,21 @@ public class Character : PlayerMovement
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpCooldown;
     private bool canJump = true;
+    private void Awake()
+    {
+        playerControls = new PlayerControls();
+        playerControls.Gameplay.Jump.performed += ctx => Jump();
+        //playerControls.Gameplay.Ability.performed += ctx => SwitchMovement();
+    }
+    private void OnEnable()
+    {
+        playerControls.Enable();
+    }
 
+    private void OnDisable()
+    {
+        playerControls.Disable();
+    }
 
     protected override void Start()
     {
