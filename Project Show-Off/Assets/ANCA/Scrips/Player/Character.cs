@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Character : PlayerMovement
 {
-    private PlayerControls playerControls;
+    protected PlayerControls playerControls;
 
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
@@ -15,12 +15,11 @@ public class Character : PlayerMovement
     [Header("Jump Properties")]
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpCooldown;
-    private bool canJump = true;
-    private void Awake()
+    protected bool canJump = true;
+    protected virtual void Awake()
     {
         playerControls = new PlayerControls();
         playerControls.Gameplay.Jump.performed += ctx => Jump();
-        //playerControls.Gameplay.Ability.performed += ctx => SwitchMovement();
     }
     private void OnEnable()
     {
@@ -59,21 +58,17 @@ public class Character : PlayerMovement
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             canJump = false;
             Invoke(nameof(ResetJump), jumpCooldown);
+
+            Debug.Log("character jump");
         }
     }
-
-    private void ResetJump()
+    protected void ResetJump()
     {
         canJump = true;
     }
-    private bool IsGrounded()
+    protected bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, playerHeight * 0.5f + 0.3f, isGround);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
