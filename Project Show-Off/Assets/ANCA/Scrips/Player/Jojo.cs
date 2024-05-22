@@ -9,20 +9,21 @@ public class Jojo : Character
     [SerializeField] private float ballSpeed = 10f;
     [SerializeField] private float ballAcceleration = 15f;
 
-    private void OnEnable()
+    /*private void OnEnable()
     {
         if (rb == null) return;
         rb.constraints = RigidbodyConstraints.None;
-    }
+    }*/
 
-    private void OnDisable()
+    /*private void OnDisable()
     {
         rb.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationX;
     }
-
+*/
     protected override void Movement()
-
     {
+        rb.constraints = RigidbodyConstraints.None;
+
         float verticalInput = Input.GetAxis("Vertical");
         float horizontalInput = Input.GetAxis("Horizontal");
 
