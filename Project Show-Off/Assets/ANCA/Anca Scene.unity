@@ -276,8 +276,8 @@ MonoBehaviour:
   orientation: {fileID: 1975943734}
   jumpForce: 0
   jumpCooldown: 0
-  dashForce: 200
-  dashUpwardForce: 250
+  dashForce: 300
+  dashUpwardForce: 200
   dashDuration: 0.1
   dashCooldown: 1
 --- !u!1 &71351220
