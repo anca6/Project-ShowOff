@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class MovingPlatform : MonoBehaviour
 {
+    //properties for moving platform mechanic
     [SerializeField] private List<Transform> platformWaypoints;
     [SerializeField] private float movingSpeed;
     [SerializeField] private int allowedCharacter;
@@ -23,7 +22,7 @@ public class MovingPlatform : MonoBehaviour
     private void Awake()
     {
         playerControls = new PlayerControls();
-        playerControls.Gameplay.Ability.performed += ctx => GoToNextWaypoint();
+        playerControls.Gameplay.Ability.performed += ctx => GoToNextWaypoint(); //calls the go to next waypoint method when the ability button is pressed
     }
     private void OnEnable()
     {
@@ -52,11 +51,6 @@ public class MovingPlatform : MonoBehaviour
         elapsedPercentage = Mathf.SmoothStep(0 ,1, elapsedPercentage);
         transform.position = Vector3.Lerp(previousWaypoint.position, targetWaypoint.position, elapsedPercentage);
         transform.rotation = Quaternion.Lerp(previousWaypoint.rotation, targetWaypoint.rotation, elapsedPercentage);
-
-        /*if (elapsedPercentage >= 1)
-        {
-            GoToNextWaypoint();
-        }*/
 
     }
     private void GoToNextWaypoint()
