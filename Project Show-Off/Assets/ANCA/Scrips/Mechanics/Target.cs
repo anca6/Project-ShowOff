@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
+    //properties for the target gameobject
     private bool isHit = false;
 
     public bool IsHit
