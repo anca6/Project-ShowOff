@@ -1,4 +1,4 @@
-Shader "Unlit/WindWaving"{
+Shader "Luna/WindWaving"{
     Properties{
         _MainTex ("Texture", 2D) = "white" {}
     }
