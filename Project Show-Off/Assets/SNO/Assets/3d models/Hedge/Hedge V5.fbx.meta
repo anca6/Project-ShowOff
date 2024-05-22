@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: hedge_2
-    second: {fileID: 2100000, guid: 7eeba451703dfc0409843cbd1ad35300, type: 2}
+    second: {fileID: 2100000, guid: cf50ce794f692ca40a4efb7baaaf4213, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
