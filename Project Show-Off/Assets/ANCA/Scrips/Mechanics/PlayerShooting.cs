@@ -51,6 +51,9 @@ public class PlayerShooting : MonoBehaviour
         {
             target.MarkAsHit(); //setting the target to isHit so we don't try to shoot at it again
         }
+
+        ///furbie shooting sound here
+         FindObjectOfType<AudioManager>().Play("Furbie's ability");
     }
     private GameObject FindClosestTarget()
     {

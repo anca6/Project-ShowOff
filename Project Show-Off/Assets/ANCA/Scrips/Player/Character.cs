@@ -71,6 +71,9 @@ public class Character : PlayerMovement
             Invoke(nameof(ResetJump), jumpCooldown);
 
             Debug.Log("character jump");
+
+            ///jump sound here
+            FindObjectOfType<AudioManager>().Play("jump");
         }
     }
     protected void ResetJump()

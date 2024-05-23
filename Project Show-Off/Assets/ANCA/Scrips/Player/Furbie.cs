@@ -36,6 +36,9 @@ public class Furbie : Character
             //add a delayed dash force for better simulation
             Invoke(nameof(DelayedDashForce), 0.025f);
             Invoke(nameof(ResetJump), dashDuration);
+
+            ///furbie jump sound here
+            FindObjectOfType<AudioManager>().Play("jump");
         }
     }
 

@@ -70,6 +70,9 @@ public class MovingPlatform : MonoBehaviour
 
         float distanceToWaypoint = Vector3.Distance(previousWaypoint.position, targetWaypoint.position);
         timeToWaypoint = distanceToWaypoint / movingSpeed;
+
+        ///sara sound ability here
+        FindObjectOfType<AudioManager>().Play("Sara's ability");
     }
 
     //parenting the player gameobject to the platform so it applies the position & rotation of the platform
@@ -78,6 +81,8 @@ public class MovingPlatform : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             other.transform.SetParent(transform);
+
+           
         }
     }
     private void OnTriggerExit(Collider other)
