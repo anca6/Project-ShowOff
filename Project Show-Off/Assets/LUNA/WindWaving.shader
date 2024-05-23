@@ -5,14 +5,14 @@ Shader "Luna/WindWaving"{
     }
     SubShader{
         Tags{
-            "RenderType"="Opaque"
+            "RenderType" = "Opaque"
         }
         LOD 100
 
         Pass{
             CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
+            #pragma vertex Vertex
+            #pragma fragment Fragment
             // Make fog work
             #pragma multi_compile_fog
 
@@ -32,20 +32,20 @@ Shader "Luna/WindWaving"{
             sampler2D _MainTex;
             float4 _MainTex_ST;
 
-            v2f vert (appdata v){
-                v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex);
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-                UNITY_TRANSFER_FOG(o, o.vertex);
-                return o;
+            v2f Vertex (appdata input){
+                v2f output;
+                output.vertex = UnityObjectToClipPos(input.vertex);
+                output.uv = TRANSFORM_TEX(input.uv, _MainTex);
+                UNITY_TRANSFER_FOG(output, output.vertex);
+                return output;
             }
 
-            fixed4 frag (v2f i) : SV_Target{
+            fixed4 Fragment (v2f input) : SV_Target{
                 // Sample the texture
-                fixed4 col = tex2D(_MainTex, i.uv);
+                fixed4 colour = tex2D(_MainTex, input.uv);
                 // Apply fog
-                UNITY_APPLY_FOG(i.fogCoord, col);
-                return col;
+                UNITY_APPLY_FOG(input.fogCoord, colour);
+                return colour;
             }
             ENDCG
         }
