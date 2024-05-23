@@ -41,6 +41,11 @@ public class Character : PlayerMovement
     //player movement
     protected override void Movement()
     {
+        if (IsGrounded())
+        {
+            rb.velocity *= 0.95f; // put in inspector
+        }
+
         //freeze the rotation before applying movement
         rb.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationX;
 
@@ -51,10 +56,10 @@ public class Character : PlayerMovement
         Vector3 movementDir = orientation.forward * verticalInput + orientation.right * horizontalinput;
 
         if (movementDir != Vector3.zero)
-            transform.forward = Vector3.Slerp(transform.forward, movementDir.normalized, Time.deltaTime * rotationSpeed);
+            //transform.forward = Vector3.Slerp(transform.forward, movementDir.normalized, Time.deltaTime * rotationSpeed); // ????
 
         rb.velocity += movementDir * acceleration;
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, moveSpeed);
+        //rb.velocity = Vector3.ClampMagnitude(rb.velocity, moveSpeed);
 
     }
     protected virtual void Jump()

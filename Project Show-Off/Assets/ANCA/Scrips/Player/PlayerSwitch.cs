@@ -17,6 +17,7 @@ public class PlayerSwitch : MonoBehaviour
     //set the first character in the list by default
     private void Start()
     {
+        Debug.Log("Starting PlayerSw on " + name);
         if (characterTransform == null && possibleCharacters.Count >= 1)
         {
             characterTransform = possibleCharacters[0];
@@ -73,6 +74,12 @@ public class PlayerSwitch : MonoBehaviour
     //set active only the gameobject that we switch to, and set the other ones to inactive
     private void SwitchCharacter(int index)
     {
+
+        // Fix rotation:
+        Vector3 currentEulerAngles = playerObj.transform.rotation.eulerAngles;
+        playerObj.transform.rotation = Quaternion.Euler(0,currentEulerAngles.y,0);
+        Debug.Log("Resetting orientation for " + playerObj.name+ " old angles: "+currentEulerAngles);
+
         for (int i = 0; i < possibleCharacters.Count; i++)
         {
             possibleCharacters[i].gameObject.SetActive(i == index);

@@ -34,6 +34,7 @@ public class PlayerShooting : MonoBehaviour
         GameObject closestTarget = FindClosestTarget();
         if (closestTarget == null)
         {
+            Debug.Log("No target found");
             return;
         }
         Transform shootingHand = GetClosestHand(closestTarget.transform.position);
