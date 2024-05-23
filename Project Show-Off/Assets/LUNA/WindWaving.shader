@@ -1,6 +1,7 @@
 Shader "Luna/WindWaving"{
     Properties{
         _MainTex ("Texture", 2D) = "white" {}
+        _WorldSize ("World Size", Vector) = (1, 1, 1, 1)
     }
     SubShader{
         Tags{
