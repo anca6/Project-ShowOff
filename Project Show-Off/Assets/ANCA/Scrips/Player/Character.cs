@@ -1,17 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Character : PlayerMovement
 {
+    //reference to player controls input manager
     protected PlayerControls playerControls;
 
+    //properties for player movement
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float acceleration = 10f;
     [SerializeField] protected private float rotationSpeed = 5f;
     [SerializeField] protected private Transform orientation;
 
+    //properties for player jumping
     [Header("Jump Properties")]
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpCooldown;
@@ -19,7 +20,7 @@ public class Character : PlayerMovement
     protected virtual void Awake()
     {
         playerControls = new PlayerControls();
-        playerControls.Gameplay.Jump.performed += ctx => Jump();
+        playerControls.Gameplay.Jump.performed += ctx => Jump(); //calling the jump method when jump button is pressed
     }
     private void OnEnable()
     {
@@ -31,17 +32,22 @@ public class Character : PlayerMovement
         playerControls.Disable();
     }
 
+    //getting the rigid body component of the "Player" parent
     protected override void Start()
     {
         rb = GetComponentInParent<Rigidbody>();
     }
 
+    //player movement
     protected override void Movement()
     {
-        //player movement
+        //freeze the rotation before applying movement
+        rb.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationX;
+
         float horizontalinput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
+        //moving in the forward direction of the player
         Vector3 movementDir = orientation.forward * verticalInput + orientation.right * horizontalinput;
 
         if (movementDir != Vector3.zero)
@@ -53,7 +59,7 @@ public class Character : PlayerMovement
     }
     protected virtual void Jump()
     {
-        if (IsGrounded() && canJump)
+        if (IsGrounded() && canJump) //if the player is not mid-air and can jump
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             canJump = false;
@@ -66,6 +72,8 @@ public class Character : PlayerMovement
     {
         canJump = true;
     }
+
+    //checking if the player is on the ground
     protected bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, playerHeight * 0.5f + 0.3f, isGround);

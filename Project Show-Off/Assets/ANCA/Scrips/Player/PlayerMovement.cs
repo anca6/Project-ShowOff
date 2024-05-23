@@ -1,13 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
 
 public abstract class PlayerMovement : MonoBehaviour
 {
-
+    //properties for checking ground collision
     [Header("Ground Properties")]
     [SerializeField] protected LayerMask isGround;
     [SerializeField] protected float playerHeight;
