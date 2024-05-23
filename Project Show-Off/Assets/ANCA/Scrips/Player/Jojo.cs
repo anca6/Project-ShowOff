@@ -18,16 +18,16 @@ public class Jojo : Character
 
         if (movementDir != Vector3.zero)
         {
-            transform.forward = Vector3.Slerp(transform.forward, movementDir.normalized, Time.deltaTime * rotationSpeed);
+            //transform.forward = Vector3.Slerp(transform.forward, movementDir.normalized, Time.deltaTime * rotationSpeed);
         }
 
         rb.velocity += movementDir * ballAcceleration;
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, ballSpeed);
+        //rb.velocity = Vector3.ClampMagnitude(rb.velocity, ballSpeed);
 
         //can add base.Movement(); after the rigid body constrains?
         //
 
-        Debug.Log("jojo script");
+        //Debug.Log("jojo script");
     }
 }
 
