@@ -11,8 +11,8 @@ Shader "Luna/WindWaving"{
 
         Pass{
             CGPROGRAM
-            #pragma vertex Vertex
-            #pragma fragment Fragment
+            #pragma vertex vertex
+            #pragma fragment fragment
             // Make fog work
             #pragma multi_compile_fog
 
@@ -32,7 +32,7 @@ Shader "Luna/WindWaving"{
             sampler2D _MainTex;
             float4 _MainTex_ST;
 
-            v2f Vertex (appdata input){
+            v2f vertex (appdata input){
                 v2f output;
                 output.vertex = UnityObjectToClipPos(input.vertex);
                 output.uv = TRANSFORM_TEX(input.uv, _MainTex);
@@ -40,7 +40,7 @@ Shader "Luna/WindWaving"{
                 return output;
             }
 
-            fixed4 Fragment (v2f input) : SV_Target{
+            fixed4 fragment (v2f input) : SV_Target{
                 // Sample the texture
                 fixed4 colour = tex2D(_MainTex, input.uv);
                 // Apply fog
