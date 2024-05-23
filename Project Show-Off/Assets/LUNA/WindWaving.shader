@@ -31,6 +31,9 @@ Shader "Luna/WindWaving"{
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
+            CBUFFER_START(UnityPerMaterial)
+            float4 _WorldSize;
+            CBUFFER_END
 
             v2f vertex (appdata input){
                 v2f output;
