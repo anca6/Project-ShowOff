@@ -62,6 +62,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Boost"",
+                    ""type"": ""Button"",
+                    ""id"": ""eae21014-2477-4dd1-bbc1-c694589b16f0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -295,6 +304,50 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4f79100e-9b4b-4f38-aa47-33f9175f4bbd"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Boost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""31b09a38-fde2-460c-b16e-253098057f65"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Boost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ada5fbce-1572-43fe-afe7-0f11e96eedb0"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Boost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de2b7908-c5c2-4b24-9f25-3fc725694095"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Boost"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -307,6 +360,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay_Look = m_Gameplay.FindAction("Look", throwIfNotFound: true);
         m_Gameplay_Ability = m_Gameplay.FindAction("Ability", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
+        m_Gameplay_Boost = m_Gameplay.FindAction("Boost", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -372,6 +426,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Look;
     private readonly InputAction m_Gameplay_Ability;
     private readonly InputAction m_Gameplay_Jump;
+    private readonly InputAction m_Gameplay_Boost;
     public struct GameplayActions
     {
         private @PlayerControls m_Wrapper;
@@ -380,6 +435,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Gameplay_Look;
         public InputAction @Ability => m_Wrapper.m_Gameplay_Ability;
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
+        public InputAction @Boost => m_Wrapper.m_Gameplay_Boost;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -401,6 +457,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Boost.started += instance.OnBoost;
+            @Boost.performed += instance.OnBoost;
+            @Boost.canceled += instance.OnBoost;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -417,6 +476,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Boost.started -= instance.OnBoost;
+            @Boost.performed -= instance.OnBoost;
+            @Boost.canceled -= instance.OnBoost;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -440,5 +502,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnAbility(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnBoost(InputAction.CallbackContext context);
     }
 }

@@ -7,7 +7,7 @@ public class Character : PlayerMovement
 
     //properties for player movement
     [Header("Movement")]
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] protected float moveSpeed = 5f;
     [SerializeField] private float acceleration = 10f;
     [SerializeField] protected private float rotationSpeed = 5f;
     [SerializeField] protected private Transform orientation;
@@ -50,8 +50,8 @@ public class Character : PlayerMovement
         //freeze the rotation before applying movement
         //rb.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationX;
 
-        float horizontalinput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        float horizontalinput = playerControls.Gameplay.Movement.ReadValue<Vector3>().x;
+        float verticalInput = playerControls.Gameplay.Movement.ReadValue<Vector3>().y;
 
         //moving in the forward direction of the player
         Vector3 movementDir = orientation.forward * verticalInput + orientation.right * horizontalinput;
@@ -60,7 +60,8 @@ public class Character : PlayerMovement
             rb.transform.forward = Vector3.Slerp(rb.transform.forward, movementDir.normalized, Time.deltaTime * rotationSpeed); //rotate the player parent directly, not the individual character children
 
         rb.velocity += movementDir * acceleration;
-        //rb.velocity = Vector3.ClampMagnitude(rb.velocity, moveSpeed);
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, moveSpeed);
+       // Debug.Log(rb.velocity);
 
     }
     protected virtual void Jump()

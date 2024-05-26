@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Boost",
+                    "type": "Button",
+                    "id": "eae21014-2477-4dd1-bbc1-c694589b16f0",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -271,6 +280,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4f79100e-9b4b-4f38-aa47-33f9175f4bbd",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "31b09a38-fde2-460c-b16e-253098057f65",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ada5fbce-1572-43fe-afe7-0f11e96eedb0",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Boost",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "de2b7908-c5c2-4b24-9f25-3fc725694095",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Boost",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
