@@ -11,6 +11,7 @@ public class Character : PlayerMovement
     [SerializeField] private float acceleration = 10f;
     [SerializeField] protected private float rotationSpeed = 5f;
     [SerializeField] protected private Transform orientation;
+    [SerializeField] private float grVelocityAmplifier; //ground velocity amplifier
 
     //properties for player jumping
     [Header("Jump Properties")]
@@ -43,11 +44,11 @@ public class Character : PlayerMovement
     {
         if (IsGrounded())
         {
-            rb.velocity *= 0.95f; // put in inspector
+            rb.velocity *= grVelocityAmplifier;
         }
 
         //freeze the rotation before applying movement
-        rb.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationX;
+        //rb.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationX;
 
         float horizontalinput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
@@ -56,7 +57,7 @@ public class Character : PlayerMovement
         Vector3 movementDir = orientation.forward * verticalInput + orientation.right * horizontalinput;
 
         if (movementDir != Vector3.zero)
-            //transform.forward = Vector3.Slerp(transform.forward, movementDir.normalized, Time.deltaTime * rotationSpeed); // ????
+            rb.transform.forward = Vector3.Slerp(rb.transform.forward, movementDir.normalized, Time.deltaTime * rotationSpeed); //rotate the player parent directly, not the individual character children
 
         rb.velocity += movementDir * acceleration;
         //rb.velocity = Vector3.ClampMagnitude(rb.velocity, moveSpeed);

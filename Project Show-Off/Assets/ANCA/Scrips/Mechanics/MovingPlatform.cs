@@ -72,22 +72,22 @@ public class MovingPlatform : MonoBehaviour
         timeToWaypoint = distanceToWaypoint / movingSpeed;
 
         ///sara sound ability here
-        FindObjectOfType<AudioManager>().Play("Sara's ability");
+        //FindObjectOfType<AudioManager>().Play("Sara's ability");
     }
 
     //parenting the player gameobject to the platform so it applies the position & rotation of the platform
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             other.transform.SetParent(transform);
 
            
         }
     }
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision other)
     {
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             other.transform.SetParent(null);
         }

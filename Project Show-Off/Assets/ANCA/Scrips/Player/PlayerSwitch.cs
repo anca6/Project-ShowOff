@@ -42,13 +42,13 @@ public class PlayerSwitch : MonoBehaviour
         //if we press X on the controller
         if (gamepad.buttonWest.wasPressedThisFrame)
         {
-            CycleCharacter(1);
+            CycleCharacter(-1);
         }
 
         //if we press B on the controller
         else if (gamepad.buttonEast.wasPressedThisFrame)
         {
-            CycleCharacter(-1);
+            CycleCharacter(1);
         }
     }
 
@@ -74,7 +74,6 @@ public class PlayerSwitch : MonoBehaviour
     //set active only the gameobject that we switch to, and set the other ones to inactive
     private void SwitchCharacter(int index)
     {
-
         // Fix rotation:
         Vector3 currentEulerAngles = playerObj.transform.rotation.eulerAngles;
         playerObj.transform.rotation = Quaternion.Euler(0,currentEulerAngles.y,0);

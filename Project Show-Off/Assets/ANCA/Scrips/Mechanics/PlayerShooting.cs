@@ -68,6 +68,7 @@ public class PlayerShooting : MonoBehaviour
 
             if (target != null && !target.IsHit) //checking if the target exists and has not been hit before
             {
+                Debug.Log("target exists?");
                 float distance = Vector3.Distance(transform.position, hitCollider.transform.position);
                 if (distance < closestDistance)
                 {
