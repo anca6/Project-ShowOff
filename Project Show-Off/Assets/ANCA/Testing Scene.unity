@@ -2356,7 +2356,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 716841284}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.48813283, y: -0.000000021237529, z: 0.000000011877978, w: 0.87276936}
+  m_LocalRotation: {x: 0.48813283, y: 0.00000002123753, z: -0.000000011877979, w: 0.87276936}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5071,7 +5071,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1389473641}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.46151608, y: 0.000000021587018, z: -0.000000011230298, w: 0.88713187}
+  m_LocalRotation: {x: 0.46151608, y: -0.000000021587022, z: 0.0000000112303, w: 0.88713187}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7216,8 +7216,6 @@ MonoBehaviour:
   grVelocityAmplifier: 1
   jumpForce: 20
   jumpCooldown: 0.25
-  maxSpeed: 20
-  maxSpeedDuration: 3.5
   explosionEffect: {fileID: 4050014539871452058, guid: 0e2084029d7141e4f80aa2a254f7c074,
     type: 3}
   minBreakSpeed: 12
@@ -7835,8 +7833,7 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7810402936537926446, guid: 0bf84962b10ae674da0534d3a82d5794, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

@@ -5,13 +5,10 @@ using UnityEngine;
 public class Jojo : Character
 {
     [Header("Boost Properties")]
-    [SerializeField] private float maxSpeed = 20f;
-    [SerializeField] private float maxSpeedDuration = 3f;
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] float minBreakSpeed = 10;
 
     bool StandupFinished = true;
-
 
     protected override void Start()
     {
