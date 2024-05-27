@@ -1,39 +1,97 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
-public class CharacterUIUpdater : MonoBehaviour
+public class ImageMovement : MonoBehaviour
 {
-    [SerializeField] private PlayerSwitch playerSwitch; // Reference to the PlayerSwitch script
-    [SerializeField] private List<Image> characterImages; // List of images to show for each character
+    public RectTransform furbieUI;
+    public RectTransform jojoUI;
+    public RectTransform saraUI;
 
-    private void Start()
+    public Image furbieImage;
+    public Image jojoImage;
+    public Image saraImage;
+
+    public Sprite furbieDesaturatedSprite;
+    public Sprite jojoDesaturatedSprite;
+    public Sprite saraDesaturatedSprite;
+    public Sprite furbieSprite;
+    public Sprite jojoSprite;
+    public Sprite saraSprite;
+
+    public Vector2 position1 = new Vector2(95f, -94f);
+    public Vector2 position2 = new Vector2(55f, -40f);
+    public Vector2 position3 = new Vector2(138f, -40f);
+
+    public Vector2 scale1 = new Vector3(1f, 1f, 1f);
+    public Vector2 scale2 = new Vector3(.66f, .66f, 1f);
+
+    public float UItimeScale = .5f;
+
+    void Start()
     {
-        if (playerSwitch == null)
-        {
-            Debug.LogError("PlayerSwitch reference is not set!");
-            return;
-        }
 
-        if (characterImages.Count == 0)
-        {
-            Debug.LogError("Character images are not set!");
-            return;
-        }
-
-        UpdateCharacterImage(playerSwitch.currentCharacter);
     }
 
     private void Update()
     {
-        UpdateCharacterImage(playerSwitch.currentCharacter);
-    }
-
-    private void UpdateCharacterImage(int characterIndex)
-    {
-        for (int i = 0; i < characterImages.Count; i++)
+        // Furbie Selected
+        // Check if the spacebar is pressed
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            characterImages[i].gameObject.SetActive(i == characterIndex);
+            // Example: Move the image to a new position over 1 second
+            furbieUI.DOAnchorPos(position1, UItimeScale);
+            jojoUI.DOAnchorPos(position2, UItimeScale);
+            saraUI.DOAnchorPos(position3, UItimeScale);
+
+            furbieUI.DOScale(scale1, UItimeScale);
+            jojoUI.DOScale(scale2, UItimeScale);
+            saraUI.DOScale(scale2, UItimeScale);
+
+
+            furbieImage.sprite = furbieSprite;
+            jojoImage.sprite = jojoDesaturatedSprite;
+            saraImage.sprite = saraDesaturatedSprite;
+
+        }
+
+        // Jojo Selected
+        // Check if the q is pressed
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            // Example: Move the image to a new position over 1 second
+            furbieUI.DOAnchorPos(position3, UItimeScale);
+            jojoUI.DOAnchorPos(position1, UItimeScale);
+            saraUI.DOAnchorPos(position2, UItimeScale);
+
+            furbieUI.DOScale(scale2, UItimeScale);
+            jojoUI.DOScale(scale1, UItimeScale);
+            saraUI.DOScale(scale2, UItimeScale);
+            
+
+            furbieImage.sprite = furbieDesaturatedSprite;
+            jojoImage.sprite = jojoSprite;
+            saraImage.sprite = saraDesaturatedSprite;
+
+        }
+        // Sara Selected
+        // Check if the e is pressed
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            // Example: Move the image to a new position over 1 second
+            furbieUI.DOAnchorPos(position2, UItimeScale);
+            jojoUI.DOAnchorPos(position3, UItimeScale);
+            saraUI.DOAnchorPos(position1, UItimeScale);
+
+            furbieUI.DOScale(scale2, UItimeScale);
+            jojoUI.DOScale(scale2, UItimeScale);
+            saraUI.DOScale(scale1, UItimeScale);
+
+
+            furbieImage.sprite = furbieDesaturatedSprite;
+            jojoImage.sprite = jojoDesaturatedSprite;
+            saraImage.sprite = saraSprite;
+
         }
     }
 }
