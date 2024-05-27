@@ -8,10 +8,10 @@ public class Character : PlayerMovement
     //properties for player movement
     [Header("Movement")]
     [SerializeField] protected float moveSpeed = 5f;
-    [SerializeField] private float acceleration = 10f;
+    [SerializeField] protected float acceleration = 10f;
     [SerializeField] protected private float rotationSpeed = 5f;
     [SerializeField] protected private Transform orientation;
-    [SerializeField] private float grVelocityAmplifier; //ground velocity amplifier
+    [SerializeField] protected float grVelocityAmplifier; //ground velocity amplifier
 
     //properties for player jumping
     [Header("Jump Properties")]
@@ -42,13 +42,12 @@ public class Character : PlayerMovement
     //player movement
     protected override void Movement()
     {
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+
         if (IsGrounded())
         {
             rb.velocity *= grVelocityAmplifier;
         }
-
-        //freeze the rotation before applying movement
-        //rb.constraints = RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationX;
 
         float horizontalinput = playerControls.Gameplay.Movement.ReadValue<Vector3>().x;
         float verticalInput = playerControls.Gameplay.Movement.ReadValue<Vector3>().y;

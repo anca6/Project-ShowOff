@@ -49,4 +49,5 @@ public class Furbie : Character
         rb.AddForce(delayedForceToApply, ForceMode.Impulse);
         canJump = false;
     }
+
 }
