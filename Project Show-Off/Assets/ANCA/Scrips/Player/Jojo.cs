@@ -85,7 +85,7 @@ public class Jojo : Character
 
     public void HandleCollision(Collision collision)
     {
-        if (collision.gameObject.CompareTag("X"))
+        if (collision.gameObject.CompareTag("BreakObj"))
         {
             // vector projection: how hard do we hit the wall?
 
