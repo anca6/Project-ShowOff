@@ -44,16 +44,40 @@ public class UIMovement : MonoBehaviour
                 furbieImage.sprite = furbieSprite;
                 jojoImage.sprite = jojoDesaturatedSprite;
                 saraImage.sprite = saraDesaturatedSprite;
+
+                furbieUI.DOAnchorPos(position1, UItimeScale);
+                jojoUI.DOAnchorPos(position2, UItimeScale);
+                saraUI.DOAnchorPos(position3, UItimeScale);
+
+                furbieUI.DOScale(scale1, UItimeScale);
+                jojoUI.DOScale(scale2, UItimeScale);
+                saraUI.DOScale(scale2, UItimeScale);
                 break;
             case 1: // Jojo
                 furbieImage.sprite = furbieDesaturatedSprite;
                 jojoImage.sprite = jojoSprite;
                 saraImage.sprite = saraDesaturatedSprite;
+
+                furbieUI.DOAnchorPos(position3, UItimeScale);
+                jojoUI.DOAnchorPos(position1, UItimeScale);
+                saraUI.DOAnchorPos(position2, UItimeScale);
+
+                furbieUI.DOScale(scale2, UItimeScale);
+                jojoUI.DOScale(scale1, UItimeScale);
+                saraUI.DOScale(scale2, UItimeScale);
                 break;
             case 2: // Sara
                 furbieImage.sprite = furbieDesaturatedSprite;
                 jojoImage.sprite = jojoDesaturatedSprite;
                 saraImage.sprite = saraSprite;
+
+                furbieUI.DOAnchorPos(position2, UItimeScale);
+                jojoUI.DOAnchorPos(position3, UItimeScale);
+                saraUI.DOAnchorPos(position1, UItimeScale);
+
+                furbieUI.DOScale(scale2, UItimeScale);
+                jojoUI.DOScale(scale2, UItimeScale);
+                saraUI.DOScale(scale1, UItimeScale);
                 break;
             default:
                 break;
