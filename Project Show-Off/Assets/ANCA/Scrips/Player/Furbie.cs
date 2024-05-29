@@ -9,7 +9,8 @@ public class Furbie : Character
     [SerializeField] private float dashDuration;
     [SerializeField] private float dashCooldown;
     private float dashTimer;
-
+    public AudioSource source;
+    public AudioClip clip;
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
