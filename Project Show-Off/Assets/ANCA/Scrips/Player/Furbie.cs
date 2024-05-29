@@ -39,7 +39,7 @@ public class Furbie : Character
             Invoke(nameof(ResetJump), dashDuration);
 
             ///furbie jump sound here
-            FindObjectOfType<AudioManager>().Play("jump");
+            source.PlayOneShot(clip);
         }
     }
 

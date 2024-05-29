@@ -13,7 +13,8 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private LayerMask targetsLayer;
 
     private PlayerControls playerControls;
-
+    public AudioSource source;
+    public AudioClip clip;
     private void Awake()
     {
         playerControls = new PlayerControls();
@@ -53,7 +54,7 @@ public class PlayerShooting : MonoBehaviour
         }
 
         ///furbie shooting sound here
-         FindObjectOfType<AudioManager>().Play("Furbie's ability");
+        source.PlayOneShot(clip);
     }
     private GameObject FindClosestTarget()
     {
