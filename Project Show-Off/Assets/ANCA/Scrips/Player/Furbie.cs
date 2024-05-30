@@ -10,6 +10,11 @@ public class Furbie : Character
     [SerializeField] private float dashCooldown;
     private float dashTimer;
 
+    protected override void Start()
+    {
+        rb = GetComponentInParent<Rigidbody>(); 
+    }
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -29,6 +34,8 @@ public class Furbie : Character
         //if the player is not mid-air and can jump
         if (IsGrounded() && canJump) 
         {
+            rb.velocity += new Vector3(0, -100, 0);
+
             Vector3 forceToApply = transform.forward * dashForce + transform.up * dashUpwardForce;
 
             delayedForceToApply = forceToApply;
