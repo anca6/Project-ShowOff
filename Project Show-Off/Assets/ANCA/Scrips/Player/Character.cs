@@ -1,9 +1,14 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Character : PlayerMovement
 {
     //reference to player controls input manager
     protected PlayerControls playerControls;
+    protected InputActionAsset inputAsset;
+    protected InputActionMap player;
+    protected InputAction move;
+
 
     //properties for player movement
     [Header("Movement")]
@@ -21,16 +26,28 @@ public class Character : PlayerMovement
     protected virtual void Awake()
     {
         playerControls = new PlayerControls();
+
         playerControls.Gameplay.Jump.performed += ctx => Jump(); //calling the jump method when jump button is pressed
+/*
+        inputAsset = this.GetComponent<PlayerInput>().actions;
+        player = inputAsset.FindActionMap("Player");*/
     }
     private void OnEnable()
     {
         playerControls.Enable();
+
+/*        player.FindAction("Jump").started += ctx => Jump();
+        move = player.FindAction("Movement");
+        player.Enable();*/
     }
 
     private void OnDisable()
     {
         playerControls.Disable();
+/*
+        player.FindAction("Jump").started -= ctx => Jump();
+        player.Disable();*/
+
     }
 
     //getting the rigid body component of the "Player" parent
@@ -51,6 +68,9 @@ public class Character : PlayerMovement
 
         float horizontalinput = playerControls.Gameplay.Movement.ReadValue<Vector3>().x;
         float verticalInput = playerControls.Gameplay.Movement.ReadValue<Vector3>().y;
+
+        /*float horizontalinput = move.ReadValue<Vector3>().x;
+        float verticalInput = move.ReadValue<Vector3>().y;*/
 
         //moving in the forward direction of the player
         Vector3 movementDir = orientation.forward * verticalInput + orientation.right * horizontalinput;
@@ -74,7 +94,7 @@ public class Character : PlayerMovement
             Debug.Log("character jump");
 
             ///jump sound here
-            FindObjectOfType<AudioManager>().Play("jump");
+            //FindObjectOfType<AudioManager>().Play("jump");
         }
     }
     protected void ResetJump()
