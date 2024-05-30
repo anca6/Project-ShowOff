@@ -13,20 +13,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: Breable platform Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3803656281208594740, guid: fb38b19f4c317b441869f96e6d195880,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904442688214233109, guid: fb38b19f4c317b441869f96e6d195880,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 9.653505
+      objectReference: {fileID: 0}
+    - target: {fileID: 5904442688214233109, guid: fb38b19f4c317b441869f96e6d195880,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 9.854424
+      objectReference: {fileID: 0}
     - target: {fileID: 5904442688214233109, guid: fb38b19f4c317b441869f96e6d195880,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 82.71453
+      value: 82.41
       objectReference: {fileID: 0}
     - target: {fileID: 5904442688214233109, guid: fb38b19f4c317b441869f96e6d195880,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.77335584
+      value: -0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5904442688214233109, guid: fb38b19f4c317b441869f96e6d195880,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -15.1521225
+      value: 278.71
       objectReference: {fileID: 0}
     - target: {fileID: 5904442688214233109, guid: fb38b19f4c317b441869f96e6d195880,
         type: 3}
