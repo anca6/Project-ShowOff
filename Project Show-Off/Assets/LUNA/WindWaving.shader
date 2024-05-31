@@ -33,6 +33,8 @@ Shader "Luna/WindWaving"{
                 float2 uv : TEXCOORD0;
                 UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
+                float3 normal : NORMAL;
+                float3 viewDirection : TEXCOORD2;
             };
 
             sampler2D _MainTex;
