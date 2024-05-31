@@ -1,6 +1,7 @@
 Shader "Luna/WindWaving"{
     Properties{
         _MainTex ("Texture", 2D) = "white" {}
+        _MainColour ("Main Colour", Color) = (0, 0.5, 0)
         _WorldSize ("World Size", Vector) = (1, 1, 1, 1)
         _WindSpeed ("Wind Speed", Vector) = (1, 1, 1, 1)
         _WaveSpeed ("Wave Speed", Float) = 1.0
@@ -37,6 +38,7 @@ Shader "Luna/WindWaving"{
             sampler2D _MainTex;
             float4 _MainTex_ST;
             CBUFFER_START(UnityPerMaterial)
+            float4 _MainColour;
             float4 _WorldSize;
             float4 _WindSpeed;
             float _WaveSpeed;
@@ -66,7 +68,7 @@ Shader "Luna/WindWaving"{
                 fixed4 colour = tex2D(_MainTex, input.uv);
                 // Apply fog
                 UNITY_APPLY_FOG(input.fogCoord, colour);
-                return colour;
+                return _MainColour;
             }
             ENDCG
         }
