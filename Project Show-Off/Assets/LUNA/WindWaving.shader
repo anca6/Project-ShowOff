@@ -57,6 +57,7 @@ Shader "Luna/WindWaving"{
                 v2f output;
                 output.vertex = UnityObjectToClipPos(input.vertex);
                 output.uv = TRANSFORM_TEX(input.uv, _MainTex);
+                output.normal = UnityObjectToWorldNormal(input.normal);
                 UNITY_TRANSFER_FOG(output, output.vertex);
                 float4 worldPosition = mul(unity_ObjectToWorld, input.vertex);
                 float2 samplePosition = worldPosition.xz / _WorldSize.xz;
