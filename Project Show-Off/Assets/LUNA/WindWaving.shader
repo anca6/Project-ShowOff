@@ -75,12 +75,17 @@ Shader "Luna/WindWaving"{
 
             fixed4 fragment (v2f input) : SV_Target{
                 const float3 normal = normalize(input.normal);
+                const float lightNormalDot = dot(_WorldSpaceLightPos0, normal);
+                const float4 light = lightNormalDot * _LightColor0;
                 
                 // Sample the texture
                 fixed4 textureColour = tex2D(_MainTex, input.uv);
+
+                float4 outputColour = _MainColour * textureColour * (light + _AmbientColour);
+                
                 // Apply fog
-                UNITY_APPLY_FOG(input.fogCoord, colour);
-                return _MainColour;
+                UNITY_APPLY_FOG(input.fogCoord, outputColour);
+                return outputColour;
             }
             ENDCG
         }
