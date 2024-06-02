@@ -64,7 +64,7 @@ Shader "Luna/WindWaving"{
 
             fixed4 fragment (v2f input) : SV_Target{
                 // Sample the texture
-                fixed4 colour = tex2D(_MainTex, input.uv);
+                fixed4 textureColour = tex2D(_MainTex, input.uv);
                 // Apply fog
                 UNITY_APPLY_FOG(input.fogCoord, colour);
                 return _MainColour;
