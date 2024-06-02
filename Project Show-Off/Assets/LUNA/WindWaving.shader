@@ -63,6 +63,8 @@ Shader "Luna/WindWaving"{
             }
 
             fixed4 fragment (v2f input) : SV_Target{
+                const float3 normal = normalize(input.normal);
+                
                 // Sample the texture
                 fixed4 textureColour = tex2D(_MainTex, input.uv);
                 // Apply fog
