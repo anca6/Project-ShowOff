@@ -16,16 +16,16 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private float shootingRadius = 15f;
     [SerializeField] private LayerMask targetsLayer;
 
-    private PlayerControls playerControls;
+    //private PlayerControls playerControls;
     public AudioSource source;
     public AudioClip clip;
     private void Awake()
     {
-        playerControls = new PlayerControls();
+        //playerControls = new PlayerControls();
 
         playerInput = GetComponentInParent<PlayerInput>();
 
-        shootAction = playerInput.actions["Shoot"];
+        shootAction = playerInput.actions["Ability"];
         shootAction.performed += ctx => ShootProjectile();
 
         //playerControls.Gameplay.Ability.performed += ctx => ShootProjectile(); //calling the shoot projectile method when the ability button is pressed
@@ -33,12 +33,12 @@ public class PlayerShooting : MonoBehaviour
 
     private void OnEnable()
     {
-        playerControls.Enable();
+        shootAction.Enable();
     }
 
     private void OnDisable()
     {
-       playerControls.Disable();
+        shootAction.Disable();
     }
     private void ShootProjectile()
     {
