@@ -2,6 +2,7 @@ Shader "Luna/WindWaving"{
     Properties{
         _MainTex ("Texture", 2D) = "white" {}
         _MainColour ("Main Colour", Color) = (0, 0.5, 0)
+        [HDR] _AmbientColour ("Ambient Colour", Color) = (0.4, 0.4, 0.4, 1)
         _WorldSize ("World Size", Vector) = (1, 1, 1, 1)
         _WindSpeed ("Wind Speed", Vector) = (1, 1, 1, 1)
         _WaveSpeed ("Wave Speed", Float) = 1.0
@@ -48,6 +49,7 @@ Shader "Luna/WindWaving"{
             CBUFFER_START(UnityPerMaterial)
             float4 _MainTex_ST;
             float4 _MainColour;
+            float4 _AmbientColour;
             float4 _WorldSize;
             float4 _WindSpeed;
             float _WaveSpeed;
