@@ -58,7 +58,7 @@ Shader "Luna/WindWaving"{
 
                 float heightFactor = pow(input.vertex.y, _HeightFactor);
                 
-                float offset = sin(frac((samplePosition + (_Time.z * _WindSpeed))) * PI);
+                float offset = sin(frac((samplePosition + (_Time.z * _WindSpeed))) * 2 * PI);
                 
                 output.vertex.z += sin(offset * _WaveSpeed) * _WindAmplitude;
                 output.vertex.x += cos(offset * _WaveSpeed) * _WindAmplitude;
