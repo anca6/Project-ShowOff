@@ -17,9 +17,12 @@ public class Jojo : Character
 
     protected override void Awake()
     {
-        playerControls = new PlayerControls();
-        playerControls.Gameplay.Jump.performed += ctx => Jump();
+        /*        playerControls = new PlayerControls();
+                playerControls.Gameplay.Jump.performed += ctx => Jump();
+        */
+        base.Awake();
     }
+
 
     void StandupStraight()
     {
@@ -65,11 +68,16 @@ public class Jojo : Character
             }
         }
 
-        float horizontalinput = playerControls.Gameplay.Movement.ReadValue<Vector3>().x;
-        float verticalInput = playerControls.Gameplay.Movement.ReadValue<Vector3>().y;
+        Vector2 input = moveAction.ReadValue<Vector2>();
 
+        float horizontalInput = input.x;
+        float verticalInput = input.y;
+
+/*        float horizontalInput = playerControls.Gameplay.Movement.ReadValue<Vector3>().x;
+        float verticalInput = playerControls.Gameplay.Movement.ReadValue<Vector3>().y;
+*/
         //moving in the forward direction of the player
-        Vector3 movementDir = orientation.forward * verticalInput + orientation.right * horizontalinput;
+        Vector3 movementDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         //if (movementDir != Vector3.zero)
 

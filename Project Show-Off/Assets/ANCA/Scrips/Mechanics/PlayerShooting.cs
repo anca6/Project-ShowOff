@@ -1,8 +1,12 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerShooting : MonoBehaviour
 {
     //properties for the projectile mechanic
+    private PlayerInput playerInput;
+    private InputAction shootAction;
+
     [SerializeField] private GameObject projectilePrefab;
 
     //properties for the left/right hand of the player (where furbie will shoot from)
@@ -18,7 +22,13 @@ public class PlayerShooting : MonoBehaviour
     private void Awake()
     {
         playerControls = new PlayerControls();
-        playerControls.Gameplay.Ability.performed += ctx => ShootProjectile(); //calling the shoot projectile method when the ability button is pressed
+
+        playerInput = GetComponentInParent<PlayerInput>();
+
+        shootAction = playerInput.actions["Shoot"];
+        shootAction.performed += ctx => ShootProjectile();
+
+        //playerControls.Gameplay.Ability.performed += ctx => ShootProjectile(); //calling the shoot projectile method when the ability button is pressed
     }
 
     private void OnEnable()

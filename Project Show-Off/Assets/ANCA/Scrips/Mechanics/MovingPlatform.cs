@@ -25,7 +25,7 @@ public class MovingPlatform : MonoBehaviour
     {
         playerControls = new PlayerControls();
 
-        playerControls.Gameplay.Ability.performed += ctx => GoToNextWaypoint(); //calls the go to next waypoint method when the ability button is pressed
+        playerControls.Gameplay1.Ability.performed += ctx => GoToNextWaypoint(); //calls the go to next waypoint method when the ability button is pressed
     }
     private void OnEnable()
     {
