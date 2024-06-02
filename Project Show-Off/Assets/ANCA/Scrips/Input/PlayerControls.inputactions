@@ -140,17 +140,6 @@
                 },
                 {
                     "name": "",
-                    "id": "ca60a3c8-2633-4525-99b1-aa1ff4cb87db",
-                    "path": "<Gamepad>/rightStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "6b3ab5e7-c667-444a-9075-944bddd8019c",
                     "path": "<Pointer>/delta",
                     "interactions": "",
@@ -162,45 +151,12 @@
                 },
                 {
                     "name": "",
-                    "id": "9accf612-ec7a-48d9-a820-444f227d548f",
-                    "path": "<Joystick>/{Hatswitch}",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a5bf9c3c-0683-44db-946c-f19c0ce166bc",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Ability",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "55f37dcd-6a5e-4672-8374-ac0b1a97c0f9",
                     "path": "<Keyboard>/y",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Ability",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "4bd90637-c04f-4c91-a839-3fb2fb579557",
-                    "path": "<Gamepad>/buttonNorth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
