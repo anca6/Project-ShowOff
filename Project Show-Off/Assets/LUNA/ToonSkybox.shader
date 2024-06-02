@@ -17,9 +17,6 @@ Shader "Luna/ToonSkybox"{
             CGPROGRAM
             #pragma vertex vertex
             #pragma fragment fragment
-            
-            // Make fog work
-            #pragma multi_compile_fog
 
             #include "UnityCG.cginc"
 
@@ -30,7 +27,6 @@ Shader "Luna/ToonSkybox"{
 
             struct v2f{
                 float2 uv : TEXCOORD0;
-                UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
             };
 
@@ -52,8 +48,6 @@ Shader "Luna/ToonSkybox"{
                 // Sample the texture
                 fixed4 colour = tex2D(_MainTex, input.uv);
                 
-                // Apply fog
-                UNITY_APPLY_FOG(input.fogCoord, colour);
                 return _SkyColour;
             }
             ENDCG
