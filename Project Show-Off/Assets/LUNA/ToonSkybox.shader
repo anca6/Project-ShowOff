@@ -1,6 +1,7 @@
 Shader "Luna/ToonSkybox"{
     Properties{
         _MainTex ("Texture", 2D) = "white" {}
+        _SkyColour ("Sky Colour", Color) = (0.5, 1, 1, 1)
     }
     SubShader{
         Tags{
@@ -35,6 +36,7 @@ Shader "Luna/ToonSkybox"{
             sampler2D _MainTex;
             CBUFFER_START(UnityPerMaterial)
             float4 _MainTex_ST;
+            float4 _SkyColour;
             CBUFFER_END
 
             v2f vertex(appdata input){
@@ -51,7 +53,7 @@ Shader "Luna/ToonSkybox"{
                 
                 // Apply fog
                 UNITY_APPLY_FOG(input.fogCoord, colour);
-                return colour;
+                return _SkyColour;
             }
             ENDCG
         }
