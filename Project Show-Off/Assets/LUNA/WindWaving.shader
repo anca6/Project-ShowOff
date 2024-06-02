@@ -38,8 +38,8 @@ Shader "Luna/WindWaving"{
             };
 
             sampler2D _MainTex;
-            float4 _MainTex_ST;
             CBUFFER_START(UnityPerMaterial)
+            float4 _MainTex_ST;
             float4 _MainColour;
             float4 _WorldSize;
             float4 _WindSpeed;
