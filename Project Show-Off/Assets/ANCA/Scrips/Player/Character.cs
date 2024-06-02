@@ -1,9 +1,18 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Character : PlayerMovement
 {
     //reference to player controls input manager
-    protected PlayerControls playerControls;
+   /* protected PlayerControls playerControls;
+    protected InputActionAsset inputAsset;
+    protected InputActionMap player;
+    protected InputAction move;*/
+
+    protected PlayerInput playerInput;
+    protected InputAction moveAction;
+    private InputAction jumpAction;
+
 
     //properties for player movement
     [Header("Movement")]
@@ -18,26 +27,48 @@ public class Character : PlayerMovement
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpCooldown;
     protected bool canJump = true;
-    protected virtual void Awake()
+    /*protected virtual void Awake()
     {
         playerControls = new PlayerControls();
+
         playerControls.Gameplay.Jump.performed += ctx => Jump(); //calling the jump method when jump button is pressed
+*//*
+        inputAsset = this.GetComponent<PlayerInput>().actions;
+        player = inputAsset.FindActionMap("Player");*//*
+    }*/
+
+    protected virtual void Awake()
+    {
+        playerInput = GetComponentInParent<PlayerInput>();
+
+        moveAction = playerInput.actions["Movement"];
+        jumpAction = playerInput.actions["Jump"];
+
+        jumpAction.performed += ctx => Jump();
     }
     private void OnEnable()
     {
-        playerControls.Enable();
+         moveAction.Enable();
+        jumpAction.Enable();
     }
 
     private void OnDisable()
     {
-        playerControls.Disable();
+        moveAction.Disable();
+        jumpAction.Disable();
+
     }
 
     //getting the rigid body component of the "Player" parent
     protected override void Start()
     {
         rb = GetComponentInParent<Rigidbody>();
+        if (rb == null)
+        {
+            Debug.LogError("Rigidbody component not found on the parent GameObject.");
+        }
     }
+
 
     //player movement
     protected override void Movement()
@@ -49,11 +80,20 @@ public class Character : PlayerMovement
             rb.velocity *= grVelocityAmplifier;
         }
 
-        float horizontalinput = playerControls.Gameplay.Movement.ReadValue<Vector3>().x;
-        float verticalInput = playerControls.Gameplay.Movement.ReadValue<Vector3>().y;
+        /*    float horizontalinput = playerControls.Gameplay.Movement.ReadValue<Vector3>().x;
+            float verticalInput = playerControls.Gameplay.Movement.ReadValue<Vector3>().y;*/
+
+
+        Vector2 input = moveAction.ReadValue<Vector3>();
+
+        float horizontalInput = input.x;
+        float verticalInput = input.y;
+
+        /*float horizontalinput = move.ReadValue<Vector3>().x;
+        float verticalInput = move.ReadValue<Vector3>().y;*/
 
         //moving in the forward direction of the player
-        Vector3 movementDir = orientation.forward * verticalInput + orientation.right * horizontalinput;
+        Vector3 movementDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
         if (movementDir != Vector3.zero)
             rb.transform.forward = Vector3.Slerp(rb.transform.forward, movementDir.normalized, Time.deltaTime * rotationSpeed); //rotate the player parent directly, not the individual character children
@@ -74,7 +114,7 @@ public class Character : PlayerMovement
             Debug.Log("character jump");
 
             ///jump sound here
-            FindObjectOfType<AudioManager>().Play("jump");
+            //FindObjectOfType<AudioManager>().Play("jump");
         }
     }
     protected void ResetJump()
