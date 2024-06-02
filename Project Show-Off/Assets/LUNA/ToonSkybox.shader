@@ -17,7 +17,8 @@ Shader "Luna/ToonSkybox"{
             CGPROGRAM
             #pragma vertex vertex
             #pragma fragment fragment
-            // make fog work
+            
+            // Make fog work
             #pragma multi_compile_fog
 
             #include "UnityCG.cginc"
