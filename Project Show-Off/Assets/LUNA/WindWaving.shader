@@ -10,11 +10,15 @@ Shader "Luna/WindWaving"{
     }
     SubShader{
         Tags{
+            "RenderPipeline" = "UniversalPipeline"
             "RenderType" = "Opaque"
         }
         LOD 100
 
         Pass{
+            Tags{
+                "LightMode" = "UniversalForward"
+            }
             CGPROGRAM
             #pragma vertex vertex
             #pragma fragment fragment
