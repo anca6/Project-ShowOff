@@ -1,4 +1,4 @@
-Shader "Unlit/ToonSkybox"{
+Shader "Luna/ToonSkybox"{
     Properties{
         _MainTex ("Texture", 2D) = "white" {}
     }
