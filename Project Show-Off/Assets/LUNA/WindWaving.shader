@@ -27,6 +27,8 @@ Shader "Luna/WindWaving"{
             #define PI 3.1415926538
 
             #include "UnityCG.cginc"
+            #include "Lighting.cginc"
+            #include "AutoLight.cginc"
 
             struct appdata{
                 float4 vertex : POSITION;
