@@ -79,5 +79,6 @@ Shader "Luna/WindWaving"{
             }
             ENDCG
         }
+        UsePass "Legacy Shaders/VertexLit/SHADOWCASTER"
     }
 }
