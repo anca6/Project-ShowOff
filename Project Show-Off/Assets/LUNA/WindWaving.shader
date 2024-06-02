@@ -55,8 +55,6 @@ Shader "Luna/WindWaving"{
                 UNITY_TRANSFER_FOG(output, output.vertex);
                 float4 worldPosition = mul(unity_ObjectToWorld, input.vertex);
                 float2 samplePosition = worldPosition.xz / _WorldSize.xz;
-
-                float heightFactor = pow(input.vertex.y, _HeightFactor);
                 
                 float offset = sin(frac((samplePosition + (_Time.z * _WindSpeed))) * 2 * PI);
                 
