@@ -151,6 +151,17 @@
                 },
                 {
                     "name": "",
+                    "id": "7e5d9a3b-0fcd-483c-9069-3621f446bb06",
+                    "path": "<Joystick>/{Hatswitch}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "55f37dcd-6a5e-4672-8374-ac0b1a97c0f9",
                     "path": "<Keyboard>/y",
                     "interactions": "",
