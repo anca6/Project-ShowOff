@@ -3,7 +3,9 @@ using UnityEngine.UI;
 
 public class ObjectMover : MonoBehaviour
 {
-    public GameObject referenceObject; // The object whose z-axis movement is tracked
+
+    // The Player whose z-axis movement is tracked
+    public GameObject playerObject; 
     public RectTransform uiObject; // The UI object that will move up and down
 
     public float LevelStartZcoordinate = -60f;
@@ -13,9 +15,9 @@ public class ObjectMover : MonoBehaviour
 
     void Start()
     {
-        if (referenceObject == null || uiObject == null)
+        if (playerObject == null || uiObject == null)
         {
-            Debug.LogError("Please assign the referenceObject and uiObject in the inspector.");
+            Debug.LogError("Not all objects assigned");
             enabled = false;
             return;
         }
@@ -23,7 +25,7 @@ public class ObjectMover : MonoBehaviour
 
     void Update()
     {
-        float currentZPosition = referenceObject.transform.position.z;
+        float currentZPosition = playerObject.transform.position.z;
 
         // Map the z position to the y range
         float mappedYPosition = Map(currentZPosition, LevelStartZcoordinate, LevelEndZcoordinate, UIMinY, UIMaxY);

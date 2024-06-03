@@ -8,7 +8,7 @@ public class ObjectSwitcher : MonoBehaviour
 
     void Update()
     {
-        //Put item logic here
+        //Put item logic here when implemented
 
         //Temp testing code below
         if (Input.GetKeyDown(KeyCode.Alpha1))
