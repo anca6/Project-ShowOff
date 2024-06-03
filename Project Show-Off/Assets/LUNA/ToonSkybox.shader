@@ -19,6 +19,7 @@ Shader "Luna/ToonSkybox"{
             #pragma fragment fragment
 
             #include "UnityCG.cginc"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
             struct appdata{
                 float4 vertex : POSITION;
