@@ -22,7 +22,6 @@ Shader "Luna/ToonSkybox"{
 
             struct appdata{
                 float4 vertex : POSITION;
-                float2 uv : TEXCOORD0;
             };
 
             struct v2f{
