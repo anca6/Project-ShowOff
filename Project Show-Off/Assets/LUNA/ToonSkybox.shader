@@ -25,7 +25,6 @@ Shader "Luna/ToonSkybox"{
             };
 
             struct v2f{
-                float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
             };
 
@@ -38,14 +37,11 @@ Shader "Luna/ToonSkybox"{
             v2f vertex(appdata input){
                 v2f output;
                 output.vertex = UnityObjectToClipPos(input.vertex);
-                output.uv = TRANSFORM_TEX(input.uv, _MainTex);
                 UNITY_TRANSFER_FOG(o, o.vertex);
                 return output;
             }
 
             fixed4 fragment(v2f input) : SV_Target{
-                // Sample the texture
-                fixed4 colour = tex2D(_MainTex, input.uv);
                 
                 return _SkyColour;
             }
