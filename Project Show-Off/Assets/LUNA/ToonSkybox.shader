@@ -14,11 +14,10 @@ Shader "Luna/ToonSkybox"{
         LOD 100
 
         Pass{
-            CGPROGRAM
+            HLSLPROGRAM
             #pragma vertex vertex
             #pragma fragment fragment
 
-            #include "UnityCG.cginc"
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
 
             struct appdata{
@@ -37,15 +36,16 @@ Shader "Luna/ToonSkybox"{
 
             v2f vertex(appdata input){
                 v2f output;
-                output.vertex = UnityObjectToClipPos(input.vertex);
+                VertexPositionInputs vertexInput = GetVertexPositionInputs(input.vertex.xyz);
+                output.vertex = vertexInput.positionCS;
                 return output;
             }
 
-            fixed4 fragment(v2f input) : SV_Target{
+            float4 fragment(v2f input) : SV_Target{
                 
                 return _SkyColour;
             }
-            ENDCG
+            ENDHLSL
         }
     }
 }
