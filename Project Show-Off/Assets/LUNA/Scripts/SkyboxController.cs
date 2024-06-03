@@ -1,5 +1,6 @@
 ﻿namespace Luna.Scripts{
     using UnityEngine;
+    [ExecuteAlways]
     public class SkyboxController : MonoBehaviour{
         public Transform Sun;
         
