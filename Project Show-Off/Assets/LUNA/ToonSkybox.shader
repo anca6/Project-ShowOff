@@ -37,11 +37,11 @@ Shader "Luna/ToonSkybox"{
             CBUFFER_END
 
             v2f vertex(appdata input){
-                v2f o;
-                o.vertex = UnityObjectToClipPos(input.vertex);
-                o.uv = TRANSFORM_TEX(input.uv, _MainTex);
+                v2f output;
+                output.vertex = UnityObjectToClipPos(input.vertex);
+                output.uv = TRANSFORM_TEX(input.uv, _MainTex);
                 UNITY_TRANSFER_FOG(o, o.vertex);
-                return o;
+                return output;
             }
 
             fixed4 fragment(v2f input) : SV_Target{
