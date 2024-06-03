@@ -37,7 +37,6 @@ Shader "Luna/ToonSkybox"{
             v2f vertex(appdata input){
                 v2f output;
                 output.vertex = UnityObjectToClipPos(input.vertex);
-                UNITY_TRANSFER_FOG(o, o.vertex);
                 return output;
             }
 
