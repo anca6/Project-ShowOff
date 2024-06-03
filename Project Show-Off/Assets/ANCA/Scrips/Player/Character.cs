@@ -12,7 +12,7 @@ public class Character : PlayerMovement
     protected PlayerInput playerInput;
     protected InputAction moveAction;
     private InputAction jumpAction;
-    private InputAction lookAction;
+  //  private InputAction lookAction;
 
 
     //properties for player movement
@@ -44,7 +44,7 @@ public class Character : PlayerMovement
 
         moveAction = playerInput.actions["Movement"];
         jumpAction = playerInput.actions["Jump"];
-        lookAction = playerInput.actions["Look"];
+       // lookAction = playerInput.actions["Look"];
 
         jumpAction.performed += ctx => Jump();
     }
@@ -52,14 +52,14 @@ public class Character : PlayerMovement
     {
          moveAction.Enable();
         jumpAction.Enable();
-        lookAction.Enable();
+        //lookAction.Enable();
     }
 
     private void OnDisable()
     {
         moveAction.Disable();
         jumpAction.Disable();
-        lookAction.Disable();
+        //lookAction.Disable();
     }
 
     //getting the rigid body component of the "Player" parent
@@ -68,7 +68,7 @@ public class Character : PlayerMovement
         rb = GetComponentInParent<Rigidbody>();
         if (rb == null)
         {
-            Debug.LogError("Rigidbody component not found on the parent GameObject.");
+            Debug.LogError("Rigidbody component not found on the parent gameObject");
         }
     }
 
@@ -103,7 +103,6 @@ public class Character : PlayerMovement
 
         rb.velocity += movementDir * acceleration;
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, moveSpeed);
-       // Debug.Log(rb.velocity);
 
     }
     protected virtual void Jump()
