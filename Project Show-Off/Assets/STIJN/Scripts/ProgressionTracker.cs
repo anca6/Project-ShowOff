@@ -28,8 +28,15 @@ public class ObjectMover : MonoBehaviour
         // Map the z position to the y range
         float mappedYPosition = Map(currentZPosition, LevelStartZcoordinate, LevelEndZcoordinate, UIMinY, UIMaxY);
 
+        //Prevent it from going below set Y
+        if (mappedYPosition < UIMinY)
+        {
+            mappedYPosition = UIMinY;
+        }
+
         // Set the y position of the UI object
         uiObject.anchoredPosition = new Vector2(uiObject.anchoredPosition.x, mappedYPosition);
+
     }
 
     float Map(float value, float fromMin, float fromMax, float toMin, float toMax)

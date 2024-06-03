@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class CharacterObjectManager : MonoBehaviour
 {
-    [SerializeField] private PlayerSwitch playerSwitch; // Reference to the PlayerSwitch script
+    // Reference to the Gamemanager script
+    [SerializeField] private PlayerSwitch playerSwitch; 
 
     // List of GameObjects to manage based on character index
     [SerializeField] private List<GameObject> objectsToManage;
