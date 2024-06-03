@@ -68,7 +68,7 @@ public class Jojo : Character
             }
         }
 
-        Vector2 input = moveAction.ReadValue<Vector2>();
+        Vector2 input = moveAction.ReadValue<Vector3>();
 
         float horizontalInput = input.x;
         float verticalInput = input.y;
