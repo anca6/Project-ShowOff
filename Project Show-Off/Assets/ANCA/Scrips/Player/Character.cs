@@ -12,6 +12,7 @@ public class Character : PlayerMovement
     protected PlayerInput playerInput;
     protected InputAction moveAction;
     private InputAction jumpAction;
+    private InputAction lookAction;
 
 
     //properties for player movement
@@ -43,6 +44,7 @@ public class Character : PlayerMovement
 
         moveAction = playerInput.actions["Movement"];
         jumpAction = playerInput.actions["Jump"];
+        lookAction = playerInput.actions["Look"];
 
         jumpAction.performed += ctx => Jump();
     }
@@ -50,13 +52,14 @@ public class Character : PlayerMovement
     {
          moveAction.Enable();
         jumpAction.Enable();
+        lookAction.Enable();
     }
 
     private void OnDisable()
     {
         moveAction.Disable();
         jumpAction.Disable();
-
+        lookAction.Disable();
     }
 
     //getting the rigid body component of the "Player" parent
