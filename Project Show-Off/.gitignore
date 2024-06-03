@@ -78,4 +78,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # ProBuilder likes to change everything all the time
-/ProjectSettings/Packages/com.unity.probuilder/Settings.json
+/ProjectSettings/Packages/com.unity.probuilder/
