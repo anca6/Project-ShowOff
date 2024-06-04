@@ -2,6 +2,7 @@ Shader "Luna/ToonSkybox"{
     Properties{
         _MainTex ("Texture", 2D) = "white" {}
         [NoScaleOffset] _SunZenithGradient("Sun-Zenith Gradient", 2D) = "white"{}
+        [NoSCaleOffset] _ViewZenithGradient("View-Zenith Gradient", 2D) = "white"{}
         _SkyColour ("Sky Colour", Color) = (0.5, 1, 1, 1)
     }
     SubShader{
@@ -32,6 +33,9 @@ Shader "Luna/ToonSkybox"{
             
             TEXTURE2D(_SunZenithGradient);
             SAMPLER(sampler_SunZenithGradient);
+
+            TEXTURE2D(_ViewZenithGradient);
+            SAMPLER(sampler_ViewZenithGradient);
             
             float3 _SunDirection;
             
@@ -54,6 +58,8 @@ Shader "Luna/ToonSkybox"{
 
                 float sunZenithDotZeroOne = (_SunDirection.y + 1) * .5;
                 const float3 sunZenithColour = SAMPLE_TEXTURE2D(_SunZenithGradient, sampler_SunZenithGradient, float2(sunZenithDotZeroOne, .5)).rgb;
+
+                const float3 viewZenithColour = SAMPLE_TEXTURE2D(_ViewZenithGradient, sampler_ViewZenithGradient, float2(sunZenithDotZeroOne, .5)).rgb;
                 
                 return float4(sunZenithColour, 1);
             }
