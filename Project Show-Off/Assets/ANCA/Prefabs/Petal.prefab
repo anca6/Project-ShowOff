@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4633444041881483651}
+  - component: {fileID: 1504974014262619216}
+  - component: {fileID: 400998021295717112}
   - component: {fileID: 4864945311352363758}
   m_Layer: 0
   m_Name: Petal
@@ -25,9 +27,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 603419046302354865}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.8710938, y: 4.5519404, z: -21.01}
-  m_LocalScale: {x: 0.0067250705, y: 0.0069853445, z: 0.0067250705}
+  m_LocalScale: {x: 0.0014706303, y: 0.0014706303, z: 0.0014706303}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4719975883816157371}
@@ -41,6 +43,54 @@ Transform:
   - {fileID: 3290177355386845119}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1504974014262619216
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603419046302354865}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 425.43454, y: 77.39677, z: 457.2784}
+  m_Center: {x: 8.871773, y: 69.49314, z: 25.051096}
+--- !u!54 &400998021295717112
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603419046302354865}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &4864945311352363758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,8 +106,8 @@ MonoBehaviour:
   platformWaypoints:
   - {fileID: 0}
   - {fileID: 0}
-  movingSpeed: 10
-  allowedCharacter: 2
+  movingSpeed: 3
+  allowedCharacter: 0
 --- !u!1 &711491206944220034
 GameObject:
   m_ObjectHideFlags: 0
