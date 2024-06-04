@@ -3,6 +3,7 @@ Shader "Luna/ToonSkybox"{
         [NoScaleOffset] _SunZenithGradient("Sun-Zenith Gradient", 2D) = "white"{}
         [NoSCaleOffset] _ViewZenithGradient("View-Zenith Gradient", 2D) = "white"{}
         [NoScaleOffset] _CloudTexture ("Cloud Texture", 2D) = "white" {}
+        [NoScaleOffset] _CloudLocationCubeMap ("Cloud Location Cube Map", Cube) = "black"{}
         _SkyColour ("Sky Colour", Color) = (0.5, 1, 1, 1)
     }
     SubShader{
@@ -39,6 +40,9 @@ Shader "Luna/ToonSkybox"{
 
             TEXTURE2D(_CloudTexture);
             SAMPLER(sampler_CloudTexture);
+
+            TEXTURECUBE(_CloudLocationCubeMap);
+            SAMPLER(sampler_CloudLocationCubeMap);
             
             float3 _SunDirection;
             
