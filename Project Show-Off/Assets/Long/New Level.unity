@@ -4494,9 +4494,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCharacter: 0
   possibleCharacters:
+  - {fileID: 172357119}
   - {fileID: 1815792882}
   - {fileID: 275764986}
-  - {fileID: 172357119}
   playerObj: {fileID: 1570090451}
 --- !u!4 &357375650
 Transform:
@@ -19384,8 +19384,8 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Gameplay
+  m_DefaultControlScheme: Gamepad
+  m_DefaultActionMap: Gameplay2
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!54 &1570090455

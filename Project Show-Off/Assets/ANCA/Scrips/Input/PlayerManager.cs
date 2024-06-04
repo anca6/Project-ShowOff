@@ -7,10 +7,10 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> playerObjects;
 
-    private List<PlayerInput>  players = new List<PlayerInput>();
+    private List<PlayerInput> players = new List<PlayerInput>();
 
     private void Start()
-    { 
+    {
         for (int i = 0; i < playerObjects.Count; i++)
         {
             ActivatePlayer(i);
@@ -33,11 +33,12 @@ public class PlayerManager : MonoBehaviour
         {
             var gamepad = Gamepad.all[index];
             InputUser.PerformPairingWithDevice(gamepad, playerInput.user);
+
+            playerInput.SwitchCurrentControlScheme("Gamepad", gamepad);
         }
 
         players.Add(playerInput);
-
         playerObject.name = "Player" + (index + 1);
-
+        Debug.Log("Added: " + playerObject.name);
     }
 }
