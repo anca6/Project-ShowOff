@@ -1,0 +1,1016 @@
+fileFormatVersion: 2
+guid: 1ba42cc7d0ccdb44e8f007856a3688fc
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tipspritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4960
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b709ed8551905346b4c9608eaa671a4
+      internalID: -1737984504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 4960
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c4a7d3cd2870dc47a9b54ff95a31287
+      internalID: 1917700323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 1754
+        y: 4960
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba48b509ab0842e448bbd1b495c0b521
+      internalID: 259353160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 2631
+        y: 4960
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b12670d94c603c419a992b7a8598fa3
+      internalID: 2110115188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 3508
+        y: 4960
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80645aaef525c9b4f87e505c55520455
+      internalID: 1275995297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4340
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f5e8ff1f4f365c4ca0ddb963693a951
+      internalID: -385634969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 4340
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61acea6d66600b54fb4c266c1abeade3
+      internalID: 974739802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 1754
+        y: 4340
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c54c3da0da5229479905fa066455233
+      internalID: -1344274274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 2631
+        y: 4340
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43798eba820947046918f14d6fab2f80
+      internalID: -474074636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 3508
+        y: 4340
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83be145cd1198b744b78406882f2d93c
+      internalID: -1083788519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3720
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c6f7f21302bda5498bd20efec199e79
+      internalID: 2009147955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 3720
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a24235e784cf18944895bcfe398219aa
+      internalID: -1811108803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 1754
+        y: 3720
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd5e34011280b424eb376b2aa1679565
+      internalID: -96852908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 2631
+        y: 3720
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 207182a8199e28243b3964ff7e9a3db2
+      internalID: 784622571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 3508
+        y: 3720
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a46373c5aafe15a4f87626864ac313e5
+      internalID: 286889791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3100
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95cb10d55a3dc4f4cb90edc62e223c5e
+      internalID: -188972274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 3100
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f4eab65e96a9c34f9f6f9c371aed0a7
+      internalID: -533358328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 1754
+        y: 3100
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61d18d097643f28489a32fd0e205d428
+      internalID: 1714348727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 2631
+        y: 3100
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82856b2c8d38c8542821afa98c8163b7
+      internalID: -1374711774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 3508
+        y: 3100
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00e1ec1998426794e940d2a6d5ef7dbf
+      internalID: 1263013938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2480
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5180966960f65cb42bcabc801e5ae819
+      internalID: 613140388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 2480
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eb98821ac1dfba40b101a6bde15adcd
+      internalID: 355104519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 1754
+        y: 2480
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be673e4dd5f791f428e485700967e56a
+      internalID: -236770568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 2631
+        y: 2480
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d745a1012a370414083d111795814db6
+      internalID: 31825130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 3508
+        y: 2480
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbe4af218945a6844b3f8af3a8017c18
+      internalID: -1895012753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1860
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9797748cae2ef3b4396c4b1db01977f1
+      internalID: 1933857755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 1860
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7dddb2207010cd47bf388d45be48dff
+      internalID: 957481189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 1754
+        y: 1860
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a7e256127f073a4096b23f55624eb5b
+      internalID: -1455830070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 2631
+        y: 1860
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c51b88852ed6e8f418d36f5c1c27c5c1
+      internalID: 2051695946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 3508
+        y: 1860
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7af4a2372a08d44387a5cb265c387d7
+      internalID: -496777942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1240
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b22dec3b6c04bfa43942b3e9974b68e2
+      internalID: -1142215945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 1240
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ab0d33684099fd4aa82e5b9e0c8a8db
+      internalID: -542496037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 1754
+        y: 1240
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0f1f2b5af1a60f4ab03bd6e41d0064c
+      internalID: -994454896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 2631
+        y: 1240
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 207c4cf2320ca604b86cd8ec2cf23230
+      internalID: -1466022188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 3508
+        y: 1240
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 400c1bebf94967c4d85c77db6447bc4d
+      internalID: -1024324228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 620
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56ca621955c7d284c879553600a9f682
+      internalID: -1397328184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_36
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 620
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f851ed277bf7ed459b8bfc5e098dd71
+      internalID: 17022399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_37
+      rect:
+        serializedVersion: 2
+        x: 1754
+        y: 620
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66f673cc013a5644fab890d143535b3f
+      internalID: 887538753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_38
+      rect:
+        serializedVersion: 2
+        x: 2631
+        y: 620
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a96162763f1cb1948823dc89f88576e9
+      internalID: 756419950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_39
+      rect:
+        serializedVersion: 2
+        x: 3508
+        y: 620
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9769a5749201c5f459892394ed925421
+      internalID: -772187221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tipspritesheet_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 877
+        height: 620
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f344522cba4d1249bb60721ce94181c
+      internalID: -154312841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 544f3dc1214eb6e48ae7e661f9b7bc38
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Tipspritesheet_0: -1737984504
+      Tipspritesheet_1: 1917700323
+      Tipspritesheet_10: 2009147955
+      Tipspritesheet_11: -1811108803
+      Tipspritesheet_12: -96852908
+      Tipspritesheet_13: 784622571
+      Tipspritesheet_14: 286889791
+      Tipspritesheet_15: -188972274
+      Tipspritesheet_16: -533358328
+      Tipspritesheet_17: 1714348727
+      Tipspritesheet_18: -1374711774
+      Tipspritesheet_19: 1263013938
+      Tipspritesheet_2: 259353160
+      Tipspritesheet_20: 613140388
+      Tipspritesheet_21: 355104519
+      Tipspritesheet_22: -236770568
+      Tipspritesheet_23: 31825130
+      Tipspritesheet_24: -1895012753
+      Tipspritesheet_25: 1933857755
+      Tipspritesheet_26: 957481189
+      Tipspritesheet_27: -1455830070
+      Tipspritesheet_28: 2051695946
+      Tipspritesheet_29: -496777942
+      Tipspritesheet_3: 2110115188
+      Tipspritesheet_30: -1142215945
+      Tipspritesheet_31: -542496037
+      Tipspritesheet_32: -994454896
+      Tipspritesheet_33: -1466022188
+      Tipspritesheet_34: -1024324228
+      Tipspritesheet_35: -1397328184
+      Tipspritesheet_36: 17022399
+      Tipspritesheet_37: 887538753
+      Tipspritesheet_38: 756419950
+      Tipspritesheet_39: -772187221
+      Tipspritesheet_4: 1275995297
+      Tipspritesheet_40: -154312841
+      Tipspritesheet_5: -385634969
+      Tipspritesheet_6: 974739802
+      Tipspritesheet_7: -1344274274
+      Tipspritesheet_8: -474074636
+      Tipspritesheet_9: -1083788519
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

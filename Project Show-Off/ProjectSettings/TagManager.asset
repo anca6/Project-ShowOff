@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Target
   - Sara
+  - BreakObj
   layers:
   - Default
   - TransparentFX
@@ -14,9 +15,9 @@ TagManager:
   - Water
   - UI
   - targetsLayer
-  - 
-  - 
-  - 
+  - isGround
+  - Player1
+  - Player2
   - 
   - 
   - 
