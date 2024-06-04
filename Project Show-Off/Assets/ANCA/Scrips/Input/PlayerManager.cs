@@ -27,6 +27,7 @@ public class PlayerManager : MonoBehaviour
 
         var playerObject = playerObjects[index];
         playerObject.SetActive(true);
+
         var playerInput = playerObject.GetComponent<PlayerInput>();
 
         if (Gamepad.all.Count > index)
