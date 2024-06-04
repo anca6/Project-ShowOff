@@ -7,16 +7,11 @@ PluginImporter:
   executionOrder: {}
   defineConstraints: []
   isPreloaded: 0
-<<<<<<< HEAD
   isOverridable: 1
-=======
-  isOverridable: 0
->>>>>>> engineer
   isExplicitlyReferenced: 0
   validateReferences: 1
   platformData:
   - first:
-<<<<<<< HEAD
       : Any
     second:
       enabled: 0
@@ -30,18 +25,12 @@ PluginImporter:
       Any: 
     second:
       enabled: 0
-=======
-      Any: 
-    second:
-      enabled: 1
->>>>>>> engineer
       settings: {}
   - first:
       Editor: Editor
     second:
       enabled: 0
       settings:
-<<<<<<< HEAD
         CPU: x86_64
         DefaultValueInitialized: true
         OS: Windows
@@ -69,9 +58,6 @@ PluginImporter:
       enabled: 0
       settings:
         CPU: None
-=======
-        DefaultValueInitialized: true
->>>>>>> engineer
   userData: 
   assetBundleName: 
   assetBundleVariant: 

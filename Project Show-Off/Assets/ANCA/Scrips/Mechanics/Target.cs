@@ -1,12 +1,8 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    //properties for the target gameobject
-    [SerializeField] private TargetPlatform targetPlatform;
-
-    [SerializeField] private bool isHit = false;
+    private bool isHit = false;
 
     public bool IsHit
     {
@@ -16,6 +12,5 @@ public class Target : MonoBehaviour
     public void MarkAsHit()
     {
         isHit = true;
-        targetPlatform.StartMoving();
     }
 }

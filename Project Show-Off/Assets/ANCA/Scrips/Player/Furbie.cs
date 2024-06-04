@@ -1,16 +1,16 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Furbie : Character
 {
-    //properties for player jumping & dashing
     [Header("Dashing")]
     [SerializeField] private float dashForce;
     [SerializeField] private float dashUpwardForce;
     [SerializeField] private float dashDuration;
     [SerializeField] private float dashCooldown;
     private float dashTimer;
-    public AudioSource source;
-    public AudioClip clip;
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -20,6 +20,7 @@ public class Furbie : Character
             dashTimer -= Time.deltaTime;
         }
     }
+
     protected override void Jump()
     {
         if (dashTimer > 0)
@@ -27,19 +28,14 @@ public class Furbie : Character
 
         dashTimer = dashCooldown;
 
-        //if the player is not mid-air and can jump
-        if (IsGrounded() && canJump) 
+        if (IsGrounded() && canJump)
         {
             Vector3 forceToApply = transform.forward * dashForce + transform.up * dashUpwardForce;
 
             delayedForceToApply = forceToApply;
 
-            //add a delayed dash force for better simulation
             Invoke(nameof(DelayedDashForce), 0.025f);
             Invoke(nameof(ResetJump), dashDuration);
-
-            ///furbie jump sound here
-            source.PlayOneShot(clip);
         }
     }
 
@@ -50,5 +46,4 @@ public class Furbie : Character
         rb.AddForce(delayedForceToApply, ForceMode.Impulse);
         canJump = false;
     }
-
 }
