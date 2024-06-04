@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6511568944274347172}
   - component: {fileID: 4558966428953543225}
   - component: {fileID: 4302249113578954272}
+  - component: {fileID: 8088700377683936861}
   m_Layer: 7
   m_Name: Moving platform
   m_TagString: Untagged
@@ -27,9 +28,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5401432065022341299}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.70778817, y: -0.022387922, z: -0.00075006485, w: 0.7060696}
+  m_LocalRotation: {x: -0.7077883, y: -0.022387983, z: -0.0007483662, w: 0.7060694}
   m_LocalPosition: {x: 51.78, y: 5.28, z: 43.37}
-  m_LocalScale: {x: 4.59, y: 4.59, z: 0.45900002}
+  m_LocalScale: {x: 0.33629456, y: 0.3362946, z: 0.033629462}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -105,3 +106,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8088700377683936861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5401432065022341299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ca0a4d755a5dae4984d452c1870bcb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  moveDistance: 10
+  moveHorizontally: 0
