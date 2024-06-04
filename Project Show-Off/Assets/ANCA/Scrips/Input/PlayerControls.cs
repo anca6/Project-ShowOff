@@ -793,7 +793,19 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ]
         }
     ],
-    ""controlSchemes"": []
+    ""controlSchemes"": [
+        {
+            ""name"": ""Gamepad"",
+            ""bindingGroup"": ""Gamepad"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Gamepad>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        }
+    ]
 }");
         // Gameplay1
         m_Gameplay1 = asset.FindActionMap("Gameplay1", throwIfNotFound: true);
@@ -1134,6 +1146,15 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public Gameplay3Actions @Gameplay3 => new Gameplay3Actions(this);
+    private int m_GamepadSchemeIndex = -1;
+    public InputControlScheme GamepadScheme
+    {
+        get
+        {
+            if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
+            return asset.controlSchemes[m_GamepadSchemeIndex];
+        }
+    }
     public interface IGameplay1Actions
     {
         void OnMovement(InputAction.CallbackContext context);
