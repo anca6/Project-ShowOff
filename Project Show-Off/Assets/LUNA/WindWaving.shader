@@ -5,8 +5,8 @@ Shader "Luna/WindWaving"{
         [HDR] _AmbientColour ("Ambient Colour", Color) = (0.4, 0.4, 0.4, 1)
         _WorldSize ("World Size", Vector) = (1, 1, 1, 1)
         _WindSpeed ("Wind Speed", Float) = 0.25
-        _WaveSpeed ("Wave Speed", Float) = 0.25
-        _WindAmplitude ("Wind Amplitude", Range(0, 0.5)) = 0.35
+        _WaveSpeed ("Wave Speed", Float) = 1.0
+        _WindAmplitude ("Wind Amplitude", Range(0, 0.5)) = 0.1
         _HeightFactor ("Height Factor", Float) = 1
     }
     SubShader{
