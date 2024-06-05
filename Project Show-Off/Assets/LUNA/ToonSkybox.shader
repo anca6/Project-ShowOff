@@ -70,9 +70,14 @@ Shader "Luna/ToonSkybox"{
                 const float3 viewZenithColour = SAMPLE_TEXTURE2D(_ViewZenithGradient, sampler_ViewZenithGradient, float2(sunZenithDotZeroOne, .5)).rgb;
                 const float viewZenithMask = pow(saturate(1 - viewZenithDot), 3);
 
-                float3 colour = sunZenithColour + viewZenithColour * viewZenithMask;
+                float2 cloudUV = SAMPLE_TEXTURECUBE(_CloudLocationCubeMap, sampler_CloudLocationCubeMap, viewDirection).rg;
+                cloudUV.y = 1 - cloudUV.y;
+                const float4 cloudColour = SAMPLE_TEXTURE2D(_CloudTexture, sampler_CloudTexture, cloudUV);
                 
-                return float4(colour, 1);
+                float3 skyColour = sunZenithColour + viewZenithColour * viewZenithMask;
+                float4 colour = float4(skyColour, 1) + cloudColour;
+                
+                return colour;
             }
             ENDHLSL
         }
