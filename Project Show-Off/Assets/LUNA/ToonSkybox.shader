@@ -2,8 +2,7 @@ Shader "Luna/ToonSkybox"{
     Properties{
         [NoScaleOffset] _SunZenithGradient("Sun-Zenith Gradient", 2D) = "white"{}
         [NoSCaleOffset] _ViewZenithGradient("View-Zenith Gradient", 2D) = "white"{}
-        [NoScaleOffset] _CloudTexture ("Cloud Texture", 2D) = "white" {}
-        [NoScaleOffset] _CloudLocationCubeMap ("Cloud Location Cube Map", Cube) = "black"{}
+        [NoScaleOffset] _CloudCubeMap ("Cloud Cube Map", Cube) = "black"{}
         _SkyColour ("Sky Colour", Color) = (0.5, 1, 1, 1)
     }
     SubShader{
@@ -38,11 +37,8 @@ Shader "Luna/ToonSkybox"{
             TEXTURE2D(_ViewZenithGradient);
             SAMPLER(sampler_ViewZenithGradient);
 
-            TEXTURE2D(_CloudTexture);
-            SAMPLER(sampler_CloudTexture);
-
-            TEXTURECUBE(_CloudLocationCubeMap);
-            SAMPLER(sampler_CloudLocationCubeMap);
+            TEXTURECUBE(_CloudCubeMap);
+            SAMPLER(sampler_CloudCubeMap);
             
             float3 _SunDirection;
             
@@ -70,12 +66,10 @@ Shader "Luna/ToonSkybox"{
                 const float3 viewZenithColour = SAMPLE_TEXTURE2D(_ViewZenithGradient, sampler_ViewZenithGradient, float2(sunZenithDotZeroOne, .5)).rgb;
                 const float viewZenithMask = pow(saturate(1 - viewZenithDot), 3);
 
-                float2 cloudUV = SAMPLE_TEXTURECUBE(_CloudLocationCubeMap, sampler_CloudLocationCubeMap, viewDirection).rg;
-                cloudUV.y = 1 - cloudUV.y;
-                const float4 cloudColour = SAMPLE_TEXTURE2D(_CloudTexture, sampler_CloudTexture, cloudUV);
+                const float4 cloudColour = SAMPLE_TEXTURECUBE(_CloudCubeMap, sampler_CloudCubeMap, viewDirection);
                 
                 float3 skyColour = sunZenithColour + viewZenithColour * viewZenithMask;
-                float4 colour = float4(skyColour, 1) + cloudColour;
+                float4 colour = (float4(skyColour, 1) * (1 - cloudColour.a)) + cloudColour * cloudColour.a;
                 
                 return colour;
             }
