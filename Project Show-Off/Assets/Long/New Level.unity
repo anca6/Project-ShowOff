@@ -1547,6 +1547,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1079421971687771910, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: jumpForce
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079421971687771910, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079421971687771910, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: acceleration
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079421971687771910, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: jumpCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079421971687771910, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: minBreakSpeed
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079421971687771910, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079421971687771910, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: grVelocityAmplifier
+      value: 1.008
+      objectReference: {fileID: 0}
     - target: {fileID: 1804700700847527998, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_Layer
@@ -1816,6 +1851,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5324698195831183778, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: jumpForce
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5324698195831183778, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5324698195831183778, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: jumpCooldown
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5377224396335723128, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
@@ -13549,8 +13599,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078521840}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24756, y: 0.0000000083353955, z: -0.000000002129806, w: 0.9688726}
-  m_LocalPosition: {x: 0.000030517578, y: 0, z: 0}
+  m_LocalRotation: {x: 0.24756, y: -0.0000000083353955, z: 0.000000002129806, w: 0.9688726}
+  m_LocalPosition: {x: 0.000061035156, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -20139,7 +20189,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634561582}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.4222481, y: -0.000000029029744, z: 0.000000013522359, w: 0.9064803}
+  m_LocalRotation: {x: 0.42224813, y: 0.000000010625622, z: -0.0000000049495266, w: 0.9064803}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -23651,6 +23701,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1079421971687771910, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: jumpForce
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079421971687771910, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079421971687771910, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: acceleration
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079421971687771910, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: jumpCooldown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079421971687771910, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: minBreakSpeed
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079421971687771910, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079421971687771910, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: grVelocityAmplifier
+      value: 1.008
+      objectReference: {fileID: 0}
     - target: {fileID: 1804700700847527998, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_Layer
@@ -23871,10 +23956,50 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3984342750111211184, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: dashForce
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984342750111211184, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984342750111211184, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: dashCooldown
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984342750111211184, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: dashDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984342750111211184, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: dashUpwardForce
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 4498170626376435556, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5324698195831183778, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: jumpForce
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5324698195831183778, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5324698195831183778, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: jumpCooldown
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5377224396335723128, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
