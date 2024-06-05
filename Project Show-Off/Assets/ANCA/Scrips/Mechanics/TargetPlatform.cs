@@ -4,7 +4,7 @@ public class TargetPlatform : MonoBehaviour
 {
     [SerializeField] private float speed = 2.0f;
     [SerializeField] private float moveDistance;
-    [SerializeField] private bool moveHorizontally = false;
+    [SerializeField] private bool moveHorizontally = true;
 
     private Vector3 startPos;
     private Vector3 endPos;
