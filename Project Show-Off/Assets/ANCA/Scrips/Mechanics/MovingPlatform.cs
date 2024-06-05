@@ -1,8 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MovingPlatform : MonoBehaviour
 {
+    private PlayerInput playerInput;
+    private InputAction abilityAction;
+
     //properties for moving platform mechanic
     [SerializeField] private List<Transform> platformWaypoints;
     [SerializeField] private float movingSpeed;
@@ -16,28 +20,30 @@ public class MovingPlatform : MonoBehaviour
     private float timeToWaypoint;
     private float elapsedTime;
 
-    //bla bla test
-
-    private PlayerControls playerControls;
     private PlayerSwitch playerSwitch;
 
     private bool onPlatform;
 
     private void Awake()
     {
-        playerControls = new PlayerControls();
+        //issue here 
+        playerInput = GetComponentInParent<PlayerInput>();
 
-        playerControls.Gameplay1.Ability.performed += ctx => GoToNextWaypoint(); //calls the go to next waypoint method when the ability button is pressed
+        abilityAction = playerInput.actions["Ability"];
+        abilityAction.performed += ctx => GoToNextWaypoint();
     }
     private void OnEnable()
     {
-        playerControls.Enable();
-        playerSwitch = FindObjectOfType<PlayerSwitch>();
+        abilityAction.Enable();
+        //playerControls.Enable();
+        //playerSwitch = FindObjectOfType<PlayerSwitch>();
     }
 
     private void OnDisable()
     {
-        playerControls.Disable();
+        abilityAction.Disable();
+
+        //playerControls.Disable();
     }
 
     //setting up the first waypoint target in the list
@@ -72,7 +78,12 @@ public class MovingPlatform : MonoBehaviour
     //calculates distance between previous waypoint and next waypoint
     private void GoToNextWaypoint()
     {
-        if (!onPlatform || playerSwitch == null || playerSwitch.currentCharacter != allowedCharacter) return; //if the current character is not the character with this mechanic
+        if (!onPlatform || playerSwitch == null || playerSwitch.currentCharacter != allowedCharacter)
+        {
+
+            Debug.Log("something wrong here");
+        }
+        //return; //if the current character is not the character with this mechanic
 
 
             previousWaypoint = GetWaypointIndex(targetWaypointIndex);
