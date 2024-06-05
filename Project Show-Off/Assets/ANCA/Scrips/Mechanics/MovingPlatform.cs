@@ -17,8 +17,6 @@ public class MovingPlatform : MonoBehaviour
     private float timeToWaypoint;
     private float elapsedTime;
 
-    //bla bla test
-
     private PlayerControls playerControls;
     private PlayerSwitch playerSwitch;
 
