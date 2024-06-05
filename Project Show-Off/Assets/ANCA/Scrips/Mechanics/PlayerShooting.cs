@@ -5,7 +5,7 @@ public class PlayerShooting : MonoBehaviour
 {
     //properties for the projectile mechanic
     private PlayerInput playerInput;
-    private InputAction shootAction;
+    private InputAction abilityAction;
 
     [SerializeField] private GameObject projectilePrefab;
 
@@ -25,20 +25,20 @@ public class PlayerShooting : MonoBehaviour
 
         playerInput = GetComponentInParent<PlayerInput>();
 
-        shootAction = playerInput.actions["Ability"];
-        shootAction.performed += ctx => ShootProjectile();
+        abilityAction = playerInput.actions["Ability"];
+        abilityAction.performed += ctx => ShootProjectile();
 
         //playerControls.Gameplay.Ability.performed += ctx => ShootProjectile(); //calling the shoot projectile method when the ability button is pressed
     }
 
     private void OnEnable()
     {
-        shootAction.Enable();
+        abilityAction.Enable();
     }
 
     private void OnDisable()
     {
-        shootAction.Disable();
+        abilityAction.Disable();
     }
     private void ShootProjectile()
     {
