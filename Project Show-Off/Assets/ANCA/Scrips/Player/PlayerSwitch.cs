@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,14 +11,12 @@ public class PlayerSwitch : MonoBehaviour
     private float lastSwitchTime = 0f;
     private float switchCooldown = 1f;
 
-    [SerializeField] private List<Transform> possibleCharacters; //list of the characters the player can turn into
+    [SerializeField] private List<Transform> possibleCharacters;
 
     [SerializeField] private GameObject playerObj;
 
-    //set the first character in the list by default
     private void Start()
     {
-        Debug.Log("Starting PlayerSw on " + name);
         if (characterTransform == null && possibleCharacters.Count >= 1)
         {
             characterTransform = possibleCharacters[0];
@@ -39,20 +38,16 @@ public class PlayerSwitch : MonoBehaviour
             return;
         }
 
-        //if we press X on the controller
-        if (gamepad.buttonWest.wasPressedThisFrame)
-        {
-            CycleCharacter(-1);
-        }
-
-        //if we press B on the controller
-        else if (gamepad.buttonEast.wasPressedThisFrame)
+        if (gamepad.rightShoulder.wasPressedThisFrame)
         {
             CycleCharacter(1);
         }
+        else if (gamepad.leftShoulder.wasPressedThisFrame)
+        {
+            CycleCharacter(-1);
+        }
     }
 
-    //increasing/decreasing the character cycling increment and setting it to the current character
     private void CycleCharacter(int increment)
     {
         int newCharacter = currentCharacter + increment;
@@ -67,18 +62,12 @@ public class PlayerSwitch : MonoBehaviour
 
         currentCharacter = newCharacter;
         Debug.Log($"Switched to monster {currentCharacter + 1}");
-        lastSwitchTime = Time.time; //countdown restarts
+        lastSwitchTime = Time.time;
         SwitchCharacter(currentCharacter);
     }
 
-    //set active only the gameobject that we switch to, and set the other ones to inactive
     private void SwitchCharacter(int index)
     {
-        // Fix rotation:
-        Vector3 currentEulerAngles = playerObj.transform.rotation.eulerAngles;
-        playerObj.transform.rotation = Quaternion.Euler(0,currentEulerAngles.y,0);
-        Debug.Log("Resetting orientation for " + playerObj.name+ " old angles: "+currentEulerAngles);
-
         for (int i = 0; i < possibleCharacters.Count; i++)
         {
             possibleCharacters[i].gameObject.SetActive(i == index);
