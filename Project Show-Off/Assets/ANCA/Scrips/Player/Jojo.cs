@@ -7,6 +7,7 @@ public class Jojo : Character
     [Header("Boost Properties")]
     [SerializeField] private GameObject explosionEffect;
     [SerializeField] float minBreakSpeed = 10;
+    [SerializeField] private float explosionDelay = 0.5f;
 
     bool StandupFinished = true;
 
@@ -98,17 +99,23 @@ public class Jojo : Character
             Debug.Log("Speed on impact: " + impactSpeed+" normal: "+ collision.contacts[0].normal + " velocity: "+ collision.relativeVelocity);
             if (impactSpeed > minBreakSpeed)
             {
-
-                TriggerExplosion(transform.position);
-                Destroy(collision.gameObject);
+                StartCoroutine(DelayedExplosion(collision.gameObject));
             }
-            //Destroy(explosionEffect);
+            Destroy(explosionEffect);
 
             //TO DO: add coroutine to delay the explosion effect
 
             //TO DO: delay the wall getting destroyed
         }
     }
+
+    private IEnumerator DelayedExplosion(GameObject breakableObject)
+    {
+        yield return new WaitForSeconds(explosionDelay);
+        TriggerExplosion(transform.position);
+        Destroy(breakableObject);
+    }
+
 
     private void TriggerExplosion(Vector3 position)
     {
