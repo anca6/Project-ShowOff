@@ -50,7 +50,7 @@ Shader "Luna/ToonSkybox"{
 
             v2f vertex(appdata input){
                 v2f output;
-                VertexPositionInputs vertexInput = GetVertexPositionInputs(input.vertex.xyz);
+                const VertexPositionInputs vertexInput = GetVertexPositionInputs(input.vertex.xyz);
                 output.vertex = vertexInput.positionCS;
                 output.viewDirectionWorld = vertexInput.positionWS;
                 return output;
