@@ -3,6 +3,7 @@ Shader "Luna/ToonSkybox"{
         [NoScaleOffset] _SunZenithGradient("Sun-Zenith Gradient", 2D) = "white"{}
         [NoSCaleOffset] _ViewZenithGradient("View-Zenith Gradient", 2D) = "white"{}
         [NoScaleOffset] _CloudCubeMap ("Cloud Cube Map", Cube) = "black"{}
+        _CloudRotation ("Cloud Rotation", Range(0, 1)) = 0
         _SkyColour ("Sky Colour", Color) = (0.5, 1, 1, 1)
     }
     SubShader{
@@ -44,6 +45,7 @@ Shader "Luna/ToonSkybox"{
             
             CBUFFER_START(UnityPerMaterial)
             float4 _MainTex_ST;
+            float _CloudRotation;
             float4 _SkyColour;
             CBUFFER_END
 
@@ -66,7 +68,16 @@ Shader "Luna/ToonSkybox"{
                 const float3 viewZenithColour = SAMPLE_TEXTURE2D(_ViewZenithGradient, sampler_ViewZenithGradient, float2(sunZenithDotZeroOne, .5)).rgb;
                 const float viewZenithMask = pow(saturate(1 - viewZenithDot), 3);
 
-                const float4 cloudColour = SAMPLE_TEXTURECUBE(_CloudCubeMap, sampler_CloudCubeMap, viewDirection);
+                float cloudRotationRadians = _CloudRotation * TWO_PI;
+
+                float3x3 cloudRotationMatrix = float3x3(
+                    cos(cloudRotationRadians), 0, sin(cloudRotationRadians),
+                    0, 1, 0,
+                    -sin(cloudRotationRadians), 0, cos(cloudRotationRadians)
+                );
+                
+                const float3 cloudDirection = mul(cloudRotationMatrix, viewDirection);
+                const float4 cloudColour = SAMPLE_TEXTURECUBE(_CloudCubeMap, sampler_CloudCubeMap, cloudDirection);
                 
                 float3 skyColour = sunZenithColour + viewZenithColour * viewZenithMask;
                 float4 colour = (float4(skyColour, 1) * (1 - cloudColour.a)) + cloudColour * cloudColour.a;
