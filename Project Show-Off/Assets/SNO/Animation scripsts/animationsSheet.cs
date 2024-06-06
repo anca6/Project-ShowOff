@@ -2,26 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.ProBuilder.MeshOperations;
+using UnityEngine.InputSystem;
 
-public class Sarahanimation : MonoBehaviour
+public class animationsSheet : MonoBehaviour
 {
+    
+
     [SerializeField] private Animator sarahAnim;
     [SerializeField] protected LayerMask isGround;
     [SerializeField] protected float playerHeight;
     [SerializeField] private bool groundOverwrite = false;
-
+   [SerializeField] private PlayerControls _actions;
     private bool moving = false;
-    private bool Grounded;
+    private bool grounded;
+    private bool ability;
+    private bool jump;
+
+
+    private void Awake()
+    {
+        _actions = new PlayerControls();
+        _actions.Gameplay1.Movement.performed += ctx => moving = ctx.ReadValueAsButton();
+        _actions.Gameplay1.Movement.canceled += ctx => moving = ctx.ReadValueAsButton();
+        _actions.Gameplay1.Ability.performed += ctx => ability = ctx.ReadValueAsButton();
+        _actions.Gameplay1.Ability.canceled += ctx => ability = ctx.ReadValueAsButton();
+        _actions.Gameplay1.Jump.performed += ctx => jump = ctx.ReadValueAsButton();
+        _actions.Gameplay1.Jump.canceled += ctx => jump = ctx.ReadValueAsButton();
+
+
+        
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
-        sarahAnim = GetComponent<Animator>();
+      
+       
 
         if (sarahAnim == null)
         {
             Debug.LogWarning("Sarah Animator not set on:" + gameObject);
             return;
         }
+        if (playerHeight < 0)
+        {
+            Debug.LogWarning("PlayerHeight <0 " + gameObject + "will forever fall");
+        }
+
+       
+        sarahAnim = GetComponent<Animator>();
+
     }
 
 
@@ -30,32 +61,6 @@ public class Sarahanimation : MonoBehaviour
     {
 
 
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            moving = true;
-
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            moving = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            moving = true;
-        }
-        else if (Input.GetKey(KeyCode.W))
-        {
-            moving = true;
-        }
-
-        if (Input.GetKey(KeyCode.A) == false &&(Input.GetKey(KeyCode.D) == false) && (Input.GetKey(KeyCode.S) == false) && Input.GetKey(KeyCode.W) == false)
-        {
-            moving = false;
-        }
-
-
-
-      
 
         if (moving)
   
@@ -69,14 +74,14 @@ public class Sarahanimation : MonoBehaviour
             //Debug.Log(gameObject + "Walk set to:" + moving);
         }
 
-        if(Input.GetKey(KeyCode.F))
+        if(ability)
         {
             sarahAnim.SetBool("Ability", true) ;
             Debug.Log(gameObject + "Ability set to: true");
         }
         else sarahAnim.SetBool("Ability", false) ;
 
-        if (Input.GetKeyDown(KeyCode.Space) && Grounded)
+        if (jump && grounded)
         {
 
             sarahAnim.SetBool("Jump", true);
@@ -86,7 +91,8 @@ public class Sarahanimation : MonoBehaviour
         }
         else sarahAnim.SetBool("Jump", false) ;
 
-        if (!Grounded)
+
+        if (!grounded)
         {
             sarahAnim.SetBool("Float", true);
         }
@@ -100,15 +106,15 @@ public class Sarahanimation : MonoBehaviour
 
         if ( Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, playerHeight * 0.5f + 0.3f, isGround) && groundOverwrite == false)
       {
-            Grounded = true;
+            grounded = true;
         }
         else
         {
-            Grounded = false;
+            grounded = false;
 
         }
       
-        Debug.Log("Grounded sett to:" + Grounded);
+       // Debug.Log("Grounded sett to:" + Grounded);
     }
   
     
