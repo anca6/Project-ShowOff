@@ -4,7 +4,7 @@ Shader "Luna/ToonSkybox"{
         [NoSCaleOffset] _ViewZenithGradient("View-Zenith Gradient", 2D) = "white"{}
         [NoScaleOffset] _CloudCubeMap ("Cloud Cube Map", Cube) = "black"{}
         _CloudRotation ("Cloud Rotation", Range(0, 1)) = 0
-        _CloudSpeed ("Cloud Speed", Float) = 1
+        _CloudSpeed ("Cloud Speed", Range(0, 1)) = 0.15
     }
     SubShader{
         Tags{
@@ -67,7 +67,7 @@ Shader "Luna/ToonSkybox"{
                 const float3 viewZenithColour = SAMPLE_TEXTURE2D(_ViewZenithGradient, sampler_ViewZenithGradient, float2(sunZenithDotZeroOne, .5)).rgb;
                 const float viewZenithMask = pow(saturate(1 - viewZenithDot), 3);
 
-                float cloudRotationRadians = _CloudRotation * TWO_PI;
+                float cloudRotationRadians = (_CloudRotation + _Time.x * _CloudSpeed * .25) * TWO_PI;
 
                 float3x3 cloudRotationMatrix = float3x3(
                     cos(cloudRotationRadians), 0, sin(cloudRotationRadians),
