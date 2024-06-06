@@ -4,7 +4,6 @@ Shader "Luna/ToonSkybox"{
         [NoSCaleOffset] _ViewZenithGradient("View-Zenith Gradient", 2D) = "white"{}
         [NoScaleOffset] _CloudCubeMap ("Cloud Cube Map", Cube) = "black"{}
         _CloudRotation ("Cloud Rotation", Range(0, 1)) = 0
-        _SkyColour ("Sky Colour", Color) = (0.5, 1, 1, 1)
     }
     SubShader{
         Tags{
@@ -46,7 +45,6 @@ Shader "Luna/ToonSkybox"{
             CBUFFER_START(UnityPerMaterial)
             float4 _MainTex_ST;
             float _CloudRotation;
-            float4 _SkyColour;
             CBUFFER_END
 
             v2f vertex(appdata input){
