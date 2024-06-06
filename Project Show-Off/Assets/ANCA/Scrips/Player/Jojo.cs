@@ -102,10 +102,6 @@ public class Jojo : Character
                 StartCoroutine(DelayedExplosion(collision.gameObject));
             }
             Destroy(explosionEffect);
-
-            //TO DO: add coroutine to delay the explosion effect
-
-            //TO DO: delay the wall getting destroyed
         }
     }
 
