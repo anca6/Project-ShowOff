@@ -17,9 +17,6 @@ public class Jojo : Character
 
     protected override void Awake()
     {
-        /*        playerControls = new PlayerControls();
-                playerControls.Gameplay.Jump.performed += ctx => Jump();
-        */
         base.Awake();
     }
 
