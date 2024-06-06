@@ -20,18 +20,19 @@ public class Animation : MonoBehaviour
     {
       
        
-
+        //if the animator is not detected send a warning
         if (sarahAnim == null)
         {
             Debug.LogWarning("Sarah Animator not set on:" + gameObject);
             return;
         }
+        //if the playerheight is bellow 0 tell the user the character will only float
         if (playerHeight < 0)
         {
             Debug.LogWarning("PlayerHeight <0 " + gameObject + "will forever fall");
         }
 
-       
+       //get the animator from the entity
         sarahAnim = GetComponent<Animator>();
 
     }
@@ -41,7 +42,7 @@ public class Animation : MonoBehaviour
     void Update()
     {
 
-
+        // if the player presses W,A,S,D then this means the player is moving.
         if (Input.GetKeyDown(KeyCode.A))
         {
             moving = true;
@@ -68,26 +69,30 @@ public class Animation : MonoBehaviour
 
 
       
-
+        //if w,a,s or d is pressed toggle the "Walk" bool in the animator to on
         if (moving)
   
         {
             sarahAnim.SetBool("Walk", true);
             Debug.Log(gameObject + "Walk set to:" + moving);
         }
+        //toggle it off
         else if (!moving)
         {
             sarahAnim.SetBool("Walk", false);
             //Debug.Log(gameObject + "Walk set to:" + moving);
         }
 
+        // if hte player presses F toggle teh "ability" bool in the animator on
         if(Input.GetKey(KeyCode.F))
         {
             sarahAnim.SetBool("Ability", true) ;
             Debug.Log(gameObject + "Ability set to: true");
         }
+        //toggle it off
         else sarahAnim.SetBool("Ability", false) ;
 
+        //if space is pressed and the entity is grounded putt the jump bool to true
         if (Input.GetKeyDown(KeyCode.Space) && Grounded)
         {
 
@@ -96,12 +101,15 @@ public class Animation : MonoBehaviour
             Debug.DrawRay(transform.position, Vector3.down * (playerHeight * 0.5f + 0.3f));
             Debug.Log(gameObject + "Jump set to: true");
         }
+        //putt it to off
         else sarahAnim.SetBool("Jump", false) ;
 
+        //if the entity is not grounded toggle the floating bool int he animator to on
         if (!Grounded)
         {
             sarahAnim.SetBool("Float", true);
         }
+        //toggle it off
         else
         {
             sarahAnim.SetBool("Float", false);
@@ -109,11 +117,14 @@ public class Animation : MonoBehaviour
 
 
         
-
+        //check if the entity is half the playerHeight above an object with a collider wich is also on the layer isGround.
+        //if it is set the bool grounded to true
+        //we do this to detect if the player can jump and/or should be floating.
         if ( Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, playerHeight * 0.5f + 0.3f, isGround) && groundOverwrite == false)
       {
             Grounded = true;
         }
+        //if not sett it to false and vissualize the ray
         else
         {
             Grounded = false;
