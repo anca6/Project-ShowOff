@@ -117,10 +117,11 @@ public class Animation : MonoBehaviour
         else
         {
             Grounded = false;
+            Debug.DrawRay(transform.position, Vector3.down * (playerHeight * 0.5f + 0.3f), Color.red);
 
         }
       
-       // Debug.Log("Grounded sett to:" + Grounded);
+      // Debug.Log("Grounded sett to:" + Grounded);
     }
   
     

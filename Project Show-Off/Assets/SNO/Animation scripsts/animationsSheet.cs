@@ -102,7 +102,7 @@ public class animationsSheet : MonoBehaviour
         }
 
 
-        
+       
 
         if ( Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, playerHeight * 0.5f + 0.3f, isGround) && groundOverwrite == false)
       {
@@ -111,7 +111,7 @@ public class animationsSheet : MonoBehaviour
         else
         {
             grounded = false;
-
+            Debug.DrawRay(transform.position, Vector3.down * (playerHeight * 0.5f +0.3f), Color.red);
         }
       
        // Debug.Log("Grounded sett to:" + Grounded);
