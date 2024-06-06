@@ -43,7 +43,6 @@ Shader "Luna/ToonSkybox"{
             float3 _SunDirection;
             
             CBUFFER_START(UnityPerMaterial)
-            float4 _MainTex_ST;
             float _CloudRotation;
             CBUFFER_END
 
