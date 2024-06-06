@@ -4,16 +4,16 @@ using UnityEngine.UI;
 
 public class CharacterSelection : MonoBehaviour
 {
-    public GameObject[] player1Characters;
-    public GameObject[] player2Characters;
+    [SerializeField] private GameObject[] player1Characters;
+    [SerializeField] private GameObject[] player2Characters;
 
     private int selectedCharacterIndexPlayer1 = 0;
     private int selectedCharacterIndexPlayer2 = 0;
 
-    public Button[] player1Buttons;
-    public Button[] player2Buttons;
+    [SerializeField] private Button[] player1Buttons;
+    [SerializeField] private Button[] player2Buttons;
 
-    public string gameSceneName = "Long Copy Scene";
+    [SerializeField] private string gameSceneName;
 
     void Start()
     {
