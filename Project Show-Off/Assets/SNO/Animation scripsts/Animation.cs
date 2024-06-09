@@ -8,7 +8,7 @@ public class Animation : MonoBehaviour
 {
     
 
-    [SerializeField] private Animator sarahAnim;
+    [SerializeField] private Animator Anim;
     [SerializeField] protected LayerMask isGround;
     [SerializeField] protected float playerHeight;
     [SerializeField] private bool groundOverwrite = false;
@@ -21,7 +21,7 @@ public class Animation : MonoBehaviour
       
        
         //if the animator is not detected send a warning
-        if (sarahAnim == null)
+        if (Anim == null)
         {
             Debug.LogWarning("Sarah Animator not set on:" + gameObject);
             return;
@@ -33,7 +33,7 @@ public class Animation : MonoBehaviour
         }
 
        //get the animator from the entity
-        sarahAnim = GetComponent<Animator>();
+        Anim = GetComponent<Animator>();
 
     }
 
@@ -73,46 +73,46 @@ public class Animation : MonoBehaviour
         if (moving)
   
         {
-            sarahAnim.SetBool("Walk", true);
+            Anim.SetBool("Walk", true);
             Debug.Log(gameObject + "Walk set to:" + moving);
         }
         //toggle it off
         else if (!moving)
         {
-            sarahAnim.SetBool("Walk", false);
+            Anim.SetBool("Walk", false);
             //Debug.Log(gameObject + "Walk set to:" + moving);
         }
 
         // if hte player presses F toggle teh "ability" bool in the animator on
         if(Input.GetKey(KeyCode.F))
         {
-            sarahAnim.SetBool("Ability", true) ;
+            Anim.SetBool("Ability", true) ;
             Debug.Log(gameObject + "Ability set to: true");
         }
         //toggle it off
-        else sarahAnim.SetBool("Ability", false) ;
+        else Anim.SetBool("Ability", false) ;
 
         //if space is pressed and the entity is grounded putt the jump bool to true
         if (Input.GetKeyDown(KeyCode.Space) && Grounded)
         {
 
-            sarahAnim.SetBool("Jump", true);
+            Anim.SetBool("Jump", true);
 
             Debug.DrawRay(transform.position, Vector3.down * (playerHeight * 0.5f + 0.3f));
             Debug.Log(gameObject + "Jump set to: true");
         }
         //putt it to off
-        else sarahAnim.SetBool("Jump", false) ;
+        else Anim.SetBool("Jump", false) ;
 
         //if the entity is not grounded toggle the floating bool int he animator to on
         if (!Grounded)
         {
-            sarahAnim.SetBool("Float", true);
+            Anim.SetBool("Float", true);
         }
         //toggle it off
         else
         {
-            sarahAnim.SetBool("Float", false);
+            Anim.SetBool("Float", false);
         }
 
 
