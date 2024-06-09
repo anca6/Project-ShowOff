@@ -26,22 +26,22 @@ public class MovingPlatform : MonoBehaviour
 
     private void Awake()
     {
-        //issue here 
+       /* //issue here 
         playerInput = GetComponentInParent<PlayerInput>();
 
         abilityAction = playerInput.actions["Ability"];
-        abilityAction.performed += ctx => GoToNextWaypoint();
+        abilityAction.performed += ctx => GoToNextWaypoint();*/
     }
     private void OnEnable()
     {
-        abilityAction.Enable();
+        //abilityAction.Enable();
         //playerControls.Enable();
-        //playerSwitch = FindObjectOfType<PlayerSwitch>();
+        playerSwitch = FindObjectOfType<PlayerSwitch>();
     }
 
     private void OnDisable()
     {
-        abilityAction.Disable();
+       // abilityAction.Disable();
 
         //playerControls.Disable();
     }
@@ -106,14 +106,32 @@ public class MovingPlatform : MonoBehaviour
         {
             other.transform.SetParent(transform);
             onPlatform = true;
+
+            // Get the PlayerInput component from the player object
+            playerInput = other.gameObject.GetComponent<PlayerInput>();
+            if (playerInput != null)
+            {
+                abilityAction = playerInput.actions["Ability"];
+                abilityAction.performed += ctx => GoToNextWaypoint();
+                abilityAction.Enable();
+            }
+            
         }
     }
+
     private void OnCollisionExit(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             other.transform.SetParent(null);
             onPlatform = false;
+
+            // Disable the ability action if the playerInput is not null
+            if (abilityAction != null)
+            {
+                abilityAction.Disable();
+                abilityAction.performed -= ctx => GoToNextWaypoint();
+            }
         }
     }
 
