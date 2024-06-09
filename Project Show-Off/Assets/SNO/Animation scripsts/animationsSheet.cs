@@ -23,30 +23,28 @@ public class animationsSheet : MonoBehaviour
     private void Awake()
     {
         _actions = new PlayerControls();
-        //_actions.Gameplay1.Movement.performed += ctx => moving = ctx.ReadValueAsButton();
+        _actions.Gameplay1.Movement.performed += ctx => moving = ctx.ReadValueAsButton();
 
-        // _actions.Gameplay1.Movement.canceled += ctx => moving = ctx.ReadValueAsButton();
-        
-          _actions.Gameplay1.Ability.performed += ctx => ability = ctx.ReadValueAsButton();
-          _actions.Gameplay1.Ability.canceled += ctx => ability = ctx.ReadValueAsButton();
-        /*
-          _actions.Gameplay1.Jump.performed += ctx => jump = ctx.ReadValueAsButton();
-          _actions.Gameplay1.Jump.canceled += ctx => jump = ctx.ReadValueAsButton();
-        */
+        _actions.Gameplay1.Movement.canceled += ctx => moving = ctx.ReadValueAsButton();
+
+        _actions.Gameplay1.Ability.performed += ctx => ability = ctx.ReadValueAsButton();
+        _actions.Gameplay1.Ability.canceled += ctx => ability = ctx.ReadValueAsButton();
+
+        _actions.Gameplay1.Jump.performed += ctx => jump = ctx.ReadValueAsButton();
+        _actions.Gameplay1.Jump.canceled += ctx => jump = ctx.ReadValueAsButton();
+
 
 
     }
 
-    private void OnEnable()
-    {
-        _actions.Gameplay1.Movement.Enable();
-        _actions.Gameplay1.Ability.Enable();
-        _actions.Gameplay1.Jump.Enable();
-    }
 
     // Start is called before the first frame update
     void Start()
     {
+
+        _actions.Gameplay1.Movement.Enable();
+        _actions.Gameplay1.Ability.Enable();
+        _actions.Gameplay1.Jump.Enable();
 
 
         //if no object is dragged in warn and return

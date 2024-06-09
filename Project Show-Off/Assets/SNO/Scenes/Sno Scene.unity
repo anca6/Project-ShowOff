@@ -2263,7 +2263,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 56ffde60c3b50244eb27c191213bb6b5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1750255006}
+      addedObject: {fileID: 1750255008}
   m_SourcePrefab: {fileID: 100100000, guid: 56ffde60c3b50244eb27c191213bb6b5, type: 3}
 --- !u!1 &1750254999 stripped
 GameObject:
@@ -2358,7 +2358,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
---- !u!114 &1750255006
+--- !u!114 &1750255008
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2367,15 +2367,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1750254999}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30f481c4d401ffe4789e2a73718abc83, type: 3}
+  m_Script: {fileID: 11500000, guid: 1857ec10c060e5640a4ac3ebbc18633f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sarahAnim: {fileID: 1750255000}
-  isGround:
-    serializedVersion: 2
-    m_Bits: 128
-  playerHeight: 0.01
-  groundOverwrite: 0
+  anim: {fileID: 1750255000}
 --- !u!1001 &1810077804
 PrefabInstance:
   m_ObjectHideFlags: 0
