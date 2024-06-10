@@ -30,6 +30,7 @@ Shader "Luna/Water"{
             };
 
             sampler2D _MainTex;
+            sampler2D _CameraDepthTexture;
             CBUFFER_START(UnityPerMaterial)
             float4 _MainTex_ST;
             CBUFFER_END
