@@ -3,9 +3,9 @@ public class PlayerAnimationLink : MonoBehaviour{
     [SerializeField] private Animator Anim;
     [SerializeField] protected LayerMask isGround;
     [SerializeField] protected float playerHeight;
-    [SerializeField] private bool groundOverwrite = false;
+    [SerializeField] private bool groundOverwrite;
 
-    private bool moving = false;
+    private bool moving;
 
     private bool Grounded;
 
