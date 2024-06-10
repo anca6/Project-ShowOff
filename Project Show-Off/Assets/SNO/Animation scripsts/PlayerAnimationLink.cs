@@ -27,7 +27,7 @@ public class PlayerAnimationLink : MonoBehaviour
             Debug.LogWarning("PlayerHeight <0 " + gameObject + "will forever fall");
         }
 
-       //get the animator from the entity
+        //get the animator from the entity
         Anim = GetComponent<Animator>();
 
     }
@@ -116,7 +116,7 @@ public class PlayerAnimationLink : MonoBehaviour
         //if it is set the bool grounded to true
         //we do this to detect if the player can jump and/or should be floating.
         if ( Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, playerHeight * 0.5f + 0.3f, isGround) && groundOverwrite == false)
-      {
+        {
             Grounded = true;
         }
         //if not sett it to false and vissualize the ray
@@ -127,7 +127,7 @@ public class PlayerAnimationLink : MonoBehaviour
 
         }
       
-      // Debug.Log("Grounded sett to:" + Grounded);
+        // Debug.Log("Grounded sett to:" + Grounded);
     }
   
     
