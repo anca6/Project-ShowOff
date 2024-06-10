@@ -1588,6 +1588,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1804700700847527998, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3124358522683529672, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1821,7 +1826,7 @@ PrefabInstance:
     - target: {fileID: 3984342750111211184, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: dashForce
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3984342750111211184, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
@@ -1840,8 +1845,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3984342750111211184, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
+      propertyPath: gravityScale
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984342750111211184, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: playerHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3984342750111211184, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
       propertyPath: dashUpwardForce
-      value: 70
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4216701464217896759, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
@@ -1856,12 +1871,17 @@ PrefabInstance:
     - target: {fileID: 5324698195831183778, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: jumpForce
-      value: 90
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5324698195831183778, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: moveSpeed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5324698195831183778, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: gravityScale
+      value: 9.81
       objectReference: {fileID: 0}
     - target: {fileID: 5324698195831183778, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
@@ -1871,6 +1891,11 @@ PrefabInstance:
     - target: {fileID: 5377224396335723128, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5377224396335723128, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5758118615166095205, guid: f8d32847c8e162e41954e8e64bb17e16,
@@ -1908,6 +1933,16 @@ PrefabInstance:
       propertyPath: jojoCollisionHandler
       value: 
       objectReference: {fileID: 740227995}
+    - target: {fileID: 7259347072908636613, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7259347072908636613, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: m_ImplicitTensor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7673194471583204304, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_Layer
@@ -11347,9 +11382,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bfbefc83cb93554fa6bed34c0029c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 0}
+  playerObject: {fileID: 131233794}
   uiObject: {fileID: 854495036}
-  LevelStartZcoordinate: -60
+  LevelStartZcoordinate: 108.71
   LevelEndZcoordinate: 800
   UIMinY: -140
   UIMaxY: 150
@@ -13600,7 +13635,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1078521840}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.24756, y: 0.0000000083353955, z: -0.000000002129806, w: 0.9688726}
+  m_LocalRotation: {x: 0.24756, y: -0.0000000083353955, z: 0.000000002129806, w: 0.9688726}
   m_LocalPosition: {x: 0.000030517578, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14244,9 +14279,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bfbefc83cb93554fa6bed34c0029c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 0}
+  playerObject: {fileID: 1972391518}
   uiObject: {fileID: 1124136590}
-  LevelStartZcoordinate: -60
+  LevelStartZcoordinate: 108.71
   LevelEndZcoordinate: 800
   UIMinY: -140
   UIMaxY: 150
@@ -20190,7 +20225,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634561582}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.30589384, y: -3e-45, z: 1e-45, w: 0.95206565}
+  m_LocalRotation: {x: 0.30589384, y: 1e-45, z: -0, w: 0.95206565}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -24037,6 +24072,11 @@ PrefabInstance:
       propertyPath: jojoCollisionHandler
       value: 
       objectReference: {fileID: 423585514}
+    - target: {fileID: 7259347072908636613, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7673194471583204304, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_Layer

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ObjectMover : MonoBehaviour
+public class ProgressionTracker : MonoBehaviour
 {
 
     // The Player whose z-axis movement is tracked
