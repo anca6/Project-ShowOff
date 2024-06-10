@@ -35,7 +35,7 @@ public class PlayerAnimationLink : MonoBehaviour{
     void Update(){
         // if the player presses W,A,S,D then this means the player is moving.
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.S) ||
-            Input.GetKey(KeyCode.W)) moving = true;
+            Input.GetKeyDown(KeyCode.W)) moving = true;
 
         if (!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.S) &&
             !Input.GetKey(KeyCode.W)) moving = false;
