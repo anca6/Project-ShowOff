@@ -45,7 +45,7 @@ Shader "Luna/Water"{
                 // Sample the texture
                 fixed4 colour = tex2D(_MainTex, input.uv);
                 // Apply fog
-                UNITY_APPLY_FOG(input.fogCoord, col);
+                UNITY_APPLY_FOG(input.fogCoord, colour);
                 return colour;
             }
             ENDCG
