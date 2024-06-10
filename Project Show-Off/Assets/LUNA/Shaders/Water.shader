@@ -26,6 +26,7 @@ Shader "Luna/Water"{
                 float2 uv : TEXCOORD0;
                 UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
+                float4 screenPosition : TEXCOORD2;
             };
 
             sampler2D _MainTex;
@@ -38,6 +39,7 @@ Shader "Luna/Water"{
                 output.vertex = UnityObjectToClipPos(input.vertex);
                 output.uv = TRANSFORM_TEX(input.uv, _MainTex);
                 UNITY_TRANSFER_FOG(ouput, ouput.vertex);
+                output.screenPosition = ComputeScreenPos(output.vertex);
                 return output;
             }
 
