@@ -14,12 +14,25 @@ public class PlayerController : MonoBehaviour
     {
         if (playerInput.currentControlScheme == "Gamepad")
         {
-            var gamepad = playerInput.devices[0] as Gamepad;
-            if (gamepad != null)
-            {
-                // This is just to ensure the correct gamepad is assigned.
-                // Your movement and action scripts should be separate and handle the input.
-            }
+            GamepadInput();
         }
+        else if (playerInput.currentControlScheme == "Keyboard")
+        {
+            KeyboardInput();
+        }
+    }
+
+    private void GamepadInput()
+    {
+        var gamepad = playerInput.devices[0] as Gamepad;
+        if (gamepad != null)
+        {
+
+        }
+    }
+
+    private void KeyboardInput()
+    {
+       
     }
 }

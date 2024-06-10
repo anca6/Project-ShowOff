@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.InputSystem;
 
-public class Animation : MonoBehaviour
+public class CharacterAnimation : MonoBehaviour
 {
     
 
