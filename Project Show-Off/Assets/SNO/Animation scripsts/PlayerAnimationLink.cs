@@ -14,7 +14,7 @@ public class PlayerAnimationLink : MonoBehaviour{
     private static readonly int F = Animator.StringToHash("Float");
 
     // Start is called before the first frame update
-    void Start(){
+    private void Start(){
         //if the animator is not detected send a warning
         if (Anim == null){
             Debug.LogWarning("Sarah Animator not set on:" + gameObject);
@@ -32,7 +32,7 @@ public class PlayerAnimationLink : MonoBehaviour{
 
 
     // Update is called once per frame
-    void Update(){
+    private void Update(){
         // if the player presses W,A,S,D then this means the player is moving.
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.S) ||
             Input.GetKeyDown(KeyCode.W)) moving = true;
