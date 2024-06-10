@@ -8,6 +8,10 @@ public class PlayerAnimationLink : MonoBehaviour{
     private bool moving;
 
     private bool Grounded;
+    private static readonly int Walk = Animator.StringToHash("Walk");
+    private static readonly int Ability = Animator.StringToHash("Ability");
+    private static readonly int Jump = Animator.StringToHash("Jump");
+    private static readonly int F = Animator.StringToHash("Float");
 
     // Start is called before the first frame update
     void Start(){
@@ -37,23 +41,23 @@ public class PlayerAnimationLink : MonoBehaviour{
             !Input.GetKey(KeyCode.W)) moving = false;
 
         //if w,a,s or d is pressed toggle the "Walk" bool in the animator to on
-        Anim.SetBool("Walk", moving);
+        Anim.SetBool(Walk, moving);
         Debug.Log(gameObject + "Walk set to:" + moving);
 
         // if hte player presses F toggle teh "ability" bool in the animator on
-        Anim.SetBool("Ability", Input.GetKey(KeyCode.F));
-        Debug.Log(gameObject + "Ability set to: " + Anim.GetBool("Ability"));
+        Anim.SetBool(Ability, Input.GetKey(KeyCode.F));
+        Debug.Log(gameObject + "Ability set to: " + Anim.GetBool(Ability));
 
         //if space is pressed and the entity is grounded putt the jump bool to true
         bool jumping = Input.GetKeyDown(KeyCode.Space) && Grounded;
-        Anim.SetBool("Jump", jumping);
+        Anim.SetBool(Jump, jumping);
         if (jumping){
             Debug.DrawRay(transform.position, Vector3.down * (playerHeight * 0.5f + 0.3f));
             Debug.Log(gameObject + "Jump set to: true");
         }
 
         //if the entity is not grounded toggle the floating bool int he animator to on
-        Anim.SetBool("Float", !Grounded);
+        Anim.SetBool(F, !Grounded);
 
         //check if the entity is half the playerHeight above an object with a collider wich is also on the layer isGround.
         //if it is set the bool grounded to true
