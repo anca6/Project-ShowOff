@@ -16,8 +16,8 @@ Shader "Luna/Water"{
 
         Pass{
             CGPROGRAM
-            #pragma vertex vert
-            #pragma fragment frag
+            #pragma vertex Vertex
+            #pragma fragment Fragment
             // Make fog work
             #pragma multi_compile_fog
 
@@ -47,7 +47,7 @@ Shader "Luna/Water"{
             float _FoamDistance;
             CBUFFER_END
 
-            v2f vert(appdata input){
+            v2f Vertex(appdata input){
                 v2f output;
                 output.vertex = UnityObjectToClipPos(input.vertex);
                 output.uv = TRANSFORM_TEX(input.uv, _SurfaceNoise);
@@ -56,7 +56,7 @@ Shader "Luna/Water"{
                 return output;
             }
 
-            fixed4 frag(v2f input) : SV_Target{
+            fixed4 Fragment(v2f input) : SV_Target{
                 const float existingDepthZeroOne = tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(input.screenPosition)).r;
                 const float existingDepthLinear = LinearEyeDepth(existingDepthZeroOne);
                 const float depthDifference = existingDepthLinear - input.screenPosition.w;
