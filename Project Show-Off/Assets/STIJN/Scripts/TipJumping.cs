@@ -1,27 +1,44 @@
 using UnityEngine;
+using System;
 using System.Collections;
 
 public class EnableJumpingTip : MonoBehaviour
 {
-    public GameObject tipsUiObject;  
+    public GameObject tipsUiObject;
     public float delay = 5f;
+    public float JumpThreshold = 5.0f;
+
+    private Coroutine currentCoroutine;
 
     private void OnEnable()
     {
-        // Subscribe to the event
         PlayerCollision.OnPlayerCollisionWithJumpTipBox += HandlePlayerCollision;
+        CharacterJumpNotifier.OnCharacterJump += HandleCharacterJump;
     }
 
     private void OnDisable()
     {
-        // Unsubscribe from the event
         PlayerCollision.OnPlayerCollisionWithJumpTipBox -= HandlePlayerCollision;
+        CharacterJumpNotifier.OnCharacterJump -= HandleCharacterJump;
     }
 
     private void HandlePlayerCollision()
     {
-        // Start the coroutine to enable the tips object after a delay
-        StartCoroutine(EnableTipsAfterDelay(delay));
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
+        currentCoroutine = StartCoroutine(EnableTipsAfterDelay(delay));
+    }
+
+    private void HandleCharacterJump()
+    {
+        if (currentCoroutine != null)
+        {
+            StopCoroutine(currentCoroutine);
+        }
+        // disable the tips uit object
+        tipsUiObject.SetActive(false);
     }
 
     private IEnumerator EnableTipsAfterDelay(float delay)
@@ -29,7 +46,17 @@ public class EnableJumpingTip : MonoBehaviour
         // Wait for the specified delay
         yield return new WaitForSeconds(delay);
 
-        // Enable the tips object
+        // Enable the tips ui object
         tipsUiObject.SetActive(true);
+    }
+
+    public static class CharacterJumpNotifier
+    {
+        public static event Action OnCharacterJump;
+
+        public static void NotifyCharacterJump()
+        {
+            OnCharacterJump?.Invoke();
+        }
     }
 }
