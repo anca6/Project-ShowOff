@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class PlayerCollision : MonoBehaviour
+public class JumpTipBoxDetectionCollision : MonoBehaviour
 {
     public static event Action OnPlayerCollisionWithJumpTipBox;
 

@@ -12,7 +12,7 @@ public class StandingChecker : MonoBehaviour
     {
         if (ProgressMeterThisPlayer == null || ProgressMeterOtherPlayer == null || firstplace == null || secondplace == null)
         {
-            Debug.LogError("Not all objects assigned");
+            Debug.LogError("StandingChecker - Not all objects assigned");
             return;
         }
 

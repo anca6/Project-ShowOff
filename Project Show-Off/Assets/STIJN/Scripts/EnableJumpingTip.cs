@@ -12,13 +12,13 @@ public class EnableJumpingTip : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerCollision.OnPlayerCollisionWithJumpTipBox += HandlePlayerCollision;
+        JumpTipBoxDetectionCollision.OnPlayerCollisionWithJumpTipBox += HandlePlayerCollision;
         CharacterJumpNotifier.OnCharacterJump += HandleCharacterJump;
     }
 
     private void OnDisable()
     {
-        PlayerCollision.OnPlayerCollisionWithJumpTipBox -= HandlePlayerCollision;
+        JumpTipBoxDetectionCollision.OnPlayerCollisionWithJumpTipBox -= HandlePlayerCollision;
         CharacterJumpNotifier.OnCharacterJump -= HandleCharacterJump;
     }
 
