@@ -1,6 +1,10 @@
 Shader "Luna/Water"{
     Properties{
         _MainTex ("Texture", 2D) = "white" {}
+        _MainWaterColour ("Main Water Colour", Color) = (0.325, 0.5254902, 0.971, 0.725)
+        _DepthColourShallow ("Depth Colour Shallow", Color) = (0.325, 0.807, 0.971, 0.725)
+        _DepthColourDeep ("Depth Colour Deep", Color) = (0.086, 0.407, 1, 0.749)
+        _DepthMaxDistance ("Depth Maximum Distance", Float) = 1
     }
     SubShader{
         Tags{
@@ -33,6 +37,10 @@ Shader "Luna/Water"{
             sampler2D _CameraDepthTexture;
             CBUFFER_START(UnityPerMaterial)
             float4 _MainTex_ST;
+            float4 _MainWaterColour;
+            float4 _DepthColourShallow;
+            float4 _DepthColourDeep;
+            float _DepthMaxDistance;
             CBUFFER_END
 
             v2f vert(appdata input){
