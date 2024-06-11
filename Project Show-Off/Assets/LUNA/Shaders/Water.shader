@@ -60,7 +60,7 @@ Shader "Luna/Water"{
                 float existingDepthZeroOne = tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(input.screenPosition)).r;
                 float existingDepthLinear = LinearEyeDepth(existingDepthZeroOne);
                 float depthDifference = existingDepthLinear - input.screenPosition.w;
-                float depthAmount = depthDifference / _DepthMaxDistance;
+                float depthAmount = saturate(depthDifference / _DepthMaxDistance);
                 float4 waterColour = lerp(_DepthColourShallow, _DepthColourDeep, depthAmount);
                 return waterColour;
             }
