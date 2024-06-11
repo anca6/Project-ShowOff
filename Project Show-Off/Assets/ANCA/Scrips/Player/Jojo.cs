@@ -51,7 +51,7 @@ public class Jojo : Character
 
     protected override void Movement()
     {
-        //TO DO: Add rolling state machine here
+        //TODO: Add rolling state machine here
 
         rb.constraints = RigidbodyConstraints.None;
 
@@ -91,17 +91,21 @@ public class Jojo : Character
 
     public void HandleCollision(Collision collision)
     {
-        if (collision.gameObject.CompareTag("BreakObj"))
+        if (gameObject.activeInHierarchy)
         {
-            // vector projection: how hard do we hit the wall?
 
-            float impactSpeed = Mathf.Abs(Vector3.Dot(collision.contacts[0].normal, collision.relativeVelocity));
-            Debug.Log("Speed on impact: " + impactSpeed+" normal: "+ collision.contacts[0].normal + " velocity: "+ collision.relativeVelocity);
-            if (impactSpeed > minBreakSpeed)
+            if (collision.gameObject.CompareTag("BreakObj"))
             {
-                StartCoroutine(DelayedExplosion(collision.gameObject));
+                // vector projection: how hard do we hit the wall?
+
+                float impactSpeed = Mathf.Abs(Vector3.Dot(collision.contacts[0].normal, collision.relativeVelocity));
+                Debug.Log("Speed on impact: " + impactSpeed + " normal: " + collision.contacts[0].normal + " velocity: " + collision.relativeVelocity);
+                if (impactSpeed > minBreakSpeed)
+                {
+                    StartCoroutine(DelayedExplosion(collision.gameObject));
+                }
+                //Destroy(explosionEffect);
             }
-            Destroy(explosionEffect);
         }
     }
 

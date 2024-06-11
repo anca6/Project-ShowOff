@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnableTipAferXtime : MonoBehaviour
+public class TipMovement : MonoBehaviour
 {
     public GameObject MonitoredPlayer;
     public GameObject Tip; 

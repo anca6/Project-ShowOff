@@ -13,7 +13,7 @@ public class CharacterSelection : MonoBehaviour
     [SerializeField] private Button[] player1Buttons;
     [SerializeField] private Button[] player2Buttons;
 
-    [SerializeField] private string gameSceneName;
+    [SerializeField] private string sceneName;
 
     void Start()
     {
@@ -49,6 +49,6 @@ public class CharacterSelection : MonoBehaviour
     {
         PlayerPrefs.SetInt("SelectedCharacterPlayer1", selectedCharacterIndexPlayer1);
         PlayerPrefs.SetInt("SelectedCharacterPlayer2", selectedCharacterIndexPlayer2);
-        SceneManager.LoadScene(gameSceneName);
+        SceneManager.LoadScene(sceneName);
     }
 }

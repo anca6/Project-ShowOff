@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Standingchecker : MonoBehaviour
+public class StandingChecker : MonoBehaviour
 {
     public GameObject ProgressMeterThisPlayer;
     public GameObject ProgressMeterOtherPlayer;
