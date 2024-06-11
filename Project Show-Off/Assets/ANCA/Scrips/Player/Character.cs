@@ -115,7 +115,11 @@ public class Character : PlayerMovement
             canJump = false;
             Invoke(nameof(ResetJump), jumpCooldown);
 
+            EnableJumpingTip.CharacterJumpNotifier.NotifyCharacterJump();
+
             Debug.Log("character jump");
+
+
 
             ///jump sound here
             //FindObjectOfType<AudioManager>().Play("jump");

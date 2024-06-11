@@ -15,13 +15,13 @@ public class TipMovement : MonoBehaviour
         if (MonitoredPlayer == null || Tip == null)
         {
             Debug.LogError("Assign both objects in the inspector. - MovementTip");
-            enabled = false; // Disable this script
+            enabled = false;
             return;
         }
 
         initialPosition = MonitoredPlayer.transform.position;
         timer = 0.0f;
-        Tip.SetActive(false); // Ensure the object starts disabled
+        Tip.SetActive(false);
     }
 
     void Update()
