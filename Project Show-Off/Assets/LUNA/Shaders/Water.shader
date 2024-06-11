@@ -53,10 +53,10 @@ Shader "Luna/Water"{
             }
 
             fixed4 frag(v2f input) : SV_Target{
-                float existingDepthZeroOne = tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(input.screenPosition)).r;
-                float existingDepthLinear = LinearEyeDepth(existingDepthZeroOne);
-                float depthDifference = existingDepthLinear - input.screenPosition.w;
-                float depthAmount = saturate(depthDifference / _DepthMaxDistance);
+                const float existingDepthZeroOne = tex2Dproj(_CameraDepthTexture, UNITY_PROJ_COORD(input.screenPosition)).r;
+                const float existingDepthLinear = LinearEyeDepth(existingDepthZeroOne);
+                const float depthDifference = existingDepthLinear - input.screenPosition.w;
+                const float depthAmount = saturate(depthDifference / _DepthMaxDistance);
                 float4 waterColour = lerp(_DepthColourShallow, _DepthColourDeep, depthAmount);
                 // Apply fog
                 UNITY_APPLY_FOG(input.fogCoord, waterColour);
