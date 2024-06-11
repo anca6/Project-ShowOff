@@ -29,13 +29,13 @@ public class TipMovement : MonoBehaviour
         // Calculate the distance moved since the initial position
         float distanceMoved = Vector3.Distance(MonitoredPlayer.transform.position, initialPosition);
 
-        // Check if the target object has moved less than the threshold
+        // Check if the player has moved less than the threshold
         if (distanceMoved < movementThreshold)
         {
             // Increase the timer if the movement is within the threshold
             timer += Time.deltaTime;
 
-            // Check if the object has had limited movement for the specified time
+            // Check if the player has had limited movement for the specified time
             if (timer >= stationaryTime)
             {
                 Tip.SetActive(true);
@@ -46,7 +46,7 @@ public class TipMovement : MonoBehaviour
             // Reset the timer if the movement exceeds the threshold
             timer = 0.0f;
             initialPosition = MonitoredPlayer.transform.position;
-            Tip.SetActive(false); // Optionally disable the object again if movement resumes
+            Tip.SetActive(false); // disable the tip again if movement resumes
         }
     }
 }
