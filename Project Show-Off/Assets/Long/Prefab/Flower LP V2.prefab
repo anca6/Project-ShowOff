@@ -8,20 +8,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9171357989215023981, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8896997711302400042, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 19c03068fdb5f534da63198c1b3f8082,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1.357
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 19c03068fdb5f534da63198c1b3f8082,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.65
+      value: -1.12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 19c03068fdb5f534da63198c1b3f8082,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -25.98
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 19c03068fdb5f534da63198c1b3f8082,
         type: 3}
@@ -63,10 +73,125 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -8489074171812880644, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6191305089185215494, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5083452644512607239, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -4675973190993060925, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3563473410507600282, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -3039566071938183147, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2354218722093261106, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1608489474461547976, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -647115765797422986, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 819132866617554063, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 19c03068fdb5f534da63198c1b3f8082,
         type: 3}
       propertyPath: m_Name
       value: Flower LP V2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_TagString
+      value: Sara
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552511816858526843, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1957975346544347034, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2968765153089197174, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3632252803308139690, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4130126405255164910, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4947915264073435428, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6009434751604495461, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382321061123871217, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7034325089185023795, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325788591498186098, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830262500721630113, guid: 19c03068fdb5f534da63198c1b3f8082,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -110,8 +235,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 100.99, y: 190.99, z: 118.6}
-  m_Center: {x: 0, y: 82.2, z: 0}
+  m_Size: {x: 123.6, y: 11.5, z: 125}
+  m_Center: {x: 0, y: 167.4, z: 0}
 --- !u!54 &4326931410349556386
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -137,7 +262,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 90
   m_CollisionDetection: 0
 --- !u!114 &4128650259423150409
 MonoBehaviour:
