@@ -6,6 +6,7 @@ Shader "Luna/Water"{
         _DepthMaxDistance ("Depth Maximum Distance", Float) = 1
         _SurfaceNoise ("Surface Noise", 2D) = "white" {}
         _SurfaceNoiseCutoff ("Surface Noise Cutoff", Range(0, 1)) = 0.7
+        _FoamDistance ("Foam Distance", Float) = 0.2
     }
     SubShader{
         Tags{
@@ -43,6 +44,7 @@ Shader "Luna/Water"{
             float4 _DepthColourDeep;
             float _DepthMaxDistance;
             float _SurfaceNoiseCutoff;
+            float _FoamDistance;
             CBUFFER_END
 
             v2f vert(appdata input){
