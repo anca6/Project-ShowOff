@@ -57,10 +57,15 @@ Shader "Luna/Water"{
                 const float existingDepthLinear = LinearEyeDepth(existingDepthZeroOne);
                 const float depthDifference = existingDepthLinear - input.screenPosition.w;
                 const float depthAmount = saturate(depthDifference / _DepthMaxDistance);
-                float4 waterColour = lerp(_DepthColourShallow, _DepthColourDeep, depthAmount);
+                const float4 waterColour = lerp(_DepthColourShallow, _DepthColourDeep, depthAmount);
+                
+                const float4 surfaceNoiseSample = tex2D(_SurfaceNoise, input.uv);
+                
+                float4 colour = waterColour + surfaceNoiseSample;
+                
                 // Apply fog
-                UNITY_APPLY_FOG(input.fogCoord, waterColour);
-                return waterColour;
+                UNITY_APPLY_FOG(input.fogCoord, colour);
+                return colour;
             }
             ENDCG
         }
