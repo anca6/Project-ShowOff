@@ -7,6 +7,7 @@ Shader "Luna/Water"{
         _SurfaceNoise ("Surface Noise", 2D) = "white" {}
         _SurfaceNoiseCutoff ("Surface Noise Cutoff", Range(0, 1)) = 0.7
         _FoamDistance ("Foam Distance", Float) = 0.2
+        _FoamColour ("Foam Colour", Color) = (1, 1, 1, 0.8)
         _SurfaceDistortion ("Surface Distortion Texture", 2D) = "white" {}
     }
     SubShader{
@@ -51,6 +52,7 @@ Shader "Luna/Water"{
             float _DepthMaxDistance;
             float _SurfaceNoiseCutoff;
             float _FoamDistance;
+            float4 _FoamColour;
             float4 _SurfaceDistortion_ST;
             CBUFFER_END
 
@@ -78,9 +80,10 @@ Shader "Luna/Water"{
                 const float2 distortionVector = distortionSample * 2 - 1;
                 const float2 noiseUV = float2(input.uv.x + distortionVector.x, input.uv.y + distortionVector.y);
                 const float4 surfaceNoiseSample = tex2D(_SurfaceNoise, noiseUV);
-                const float surfaceNoiseColour = step(surfaceNoiseCutoff, surfaceNoiseSample);
+                float4 surfaceNoiseColour = _FoamColour;
+                surfaceNoiseColour *= step(surfaceNoiseCutoff, surfaceNoiseSample);
                 
-                float4 colour = waterColour + surfaceNoiseColour;
+                float4 colour = waterColour + surfaceNoiseColour * surfaceNoiseColour.a;
                 
                 // Apply fog
                 UNITY_APPLY_FOG(input.fogCoord, colour);
