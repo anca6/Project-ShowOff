@@ -41,7 +41,7 @@ public class Jojo : Character
 
         for (int i=0;i<=20;i++) // TODO: Maybe make framerate independent: use delta time
         {
-            Debug.Log("Delta time: " + Time.deltaTime);
+            //Debug.Log("Delta time: " + Time.deltaTime);
             rb.MoveRotation(Quaternion.Slerp(startRotation, Quaternion.LookRotation(lookDir), i / 20f));
 
             yield return new WaitForEndOfFrame();

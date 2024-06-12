@@ -114,6 +114,7 @@ public class MovingPlatform : MonoBehaviour
                 abilityAction = playerInput.actions["Ability"];
                 abilityAction.performed += ctx => GoToNextWaypoint();
                 abilityAction.Enable();
+                Debug.Log("ability pressed");
             }
             
         }
