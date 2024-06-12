@@ -81,9 +81,9 @@ Shader "Luna/Water"{
                 const float2 noiseUV = float2(input.uv.x + distortionVector.x, input.uv.y + distortionVector.y);
                 const float4 surfaceNoiseSample = tex2D(_SurfaceNoise, noiseUV);
                 float4 surfaceNoiseColour = _FoamColour;
-                surfaceNoiseColour *= step(surfaceNoiseCutoff, surfaceNoiseSample);
+                surfaceNoiseColour.a *= step(surfaceNoiseCutoff, surfaceNoiseSample);
                 
-                float4 colour = waterColour + surfaceNoiseColour * surfaceNoiseColour.a;
+                float4 colour = waterColour * (1 - surfaceNoiseColour.a) + surfaceNoiseColour * surfaceNoiseColour.a;
                 
                 // Apply fog
                 UNITY_APPLY_FOG(input.fogCoord, colour);
