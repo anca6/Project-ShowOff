@@ -75,6 +75,7 @@ Shader "Luna/Water"{
                 const float existingDepthLinear = LinearEyeDepth(existingDepthZeroOne);
                 const float depthDifference = existingDepthLinear - input.screenPosition.w;
                 const float depthAmount = saturate(depthDifference / _DepthMaxDistance);
+                
                 const float4 waterColour = lerp(_DepthColourShallow, _DepthColourDeep, depthAmount);
 
                 const float foamDepthDifference = saturate(depthDifference / _FoamDistance);
@@ -83,8 +84,10 @@ Shader "Luna/Water"{
                 const float2 distortionSample = tex2D(_SurfaceDistortion, input.distortUV).rg;
                 float2 distortionVector = distortionSample * 2 - 1;
                 distortionVector *= _SurfaceDistortionAmount;
+                
                 const float2 timeOffset = float2(_SurfaceNoiseScroll.x * _Time.x, _SurfaceNoiseScroll.y * _Time.x);
                 const float2 noiseUV = input.uv + distortionVector + timeOffset;
+                
                 const float4 surfaceNoiseSample = tex2D(_SurfaceNoise, noiseUV);
                 float4 surfaceNoiseColour = _FoamColour;
                 surfaceNoiseColour.a *= step(surfaceNoiseCutoff, surfaceNoiseSample);
