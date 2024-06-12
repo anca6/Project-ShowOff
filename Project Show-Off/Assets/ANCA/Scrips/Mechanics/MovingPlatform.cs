@@ -11,6 +11,7 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private List<Transform> platformWaypoints;
     [SerializeField] private float movingSpeed;
     [SerializeField] private int allowedCharacter;
+    [SerializeField] private GameObject playerObj;
 
     private int targetWaypointIndex;
 
@@ -26,29 +27,34 @@ public class MovingPlatform : MonoBehaviour
 
     private void Awake()
     {
-       /* //issue here 
-        playerInput = GetComponentInParent<PlayerInput>();
+        playerInput = playerObj.GetComponent<PlayerInput>();
 
         abilityAction = playerInput.actions["Ability"];
-        abilityAction.performed += ctx => GoToNextWaypoint();*/
+        abilityAction.performed += ctx => GoToNextWaypoint();
+        
     }
     private void OnEnable()
     {
-        //abilityAction.Enable();
-        //playerControls.Enable();
+        abilityAction.Enable();
         playerSwitch = FindObjectOfType<PlayerSwitch>();
     }
 
     private void OnDisable()
     {
-       // abilityAction.Disable();
-
-        //playerControls.Disable();
+       abilityAction.Disable();
     }
 
     //setting up the first waypoint target in the list
     private void Start()
     {
+        if (platformWaypoints == null || platformWaypoints.Count == 0)
+        {
+            Debug.LogError("platformWaypoints is null or empty.");
+            return;
+        }
+
+        Debug.Log("number of waypoints: " + platformWaypoints.Count);
+
         targetWaypointIndex = 0;
         targetWaypoint = platformWaypoints[targetWaypointIndex];
         previousWaypoint = targetWaypoint;
@@ -78,10 +84,11 @@ public class MovingPlatform : MonoBehaviour
     //calculates distance between previous waypoint and next waypoint
     private void GoToNextWaypoint()
     {
-        if (!onPlatform || playerSwitch == null || playerSwitch.currentCharacter != allowedCharacter)
+        if (!onPlatform /*|| playerSwitch == null || playerSwitch.currentCharacter != allowedCharacter*/)
         {
 
             Debug.Log("something wrong here");
+            return;//if the current character is not the character with this mechanic
         }
         //return; //if the current character is not the character with this mechanic
 
@@ -106,17 +113,6 @@ public class MovingPlatform : MonoBehaviour
         {
             other.transform.SetParent(transform);
             onPlatform = true;
-
-            // Get the PlayerInput component from the player object
-            playerInput = other.gameObject.GetComponent<PlayerInput>();
-            if (playerInput != null)
-            {
-                abilityAction = playerInput.actions["Ability"];
-                abilityAction.performed += ctx => GoToNextWaypoint();
-                abilityAction.Enable();
-                Debug.Log("ability pressed");
-            }
-            
         }
     }
 
@@ -124,15 +120,8 @@ public class MovingPlatform : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.transform.SetParent(null);
             onPlatform = false;
-
-            // Disable the ability action if the playerInput is not null
-            if (abilityAction != null)
-            {
-                abilityAction.Disable();
-                abilityAction.performed -= ctx => GoToNextWaypoint();
-            }
+            other.transform.SetParent(null);
         }
     }
 
