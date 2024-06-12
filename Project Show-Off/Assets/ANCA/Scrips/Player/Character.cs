@@ -8,9 +8,13 @@ public class Character : PlayerMovement
     private InputAction jumpAction;
     private InputAction lookAction;
 
+   
+    public bool canCollect = true;
+
     //properties for player movement
     [Header("Movement")]
     [SerializeField] protected float moveSpeed = 5f;
+
     [SerializeField] protected float acceleration = 10f;
     [SerializeField] protected float rotationSpeed = 5f;
     [SerializeField] protected Transform orientation;
@@ -97,7 +101,7 @@ public class Character : PlayerMovement
 
         rb.velocity = new Vector3(horizontalVelocity.x, rb.velocity.y, horizontalVelocity.z);
     }
-
+    
     private void ApplyGravity()
     {
         if (!IsGrounded())
@@ -136,4 +140,34 @@ public class Character : PlayerMovement
     {
         return Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, playerHeight * 0.5f + 0.1f, isGround);
     }
+
+    //
+
+
+    // Method to modify the speed
+    public void ModifySpeed(float speedModifier)
+    {
+        moveSpeed += speedModifier;
+    }
+
+    // Method to reset the speed
+    public void ResetSpeed(float speedModifier)
+    {
+        moveSpeed -= speedModifier;
+    }
+
+    // Method to check if the player can collect
+    public bool CanCollect()
+    {
+        return canCollect;
+    }
+
+    // Method to set the collect state
+    public void SetCollectState(bool state)
+    {
+        canCollect = state;
+    }
+
+
+    //
 }
