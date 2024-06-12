@@ -37,6 +37,7 @@ Shader "Luna/Water"{
                 UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
                 float4 screenPosition : TEXCOORD2;
+                float2 distortUV : TEXCOORD3;
             };
 
             sampler2D _SurfaceNoise;
@@ -59,6 +60,7 @@ Shader "Luna/Water"{
                 output.uv = TRANSFORM_TEX(input.uv, _SurfaceNoise);
                 UNITY_TRANSFER_FOG(ouput, ouput.vertex);
                 output.screenPosition = ComputeScreenPos(output.vertex);
+                output.distortUV = TRANSFORM_TEX(input.uv, _SurfaceDistortion);
                 return output;
             }
 
