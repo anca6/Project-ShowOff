@@ -9,7 +9,7 @@ Shader "Luna/Water"{
         _FoamDistance ("Foam Distance", Float) = 0.2
         _FoamColour ("Foam Colour", Color) = (1, 1, 1, 0.8)
         _SurfaceDistortion ("Surface Distortion Texture", 2D) = "white" {}
-        _SurfaceDistortionAmount ("Surface Distortion Amount", Range(0, 1)) = 0.27
+        _SurfaceDistortionAmount ("Distortion Amount", Range(0, 1)) = 0.27
     }
     SubShader{
         Tags{
