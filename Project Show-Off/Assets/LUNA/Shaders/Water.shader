@@ -10,11 +10,14 @@ Shader "Luna/Water"{
     }
     SubShader{
         Tags{
-            "RenderType" = "Opaque"
+            "RenderType" = "Transparent"
+            "Queue" = "Transparent"
         }
         LOD 100
 
         Pass{
+            Blend SrcAlpha OneMinusSrcAlpha
+            ZWrite Off
             CGPROGRAM
             #pragma vertex Vertex
             #pragma fragment Fragment
