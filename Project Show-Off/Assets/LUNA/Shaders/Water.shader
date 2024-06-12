@@ -74,7 +74,10 @@ Shader "Luna/Water"{
                 const float foamDepthDifference = saturate(depthDifference / _FoamDistance);
                 const float surfaceNoiseCutoff = foamDepthDifference * _SurfaceNoiseCutoff;
                 
-                const float4 surfaceNoiseSample = tex2D(_SurfaceNoise, input.uv);
+                const float2 distortionSample = tex2D(_SurfaceDistortion, input.distortUV).rg;
+                const float2 distortionVector = distortionSample * 2 - 1;
+                const float2 noiseUV = float2(input.uv.x + distortionVector.x, input.uv.y + distortionVector.y);
+                const float4 surfaceNoiseSample = tex2D(_SurfaceNoise, noiseUV);
                 const float surfaceNoiseColour = step(surfaceNoiseCutoff, surfaceNoiseSample);
                 
                 float4 colour = waterColour + surfaceNoiseColour;
