@@ -7,6 +7,7 @@ Shader "Luna/Water"{
         _SurfaceNoise ("Surface Noise", 2D) = "white" {}
         _SurfaceNoiseCutoff ("Surface Noise Cutoff", Range(0, 1)) = 0.7
         _FoamDistance ("Foam Distance", Float) = 0.2
+        _SurfaceDistortion ("Surface Distortion Texture", 2D) = "white" {}
     }
     SubShader{
         Tags{
@@ -40,6 +41,7 @@ Shader "Luna/Water"{
 
             sampler2D _SurfaceNoise;
             sampler2D _CameraDepthTexture;
+            sampler2D _SurfaceDistortion;
             CBUFFER_START(UnityPerMaterial)
             float4 _SurfaceNoise_ST;
             float4 _MainWaterColour;
@@ -48,6 +50,7 @@ Shader "Luna/Water"{
             float _DepthMaxDistance;
             float _SurfaceNoiseCutoff;
             float _FoamDistance;
+            float4 _SurfaceDistortion_ST;
             CBUFFER_END
 
             v2f Vertex(appdata input){
