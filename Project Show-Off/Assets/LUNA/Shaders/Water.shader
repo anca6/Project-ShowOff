@@ -8,6 +8,7 @@ Shader "Luna/Water"{
         _SurfaceNoiseCutoff ("Surface Noise Cutoff", Range(0, 1)) = 0.7
         _FoamDistance ("Foam Distance", Float) = 0.2
         _FoamColour ("Foam Colour", Color) = (1, 1, 1, 0.8)
+        _SurfaceNoiseScroll ("Noise Scroll Speed", Vector) = (0.03, 0.03, 0, 0)
         _SurfaceDistortion ("Surface Distortion Texture", 2D) = "white" {}
         _SurfaceDistortionAmount ("Distortion Amount", Range(0, 1)) = 0.27
     }
@@ -54,6 +55,7 @@ Shader "Luna/Water"{
             float _SurfaceNoiseCutoff;
             float _FoamDistance;
             float4 _FoamColour;
+            float4 _SurfaceNoiseScroll;
             float4 _SurfaceDistortion_ST;
             float _SurfaceDistortionAmount;
             CBUFFER_END
