@@ -185,7 +185,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedBuffValue: 1
-  pickupEffect: {fileID: 4050014539871452058, guid: 0e2084029d7141e4f80aa2a254f7c074,
+  pickupEffectspeedup: {fileID: 4050014539871452058, guid: 8342119bccec3e4409359106810b1c63,
     type: 3}
-  duration: 4
-  pickupCooldown: 8
+  pickupEffectslowdown: {fileID: 8272612113761645356, guid: c74c48db45105ac49b2a867adb8c3180,
+    type: 3}
+  duration: 2.5
+  pickupCooldown: 4
