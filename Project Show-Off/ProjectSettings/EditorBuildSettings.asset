@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/ANCA/Character Selection.unity
+    guid: ce19e6a7705f6054c923ede1e4fe4112
+  - enabled: 1
+    path: Assets/ANCA/LongsLevelCopy.unity
+    guid: f8a076e65ed877549a140a6873db90f4
   m_configObjects: {}
