@@ -16,6 +16,14 @@ namespace LUNA.Scripts{
 
             screenNormalsTexture = new RenderTexture(sceneCamera.pixelWidth, sceneCamera.pixelHeight, 24);
             Shader.SetGlobalTexture(CameraNormalsTexture, screenNormalsTexture);
+
+            normalsCameraContainer = new GameObject("Screen Normal Camera");
+            normalsCamera = normalsCameraContainer.AddComponent<Camera>();
+            normalsCamera.CopyFrom(sceneCamera);
+            normalsCameraContainer.transform.SetParent(transform);
+            normalsCamera.targetTexture = screenNormalsTexture;
+            normalsCamera.SetReplacementShader(ScreenNormalsShader, "RenderType");
+            normalsCamera.depth = sceneCamera.depth - 1;
         }
     }
 }
