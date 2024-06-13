@@ -15,15 +15,19 @@ Shader "Unlit/NormalsReplacement"{
 
             struct appdata{
                 float4 vertex : POSITION;
+                float3 normal : NORMAL;
             };
 
             struct v2f{
                 float4 vertex : SV_POSITION;
+                float3 viewNormal : NORMAL;
             };
 
             v2f Vertex(appdata input){
+                appdata v = input;
                 v2f output;
                 output.vertex = UnityObjectToClipPos(input.vertex);
+                output.viewNormal = COMPUTE_VIEW_NORMAL;
                 return output;
             }
 
