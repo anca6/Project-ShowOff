@@ -3967,50 +3967,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e79452617b0ac114286dded7c161c52f, type: 3}
---- !u!1 &296640043 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8030032910919477897, guid: 3c5eafcac2e6c18468a109e5715feda9,
-    type: 3}
-  m_PrefabInstance: {fileID: 485412180}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &296640047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 296640043}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c6b322df2de97c41ac3eda375e84677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speedBuffValue: 1
-  pickupEffect: {fileID: 4050014539871452058, guid: 0e2084029d7141e4f80aa2a254f7c074,
-    type: 3}
-  duration: 4
-  pickupCooldown: 8
---- !u!65 &296640048
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 296640043}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.77, y: 0.42, z: 0.57}
-  m_Center: {x: 0, y: -0.0000004991889, z: 0}
 --- !u!1 &297130111 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1370457303985967444, guid: 5683e566dd757c4409ee88eb13f9fbb7,
@@ -6496,11 +6452,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 668734560}
     m_Modifications:
-    - target: {fileID: 591328761359770732, guid: 3c5eafcac2e6c18468a109e5715feda9,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1124470728516335352, guid: 3c5eafcac2e6c18468a109e5715feda9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6556,28 +6507,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sweets Wrapper Item (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4813657866000188441, guid: 3c5eafcac2e6c18468a109e5715feda9,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4813657866000188441, guid: 3c5eafcac2e6c18468a109e5715feda9,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 3c23a5a42e647ca40b7a92314e677139, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8030032910919477897, guid: 3c5eafcac2e6c18468a109e5715feda9,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 296640048}
-    - targetCorrespondingSourceObject: {fileID: 8030032910919477897, guid: 3c5eafcac2e6c18468a109e5715feda9,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 296640047}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c5eafcac2e6c18468a109e5715feda9, type: 3}
 --- !u!4 &486111038 stripped
 Transform:
@@ -16390,7 +16323,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1288712955}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2797855, y: 4e-45, z: -1e-45, w: 0.96006256}
+  m_LocalRotation: {x: 0.2797855, y: -4e-45, z: 1e-45, w: 0.96006256}
   m_LocalPosition: {x: 58.878918, y: 8.83, z: 108.71}
   m_LocalScale: {x: 1.0744894, y: 1.0744894, z: 1.0744894}
   m_ConstrainProportionsScale: 1
@@ -20363,7 +20296,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634561582}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2797855, y: -3e-45, z: 1e-45, w: 0.96006256}
+  m_LocalRotation: {x: 0.2797855, y: 1e-45, z: -0, w: 0.96006256}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
