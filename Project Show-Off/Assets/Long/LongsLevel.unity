@@ -1891,7 +1891,7 @@ PrefabInstance:
     - target: {fileID: 1804700700847527998, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1804700700847527998, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
@@ -2206,7 +2206,7 @@ PrefabInstance:
     - target: {fileID: 4498170626376435556, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4498170626376435556, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
@@ -4804,9 +4804,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentCharacter: 0
   possibleCharacters:
-  - {fileID: 1982188149}
-  - {fileID: 1375445671}
   - {fileID: 1346503479}
+  - {fileID: 1375445671}
+  - {fileID: 1982188149}
   playerObj: {fileID: 131233794}
 --- !u!4 &357375650
 Transform:
