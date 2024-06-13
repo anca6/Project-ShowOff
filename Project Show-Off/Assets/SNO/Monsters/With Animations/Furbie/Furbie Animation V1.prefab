@@ -80,7 +80,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 56ffde60c3b50244eb27c191213bb6b5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5090327175205015179}
+      addedObject: {fileID: 8915573632617546947}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 56ffde60c3b50244eb27c191213bb6b5,
         type: 3}
       insertIndex: -1
@@ -89,10 +89,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4160761071049606924}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 56ffde60c3b50244eb27c191213bb6b5,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8915573632617546947}
   m_SourcePrefab: {fileID: 100100000, guid: 56ffde60c3b50244eb27c191213bb6b5, type: 3}
 --- !u!1 &2587585917247584334 stripped
 GameObject:
@@ -100,7 +96,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3398417266148459807}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5090327175205015179
+--- !u!114 &8915573632617546947
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,28 +105,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2587585917247584334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Script: {fileID: 11500000, guid: 31e56cef78f091b468bf42da8cff70b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 1e9959a0bd8421e4d980c5cbdf00d83b,
-    type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: Gameplay1
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  Anim: {fileID: 0}
+  isGround:
+    serializedVersion: 2
+    m_Bits: 128
+  playerHeight: 0.1
+  groundOverwrite: 0
 --- !u!136 &8434028730253325441
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -181,21 +164,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
---- !u!114 &8915573632617546947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2587585917247584334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31e56cef78f091b468bf42da8cff70b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Anim: {fileID: 0}
-  isGround:
-    serializedVersion: 2
-    m_Bits: 0
-  playerHeight: 0
-  groundOverwrite: 0
