@@ -14,15 +14,15 @@ public class Collectible : MonoBehaviour
         {
             Debug.Log("Trigger entered with player.");
 
-            Furbie furbie = other.GetComponent<Furbie>();
-            if (furbie != null)
+            Character character = other.GetComponent<Character>();
+            if (character != null)
             {
                 Debug.Log("Character component found.");
 
-                if (furbie.CanCollect())
+                if (character.CanCollect())
                 {
                     Debug.Log("Character can collect.");
-                    StartCoroutine(Pickup(furbie));
+                    StartCoroutine(Pickup(character));
                 }
                 else
                 {
