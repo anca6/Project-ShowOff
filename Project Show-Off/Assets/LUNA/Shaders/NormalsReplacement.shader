@@ -1,4 +1,4 @@
-Shader "Unlit/NormalsReplacement"{
+Shader "Luna/NormalsReplacement"{
     Properties{}
     SubShader{
         Tags{
