@@ -32,7 +32,7 @@ Shader "Unlit/NormalsReplacement"{
             }
 
             fixed4 Fragment(v2f input) : SV_Target{
-                return 0;
+                return float4(input.viewNormal, 0);
             }
             ENDCG
         }
