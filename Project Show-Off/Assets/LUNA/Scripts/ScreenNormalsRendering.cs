@@ -5,17 +5,17 @@ namespace LUNA.Scripts{
         public Shader ScreenNormalsShader;
 
         private Camera sceneCamera;
-        private Camera normalCamera;
-        private RenderTexture screenNormalTexture;
+        private Camera normalsCamera;
+        private RenderTexture screenNormalsTexture;
         private static readonly int CameraNormalsTexture = Shader.PropertyToID("_CameraNormalsTexture");
-        private GameObject normalCameraContainer;
+        private GameObject normalsCameraContainer;
         
         // Start is called before the first frame update
         private void Start(){
             sceneCamera = GetComponent<Camera>();
 
-            screenNormalTexture = new RenderTexture(sceneCamera.pixelWidth, sceneCamera.pixelHeight, 24);
-            Shader.SetGlobalTexture(CameraNormalsTexture, screenNormalTexture);
+            screenNormalsTexture = new RenderTexture(sceneCamera.pixelWidth, sceneCamera.pixelHeight, 24);
+            Shader.SetGlobalTexture(CameraNormalsTexture, screenNormalsTexture);
         }
     }
 }
