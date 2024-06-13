@@ -12,6 +12,10 @@ namespace LUNA.Scripts{
         
         // Start is called before the first frame update
         private void Start(){
+            sceneCamera = GetComponent<Camera>();
+
+            screenNormalTexture = new RenderTexture(sceneCamera.pixelWidth, sceneCamera.pixelHeight, 24);
+            Shader.SetGlobalTexture(CameraNormalsTexture, screenNormalTexture);
         }
     }
 }
