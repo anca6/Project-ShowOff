@@ -4,6 +4,7 @@ namespace LUNA.Scripts{
     public class ScreenNormalsRendering : MonoBehaviour{
         public Shader ScreenNormalsShader;
 
+        private Camera sceneCamera;
         private Camera normalCamera;
         private RenderTexture screenNormalTexture;
         
