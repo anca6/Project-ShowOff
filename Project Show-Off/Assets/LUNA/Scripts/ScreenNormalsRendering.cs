@@ -7,6 +7,7 @@ namespace LUNA.Scripts{
         private Camera sceneCamera;
         private Camera normalCamera;
         private RenderTexture screenNormalTexture;
+        private static readonly int CameraNormalsTexture = Shader.PropertyToID("_CameraNormalsTexture");
         
         // Start is called before the first frame update
         private void Start(){
