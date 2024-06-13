@@ -2,7 +2,12 @@ fileFormatVersion: 2
 guid: 6ebf487e739a941439fbe1abac273bc0
 ShaderImporter:
   externalObjects: {}
-  defaultTextures: []
+  defaultTextures:
+  - _SunZenithGradient: {fileID: 2800000, guid: b6e45079824bc4f41aff5ef2baf6bef7,
+      type: 3}
+  - _ViewZenithGradient: {fileID: 2800000, guid: 3313dbe90f38c534f98b091353835b59,
+      type: 3}
+  - _CloudCubeMap: {fileID: 8900000, guid: a352f0c4103d81843af03de56097587f, type: 3}
   nonModifiableTextures: []
   userData: 
   assetBundleName: 
