@@ -4,7 +4,8 @@ using UnityEngine;
 public class Collectible : MonoBehaviour
 {
     public float speedBuffValue = 1.0f; // Fixed speed buff/debuff value
-    public GameObject pickupEffect;
+    public GameObject pickupEffectspeedup;
+    public GameObject pickupEffectslowdown;
     public float duration = 4f;
     public float pickupCooldown = 8f;
 
@@ -38,15 +39,17 @@ public class Collectible : MonoBehaviour
 
     IEnumerator Pickup(Character character)
     {
-        // Spawn a cool effect
-        Instantiate(pickupEffect, transform.position, transform.rotation);
+      
+        
 
         // Randomly choose to speed up or slow down
-        float speedBuff = Random.value > 0.5f ? speedBuffValue : -speedBuffValue;
-        Debug.Log("collected");
+        float speedBuff = Random.value > 0.3f ? speedBuffValue : -speedBuffValue;
+        
         // Apply effect to the player
        character.ModifySpeed(speedBuff);
-
+        if(speedBuff > 0.0f) 
+        { Instantiate(pickupEffectspeedup, transform.position, transform.rotation); }
+        else { Instantiate(pickupEffectslowdown, transform.position, transform.rotation); }
         // Disable the collectible's visual representation and collider
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
