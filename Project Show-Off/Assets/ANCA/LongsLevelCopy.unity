@@ -3321,11 +3321,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37f4f347f39987b47b99bfe34d2c3b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSwitch: {fileID: 0}
   objectsToManage:
   - {fileID: 1268419664}
   - {fileID: 1668369256}
   - {fileID: 1454567384}
+  playerNumber: 0
 --- !u!4 &211815721 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8116315941550646671, guid: 7888cd5096574124bbddc5919419b36b,
@@ -3593,7 +3593,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 235275275}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2797855, y: 3e-45, z: -1e-45, w: 0.96006256}
+  m_LocalRotation: {x: 0.2797855, y: -1e-45, z: -0, w: 0.96006256}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -12035,7 +12035,6 @@ GameObject:
   - component: {fileID: 854495034}
   - component: {fileID: 854495033}
   - component: {fileID: 854495032}
-  - component: {fileID: 854495031}
   - component: {fileID: 854495030}
   m_Layer: 5
   m_Name: Progress meter (L)
@@ -12060,23 +12059,6 @@ MonoBehaviour:
   ProgressMeterOtherPlayer: {fileID: 1124136589}
   firstplace: {fileID: 1379855022}
   secondplace: {fileID: 1918134908}
---- !u!114 &854495031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 854495029}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37f4f347f39987b47b99bfe34d2c3b1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerSwitch: {fileID: 0}
-  objectsToManage:
-  - {fileID: 604442329}
-  - {fileID: 21622724}
-  - {fileID: 382655226}
 --- !u!114 &854495032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12089,11 +12071,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37f4f347f39987b47b99bfe34d2c3b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSwitch: {fileID: 0}
   objectsToManage:
-  - {fileID: 569563677}
-  - {fileID: 1863004151}
-  - {fileID: 1157499305}
+  - {fileID: 1193823552}
+  - {fileID: 1950931764}
+  - {fileID: 640518050}
+  playerNumber: 1
 --- !u!114 &854495033
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12106,7 +12088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bfbefc83cb93554fa6bed34c0029c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 0}
+  playerObject: {fileID: 131233794}
   uiObject: {fileID: 854495036}
   LevelStartZcoordinate: -60
   LevelEndZcoordinate: 800
@@ -12964,11 +12946,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37f4f347f39987b47b99bfe34d2c3b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSwitch: {fileID: 0}
   objectsToManage:
   - {fileID: 640518050}
   - {fileID: 1950931764}
   - {fileID: 1193823552}
+  playerNumber: 0
 --- !u!1001 &926296706
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14958,7 +14940,6 @@ GameObject:
   - component: {fileID: 1124136595}
   - component: {fileID: 1124136594}
   - component: {fileID: 1124136593}
-  - component: {fileID: 1124136592}
   - component: {fileID: 1124136591}
   m_Layer: 5
   m_Name: Progress Meter (R)
@@ -15008,23 +14989,6 @@ MonoBehaviour:
   ProgressMeterOtherPlayer: {fileID: 854495029}
   firstplace: {fileID: 1308731277}
   secondplace: {fileID: 73084979}
---- !u!114 &1124136592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1124136589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37f4f347f39987b47b99bfe34d2c3b1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerSwitch: {fileID: 0}
-  objectsToManage:
-  - {fileID: 2012672397}
-  - {fileID: 57564726}
-  - {fileID: 1841914108}
 --- !u!114 &1124136593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15037,11 +15001,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37f4f347f39987b47b99bfe34d2c3b1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSwitch: {fileID: 0}
   objectsToManage:
-  - {fileID: 775391096}
-  - {fileID: 1940974485}
-  - {fileID: 56472201}
+  - {fileID: 1454567384}
+  - {fileID: 1668369256}
+  - {fileID: 1268419664}
+  playerNumber: 2
 --- !u!114 &1124136594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15054,7 +15018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bfbefc83cb93554fa6bed34c0029c97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerObject: {fileID: 0}
+  playerObject: {fileID: 1972391518}
   uiObject: {fileID: 1124136590}
   LevelStartZcoordinate: -60
   LevelEndZcoordinate: 800
@@ -23999,7 +23963,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1925730614}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2797855, y: 4e-45, z: -1e-45, w: 0.96006256}
+  m_LocalRotation: {x: 0.2797855, y: -4e-45, z: 1e-45, w: 0.96006256}
   m_LocalPosition: {x: 59.860912, y: 9.826, z: 109.18}
   m_LocalScale: {x: 1.0744894, y: 1.0744894, z: 1.0744894}
   m_ConstrainProportionsScale: 1

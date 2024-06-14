@@ -52,6 +52,7 @@ public class TargetPlatform : MonoBehaviour
         isMoving = false;
     }
 
+    //uncheck when we add the platform model
   /*  private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
