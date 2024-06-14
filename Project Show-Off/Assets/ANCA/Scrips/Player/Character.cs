@@ -63,9 +63,6 @@ public class Character : PlayerMovement
         {
             Debug.LogError("Rigidbody component not found on the parent gameObject");
         }
-
-        // Disable the default gravity
-       // rb.useGravity = false;
     }
 
     protected override void FixedUpdate()
@@ -166,6 +163,4 @@ public class Character : PlayerMovement
         canCollect = state;
     }
 
-
-    //
 }
