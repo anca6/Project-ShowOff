@@ -24905,12 +24905,12 @@ PrefabInstance:
     - target: {fileID: 3187326017898316113, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_DefaultActionMap
-      value: fe5f5ab1-04a6-4f01-a041-c68146b973ba
+      value: 3b588af6-33ad-42f7-beb0-64d2aa9481e4
       objectReference: {fileID: 0}
     - target: {fileID: 3187326017898316113, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_DefaultControlScheme
-      value: Keyboard
+      value: Gamepad
       objectReference: {fileID: 0}
     - target: {fileID: 3187326017898316113, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
@@ -25170,7 +25170,7 @@ PrefabInstance:
     - target: {fileID: 5324698195831183778, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: jumpForce
-      value: 8
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5324698195831183778, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
