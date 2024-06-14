@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
 
         }
     }
-
     private void KeyboardInput()
     {
        
