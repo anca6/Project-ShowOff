@@ -3,22 +3,32 @@ using UnityEngine;
 
 public class CharacterObjectManager : MonoBehaviour
 {
-    // Reference to the Gamemanager script
-    [SerializeField] private PlayerSwitch playerSwitch; 
-
-    // List of GameObjects to manage based on character index
+      // List of GameObjects to manage based on character index
     [SerializeField] private List<GameObject> objectsToManage;
+    [SerializeField] private int playerNumber;
 
     private void Start()
     {
         // Ensure the objects are properly set at the start based on the current character
-        UpdateObjectState(playerSwitch.currentCharacter);
+        UpdateObjectState(GetActiveCharacterIndex());
     }
 
     private void Update()
     {
         // Check if the active character has changed and update the object states accordingly
-        UpdateObjectState(playerSwitch.currentCharacter);
+        UpdateObjectState(GetActiveCharacterIndex());
+    }
+    private int GetActiveCharacterIndex()
+    {
+        if (playerNumber == 1)
+        {
+            return GameManager.instance.GetPlayer1CharacterIndex();
+        }
+        else if (playerNumber == 2)
+        {
+            return GameManager.instance.GetPlayer2CharacterIndex();
+        }
+        return -1;
     }
 
     private void UpdateObjectState(int activeCharacterIndex)
