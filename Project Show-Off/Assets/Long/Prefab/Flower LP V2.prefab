@@ -575,9 +575,11 @@ MonoBehaviour:
   platformWaypoints:
   - {fileID: 0}
   - {fileID: 0}
+  players:
+  - {fileID: 8121802724417056503, guid: f8d32847c8e162e41954e8e64bb17e16, type: 3}
+  - {fileID: 5563321849453720568, guid: 166cc4f027e69444f93573ab03ab446d, type: 3}
   movingSpeed: 2
-  allowedCharacter: 0
-  playerObj: {fileID: 0}
+  allowedCharacter: 2
 --- !u!65 &2981739676222628842
 BoxCollider:
   m_ObjectHideFlags: 0

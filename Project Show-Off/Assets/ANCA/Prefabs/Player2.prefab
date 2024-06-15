@@ -143,6 +143,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   playerHeight: 6
+  canCollect: 1
   moveSpeed: 2
   acceleration: 1.8
   rotationSpeed: 7
@@ -150,6 +151,7 @@ MonoBehaviour:
   grVelocityAmplifier: 0.4
   jumpForce: 0
   jumpCooldown: 0
+  gravityScale: 1
   dashForce: 15
   dashUpwardForce: 40
   dashDuration: 0.5
@@ -570,6 +572,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   playerHeight: 2
+  canCollect: 1
   moveSpeed: 2
   acceleration: 1.5
   rotationSpeed: 7
@@ -577,6 +580,7 @@ MonoBehaviour:
   grVelocityAmplifier: 0.95
   jumpForce: 60
   jumpCooldown: 0.4
+  gravityScale: 1
 --- !u!1 &4446693439236821592
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,6 +766,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   playerHeight: 1
+  canCollect: 1
   moveSpeed: 2
   acceleration: 1.001
   rotationSpeed: 0.5
@@ -769,9 +774,11 @@ MonoBehaviour:
   grVelocityAmplifier: 1.008
   jumpForce: 70
   jumpCooldown: 0.55
+  gravityScale: 1
   explosionEffect: {fileID: 4050014539871452058, guid: 0e2084029d7141e4f80aa2a254f7c074,
     type: 3}
   minBreakSpeed: 1.5
+  explosionDelay: 0.5
 --- !u!1 &6460813015368508875
 GameObject:
   m_ObjectHideFlags: 0

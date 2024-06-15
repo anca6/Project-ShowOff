@@ -4762,6 +4762,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 357375650}
+  - component: {fileID: 357375651}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -4784,6 +4785,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &357375651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357375648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f753df374692a4bab89fbc92028cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &358674359 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5683e566dd757c4409ee88eb13f9fbb7,
@@ -21258,6 +21271,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObjects:
   - {fileID: 131233794}
+  - {fileID: 1972391518}
+  actionAsset: {fileID: -944628639613478452, guid: 1e9959a0bd8421e4d980c5cbdf00d83b,
+    type: 3}
 --- !u!4 &1653128366
 Transform:
   m_ObjectHideFlags: 0
@@ -24905,12 +24921,12 @@ PrefabInstance:
     - target: {fileID: 3187326017898316113, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_DefaultActionMap
-      value: 3b588af6-33ad-42f7-beb0-64d2aa9481e4
+      value: 90d16388-db65-430c-b533-e794ff89308c
       objectReference: {fileID: 0}
     - target: {fileID: 3187326017898316113, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_DefaultControlScheme
-      value: Gamepad
+      value: Keyboard
       objectReference: {fileID: 0}
     - target: {fileID: 3187326017898316113, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
@@ -25205,6 +25221,11 @@ PrefabInstance:
     - target: {fileID: 5377224396335723128, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5377224396335723128, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5758118615166095205, guid: f8d32847c8e162e41954e8e64bb17e16,
@@ -27847,6 +27868,7 @@ SceneRoots:
   - {fileID: 488177396}
   - {fileID: 1931501080}
   - {fileID: 357375650}
+  - {fileID: 1926763022}
   - {fileID: 1653128366}
   - {fileID: 131233793}
   - {fileID: 1972391517}
@@ -27859,4 +27881,3 @@ SceneRoots:
   - {fileID: 613499293}
   - {fileID: 1106451159}
   - {fileID: 21850725}
-  - {fileID: 1926763022}

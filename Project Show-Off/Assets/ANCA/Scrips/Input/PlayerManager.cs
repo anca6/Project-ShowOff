@@ -6,8 +6,9 @@ using UnityEngine.InputSystem.Users;
 public class PlayerManager : MonoBehaviour
 {
     [SerializeField] private List<GameObject> playerObjects;
+    [SerializeField] private InputActionAsset actionAsset; //reference to the input action asset
 
-    private List<PlayerInput> players = new List<PlayerInput>();
+    private List<PlayerInput> players = new List<PlayerInput>(); //list of players: player 1 and player 2
 
     private void Start()
     {
@@ -32,14 +33,30 @@ public class PlayerManager : MonoBehaviour
 
         if (Gamepad.all.Count > index)
         {
-            var gamepad = Gamepad.all[index];
-            InputUser.PerformPairingWithDevice(gamepad, playerInput.user);
-
-            playerInput.SwitchCurrentControlScheme("Gamepad", gamepad);
+            AssignGamepad(playerInput, index);
+        }
+        else
+        {
+            AssignKeyboard(playerInput, index);
         }
 
         players.Add(playerInput);
         playerObject.name = "Player" + (index + 1);
         Debug.Log("Added: " + playerObject.name);
+    }
+
+    private void AssignGamepad(PlayerInput playerInput, int index)
+    {
+        var gamepad = Gamepad.all[index];
+        InputUser.PerformPairingWithDevice(gamepad, playerInput.user);
+        playerInput.SwitchCurrentControlScheme("Gamepad", gamepad);
+    }
+
+    private void AssignKeyboard(PlayerInput playerInput, int index)
+    {
+        if (index == 0 || index == 1)
+        {
+            playerInput.SwitchCurrentControlScheme("Keyboard", Keyboard.current);
+        }
     }
 }
