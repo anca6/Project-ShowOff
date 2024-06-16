@@ -33,6 +33,10 @@ public class Character : PlayerMovement
     [Header("Animation")]
     public Animator CharacterAnimator;
 
+    protected bool isGrounded;
+    protected bool isMoving;
+    protected bool jumpTriggered;
+
     protected virtual void Awake()
     {
         playerInput = GetComponentInParent<PlayerInput>();
