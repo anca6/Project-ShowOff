@@ -84,7 +84,7 @@ public class Character : PlayerMovement
     {
         ApplyGravity();
         base.FixedUpdate();
-        
+        UpdateInternalStates();
     }
 
     //player movement
@@ -152,7 +152,9 @@ public class Character : PlayerMovement
         return Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, playerHeight * 0.5f + 0.1f, isGround);
     }
 
-    //
+    protected void UpdateInternalStates(){
+        jumpTriggered = Mathf.Approximately(jumpAction.ReadValue<float>(), 1);
+    }
 
 
     // Method to modify the speed
