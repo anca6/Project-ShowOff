@@ -79,7 +79,8 @@ public class Character : PlayerMovement
     protected override void FixedUpdate()
     {
         ApplyGravity();
-        Movement();
+        base.FixedUpdate();
+        
     }
 
     //player movement
