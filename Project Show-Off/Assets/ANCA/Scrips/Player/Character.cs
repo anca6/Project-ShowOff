@@ -30,6 +30,9 @@ public class Character : PlayerMovement
     [Header("Gravity Properties")]
     [SerializeField] private float gravityScale = 1f;
 
+    [Header("Animation")]
+    public Animator CharacterAnimator;
+
     protected virtual void Awake()
     {
         playerInput = GetComponentInParent<PlayerInput>();
