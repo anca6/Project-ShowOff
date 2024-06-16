@@ -66,6 +66,14 @@ public class Character : PlayerMovement
         {
             Debug.LogError("Rigidbody component not found on the parent gameObject");
         }
+
+        if (CharacterAnimator != null) return;
+        Animator animator = GetComponentInChildren<Animator>();
+        if (animator == null){
+            Debug.LogWarning("No animator found assigned or in children.");
+            return;
+        }
+        CharacterAnimator = animator;
     }
 
     protected override void FixedUpdate()
