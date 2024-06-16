@@ -87,6 +87,10 @@ public class Character : PlayerMovement
         UpdateInternalStates();
     }
 
+    protected void Update(){
+        UpdateAnimationParameters();
+    }
+
     //player movement
     protected override void Movement()
     {
@@ -153,6 +157,12 @@ public class Character : PlayerMovement
 
     protected void UpdateInternalStates(){
         jumpTriggered = Mathf.Approximately(jumpAction.ReadValue<float>(), 1);
+    }
+
+    protected void UpdateAnimationParameters(){
+        CharacterAnimator.SetBool("Float", !isGrounded);
+        CharacterAnimator.SetBool("Walk", isMoving);
+        CharacterAnimator.SetBool("Jump", jumpTriggered);
     }
 
 
