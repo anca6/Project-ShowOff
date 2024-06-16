@@ -92,10 +92,8 @@ public class Character : PlayerMovement
     {
         rb.constraints = RigidbodyConstraints.FreezeRotation;
 
-        if (IsGrounded())
-        {
-            rb.velocity *= grVelocityAmplifier;
-        }
+        isGrounded = IsGrounded();
+        if (isGrounded) rb.velocity *= grVelocityAmplifier;
 
         Vector3 input = moveAction.ReadValue<Vector3>();
 
@@ -105,7 +103,8 @@ public class Character : PlayerMovement
         //moving in the forward direction of the player
         Vector3 movementDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        if (movementDir != Vector3.zero)
+        isMoving = movementDir != Vector3.zero;
+        if (isMoving)
             rb.transform.forward = Vector3.Slerp(rb.transform.forward, movementDir.normalized, Time.deltaTime * rotationSpeed); //rotate the player parent directly, not the individual character children
 
         Vector3 horizontalVelocity = movementDir * moveSpeed;
