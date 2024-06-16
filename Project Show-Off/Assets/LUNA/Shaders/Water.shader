@@ -7,14 +7,21 @@ Shader "Luna/Water"{
         _SurfaceNoise ("Surface Noise", 2D) = "white" {}
         _SurfaceNoiseCutoff ("Surface Noise Cutoff", Range(0, 1)) = 0.7
         _FoamDistance ("Foam Distance", Float) = 0.2
+        _FoamColour ("Foam Colour", Color) = (1, 1, 1, 0.8)
+        _SurfaceNoiseScroll ("Noise Scroll Speed", Vector) = (0.3, 0.3, 0, 0)
+        _SurfaceDistortion ("Surface Distortion Texture", 2D) = "white" {}
+        _SurfaceDistortionAmount ("Distortion Amount", Range(0, 1)) = 0.27
     }
     SubShader{
         Tags{
-            "RenderType" = "Opaque"
+            "RenderType" = "Transparent"
+            "Queue" = "Transparent"
         }
         LOD 100
 
         Pass{
+            Blend SrcAlpha OneMinusSrcAlpha
+            ZWrite Off
             CGPROGRAM
             #pragma vertex Vertex
             #pragma fragment Fragment
@@ -33,10 +40,12 @@ Shader "Luna/Water"{
                 UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
                 float4 screenPosition : TEXCOORD2;
+                float2 distortUV : TEXCOORD3;
             };
 
             sampler2D _SurfaceNoise;
             sampler2D _CameraDepthTexture;
+            sampler2D _SurfaceDistortion;
             CBUFFER_START(UnityPerMaterial)
             float4 _SurfaceNoise_ST;
             float4 _MainWaterColour;
@@ -45,6 +54,10 @@ Shader "Luna/Water"{
             float _DepthMaxDistance;
             float _SurfaceNoiseCutoff;
             float _FoamDistance;
+            float4 _FoamColour;
+            float4 _SurfaceNoiseScroll;
+            float4 _SurfaceDistortion_ST;
+            float _SurfaceDistortionAmount;
             CBUFFER_END
 
             v2f Vertex(appdata input){
@@ -53,6 +66,7 @@ Shader "Luna/Water"{
                 output.uv = TRANSFORM_TEX(input.uv, _SurfaceNoise);
                 UNITY_TRANSFER_FOG(ouput, ouput.vertex);
                 output.screenPosition = ComputeScreenPos(output.vertex);
+                output.distortUV = TRANSFORM_TEX(input.uv, _SurfaceDistortion);
                 return output;
             }
 
@@ -61,15 +75,24 @@ Shader "Luna/Water"{
                 const float existingDepthLinear = LinearEyeDepth(existingDepthZeroOne);
                 const float depthDifference = existingDepthLinear - input.screenPosition.w;
                 const float depthAmount = saturate(depthDifference / _DepthMaxDistance);
+                
                 const float4 waterColour = lerp(_DepthColourShallow, _DepthColourDeep, depthAmount);
 
                 const float foamDepthDifference = saturate(depthDifference / _FoamDistance);
                 const float surfaceNoiseCutoff = foamDepthDifference * _SurfaceNoiseCutoff;
                 
-                const float4 surfaceNoiseSample = tex2D(_SurfaceNoise, input.uv);
-                const float surfaceNoiseColour = step(surfaceNoiseCutoff, surfaceNoiseSample);
+                const float2 distortionSample = tex2D(_SurfaceDistortion, input.distortUV).rg;
+                float2 distortionVector = distortionSample * 2 - 1;
+                distortionVector *= _SurfaceDistortionAmount;
                 
-                float4 colour = waterColour + surfaceNoiseColour;
+                const float2 timeOffset = float2(_SurfaceNoiseScroll.x * _Time.x, _SurfaceNoiseScroll.y * _Time.x);
+                const float2 noiseUV = input.uv + distortionVector + timeOffset;
+                
+                const float4 surfaceNoiseSample = tex2D(_SurfaceNoise, noiseUV);
+                float4 surfaceNoiseColour = _FoamColour;
+                surfaceNoiseColour.a *= step(surfaceNoiseCutoff, surfaceNoiseSample);
+                
+                float4 colour = waterColour * (1 - surfaceNoiseColour.a) + surfaceNoiseColour * surfaceNoiseColour.a;
                 
                 // Apply fog
                 UNITY_APPLY_FOG(input.fogCoord, colour);
