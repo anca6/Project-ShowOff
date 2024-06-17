@@ -159,7 +159,7 @@ public class Character : PlayerMovement
         return Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, playerHeight * 0.5f + 0.1f, isGround);
     }
 
-    protected void UpdateInternalStates(){
+    protected virtual void UpdateInternalStates(){
         jumpTriggered = Mathf.Approximately(jumpAction.ReadValue<float>(), 1);
     }
 
