@@ -11,6 +11,9 @@ public class Furbie : Character
     private float dashTimer;
     public AudioSource source;
     public AudioClip clip;
+
+    protected bool abilityTriggered;
+    
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
