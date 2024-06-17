@@ -38,8 +38,8 @@ public class Character : PlayerMovement
     protected bool jumpTriggered;
     
     private static readonly int AnimFloat = Animator.StringToHash("Float");
-    private static readonly int Walk = Animator.StringToHash("Walk");
-    private static readonly int Jump1 = Animator.StringToHash("Jump");
+    private static readonly int AnimWalk = Animator.StringToHash("Walk");
+    private static readonly int AnimJump = Animator.StringToHash("Jump");
 
     protected virtual void Awake()
     {
@@ -165,8 +165,8 @@ public class Character : PlayerMovement
 
     protected void UpdateAnimationParameters(){
         CharacterAnimator.SetBool(AnimFloat, !isGrounded);
-        CharacterAnimator.SetBool(Walk, isMoving);
-        CharacterAnimator.SetBool(Jump1, jumpTriggered);
+        CharacterAnimator.SetBool(AnimWalk, isMoving);
+        CharacterAnimator.SetBool(AnimJump, jumpTriggered);
     }
 
 
