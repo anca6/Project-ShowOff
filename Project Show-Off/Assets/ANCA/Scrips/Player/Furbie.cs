@@ -60,6 +60,11 @@ public class Furbie : Character
         }
     }
 
+    protected override void UpdateInternalStates(){
+        base.UpdateInternalStates();
+        abilityTriggered = Mathf.Approximately(abilityAction.ReadValue<float>(), 1);
+    }
+
     protected override void UpdateAnimationParameters(){
         base.UpdateAnimationParameters();
         CharacterAnimator.SetBool(Ability, abilityTriggered);
