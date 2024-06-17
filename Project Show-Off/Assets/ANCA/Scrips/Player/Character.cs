@@ -163,7 +163,7 @@ public class Character : PlayerMovement
         jumpTriggered = Mathf.Approximately(jumpAction.ReadValue<float>(), 1);
     }
 
-    protected void UpdateAnimationParameters(){
+    protected virtual void UpdateAnimationParameters(){
         CharacterAnimator.SetBool(AnimFloat, !isGrounded);
         CharacterAnimator.SetBool(AnimWalk, isMoving);
         CharacterAnimator.SetBool(AnimJump, jumpTriggered);
