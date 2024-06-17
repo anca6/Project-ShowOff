@@ -42,7 +42,7 @@ public class CharacterObjectManager : MonoBehaviour
     {
         if (activeCharacterIndex == -1)
         {
-            Debug.LogError("Invalid character index.");
+            //Debug.LogError("Invalid character index.");
             return;
         }
 

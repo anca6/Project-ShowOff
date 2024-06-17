@@ -2144,7 +2144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbb860997a4212642852e10cae3cf3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameScene: OLD
+  gameScene: NEW_LongsLevel
   startButton: {fileID: 1035793574}
   feedbackText: {fileID: 1882411467}
   feedbackMessage: Both players must select a character!
