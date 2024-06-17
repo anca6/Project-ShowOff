@@ -19,6 +19,15 @@ public class Furbie : Character
     
     private static readonly int Ability = Animator.StringToHash("Ability");
     
+    protected override void Awake(){
+        base.Awake();
+        abilityAction = playerInput.actions["Ability"];
+    }
+
+    private void OnEnable() => abilityAction.Enable();
+
+    private void OnDisable() => abilityAction.Disable();
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
