@@ -14,6 +14,8 @@ public class Furbie : Character
 
     protected bool abilityTriggered;
     
+    private static readonly int Ability = Animator.StringToHash("Ability");
+    
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -44,6 +46,11 @@ public class Furbie : Character
             ///furbie jump sound here
             source.PlayOneShot(clip);
         }
+    }
+
+    protected override void UpdateAnimationParameters(){
+        base.UpdateAnimationParameters();
+        CharacterAnimator.SetBool(Ability, abilityTriggered);
     }
 
     private Vector3 delayedForceToApply;
