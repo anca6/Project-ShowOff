@@ -1,7 +1,10 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class Furbie : Character
 {
+    
+    private InputAction abilityAction;
+    
     //properties for player jumping & dashing
     [Header("Dashing")]
     [SerializeField] private float dashForce;
