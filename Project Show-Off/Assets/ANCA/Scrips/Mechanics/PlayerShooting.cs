@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+[RequireComponent(typeof(Furbie))]
 public class PlayerShooting : MonoBehaviour
 {
     //properties for the projectile mechanic
