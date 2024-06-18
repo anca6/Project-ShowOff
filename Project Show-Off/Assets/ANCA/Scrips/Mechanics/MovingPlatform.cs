@@ -1,14 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Windows;
 
 public class MovingPlatform : MonoBehaviour
 {
     private PlayerInput playerInput;
-    private InputAction abilityAction;
+    private List<InputAction> abilityActions = new List<InputAction>();
 
-    //properties for moving platform mechanic
+    // properties for moving platform mechanic
     [SerializeField] private List<Transform> platformWaypoints;
     [SerializeField] private List<GameObject> players;
     [SerializeField] private float movingSpeed;
@@ -28,29 +27,32 @@ public class MovingPlatform : MonoBehaviour
 
     private void Awake()
     {
-        /*playerInput = playerObj.GetComponent<PlayerInput>();
-
-        abilityAction = playerInput.actions["Ability"];
-        abilityAction.performed += ctx => GoToNextWaypoint();*/
-        
-        foreach(GameObject player in players)
+        foreach (GameObject player in players)
         {
-            var playerInput = player.GetComponent<PlayerInput>();
+            playerInput = player.GetComponentInParent<PlayerInput>();
             var abilityAction = playerInput.actions["Ability"];
             abilityAction.performed += ctx => GoToNextWaypoint(playerInput);
+            abilityActions.Add(abilityAction);
         }
     }
+
     private void OnEnable()
     {
-        abilityAction.Enable();
+        foreach (var action in abilityActions)
+        {
+            action.Enable();
+        }
     }
 
     private void OnDisable()
     {
-       abilityAction.Disable();
+        foreach (var action in abilityActions)
+        {
+            action.Disable();
+        }
     }
 
-    //setting up the first waypoint target in the list
+    // Setting up the first waypoint target in the list
     private void Start()
     {
         if (platformWaypoints == null || platformWaypoints.Count == 0)
@@ -59,8 +61,6 @@ public class MovingPlatform : MonoBehaviour
             return;
         }
 
-        //Debug.Log("number of waypoints: " + platformWaypoints.Count);
-
         targetWaypointIndex = 0;
         targetWaypoint = platformWaypoints[targetWaypointIndex];
         previousWaypoint = targetWaypoint;
@@ -68,7 +68,7 @@ public class MovingPlatform : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(onPlatform)
+        if (onPlatform)
         {
             MovePlatform();
         }
@@ -76,47 +76,45 @@ public class MovingPlatform : MonoBehaviour
 
     private void MovePlatform()
     {
-        if (!IsAllowedCharacter(currentPlayerInput)) return; //if the current character is not the character with this mechanic
+        if (!IsAllowedCharacter(currentPlayerInput)) return;
 
         elapsedTime += Time.deltaTime;
 
-        //smoothly moving and rotating to the target waypoint, with acceleration/deceleration at the start/end
+        // Smoothly moving and rotating to the target waypoint
         float elapsedPercentage = elapsedTime / timeToWaypoint;
         elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
         transform.position = Vector3.Lerp(previousWaypoint.position, targetWaypoint.position, elapsedPercentage);
         transform.rotation = Quaternion.Lerp(previousWaypoint.rotation, targetWaypoint.rotation, elapsedPercentage);
     }
 
-    //calculates distance between previous waypoint and next waypoint
     private void GoToNextWaypoint(PlayerInput input)
     {
-        /* if (!onPlatform *//*|| playerSwitch == null || playerSwitch.currentCharacter != allowedCharacter*//*)
-         {
-
-             Debug.Log("something wrong here");
-             return;//if the current character is not the character with this mechanic
-         }*/
-        //return; //if the current character is not the character with this mechanic
-
-        if (!onPlatform || currentPlayerInput != input || !IsAllowedCharacter(input))
+        if (!onPlatform)
         {
-            Debug.Log("something wrong here");
+            Debug.Log("not on platform");
+            return;
+        }
+        if (currentPlayerInput != input)
+        {
+            Debug.Log("no current player input");
+            return;
+        }
+        if (!IsAllowedCharacter(input))
+        {
+            Debug.Log("not allowed character");
             return;
         }
 
-
         previousWaypoint = GetWaypointIndex(targetWaypointIndex);
-            targetWaypointIndex = GetNextWaypointIndex(targetWaypointIndex);
-            targetWaypoint = GetWaypointIndex(targetWaypointIndex);
+        targetWaypointIndex = GetNextWaypointIndex(targetWaypointIndex);
+        targetWaypoint = GetWaypointIndex(targetWaypointIndex);
 
-            elapsedTime = 0;
+        elapsedTime = 0;
 
-            float distanceToWaypoint = Vector3.Distance(previousWaypoint.position, targetWaypoint.position);
-            timeToWaypoint = distanceToWaypoint / movingSpeed;
-
-        ///sara sound ability here
-        //FindObjectOfType<AudioManager>().Play("Sara's ability");
+        float distanceToWaypoint = Vector3.Distance(previousWaypoint.position, targetWaypoint.position);
+        timeToWaypoint = distanceToWaypoint / movingSpeed;
     }
+
     private bool IsAllowedCharacter(PlayerInput input)
     {
         if (input == null) return false;
@@ -124,11 +122,11 @@ public class MovingPlatform : MonoBehaviour
         int player1CharacterIndex = GameManager.instance.GetPlayer1CharacterIndex();
         int player2CharacterIndex = GameManager.instance.GetPlayer2CharacterIndex();
 
-        //get the index of the current player character
+        // Get the index of the current player character
         int currentCharacterIndex = -1;
         for (int i = 0; i < players.Count; i++)
         {
-            if (players[i].GetComponent<PlayerInput>() == input)
+            if (players[i].GetComponentInParent<PlayerInput>() == input)
             {
                 currentCharacterIndex = i == 0 ? player1CharacterIndex : player2CharacterIndex;
                 break;
@@ -138,14 +136,13 @@ public class MovingPlatform : MonoBehaviour
         return currentCharacterIndex == allowedCharacter;
     }
 
-    //parenting the player gameobject to the platform so it applies the position & rotation of the platform
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
             other.transform.SetParent(transform);
             onPlatform = true;
-            currentPlayerInput = other.gameObject.GetComponent<PlayerInput>();
+            currentPlayerInput = other.gameObject.GetComponentInParent<PlayerInput>();
         }
     }
 
@@ -159,13 +156,11 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
-    //return the transform component of x waypoint
     private Transform GetWaypointIndex(int waypointIndex)
     {
         return platformWaypoints[waypointIndex].transform;
     }
 
-    //return the index of the next waypoint
     private int GetNextWaypointIndex(int currentWaypointIndex)
     {
         int nextWaypointIndex = currentWaypointIndex + 1;
