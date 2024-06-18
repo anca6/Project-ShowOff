@@ -46,17 +46,25 @@ public class MovingPlatform : MonoBehaviour
     }
     private void OnEnable()
     {
+        if(actionList != null)
+        {
         foreach (InputAction action in actionList)
         {
             action.Enable();
+        }
+
         }
     }
 
     private void OnDisable()
     {
-        foreach (InputAction action in actionList)
+        if (actionList != null)
         {
-            action.Disable();
+            foreach (InputAction action in actionList)
+            {
+                action.Disable();
+            }
+
         }
     }
 
@@ -100,9 +108,15 @@ public class MovingPlatform : MonoBehaviour
     //calculates distance between previous waypoint and next waypoint
     private void GoToNextWaypoint(PlayerInput input)
     {
-        if (/*!onPlatform ||*//* currentPlayerInput != input ||*/ IsAllowedCharacter(input) == false) //return;
+        if (!onPlatform)
         {
-            Debug.Log("something wrong here");
+            Debug.Log("Not on platform");
+            return;
+        }
+       
+        if (!IsAllowedCharacter(input) == false)
+        {
+            Debug.Log("Not allowed character");
             return;
         }
 
