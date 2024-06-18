@@ -46,7 +46,7 @@ public class Collectible : MonoBehaviour
         float speedBuff = Random.value > 0.3f ? speedBuffValue : -speedBuffValue;
         
         // Apply effect to the player
-       character.ModifySpeed(speedBuff);
+       character.IncreaseSpeed(speedBuff);
         if(speedBuff > 0.0f) 
         { Instantiate(pickupEffectspeedup, transform.position, transform.rotation); }
         else { Instantiate(pickupEffectslowdown, transform.position, transform.rotation); }
@@ -61,7 +61,7 @@ public class Collectible : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         // Reverse the effect on the player
-       character.ResetSpeed(speedBuff);
+       character.DecreaseSpeed(speedBuff);
 
         // Wait for the cooldown period before allowing the player to collect another collectible
         yield return new WaitForSeconds(pickupCooldown - duration);
