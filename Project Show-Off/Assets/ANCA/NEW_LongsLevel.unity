@@ -2448,6 +2448,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5377224396335723128, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: m_TagString
+      value: Sara
+      objectReference: {fileID: 0}
     - target: {fileID: 5758118615166095205, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_Layer
@@ -3865,7 +3870,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 235275275}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2797855, y: -3e-45, z: 1e-45, w: 0.96006256}
+  m_LocalRotation: {x: 0.27978545, y: -0.000000018612997, z: 0.0000000054242775, w: 0.96006256}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14312,7 +14317,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888245659}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27978548, y: -0.000000025926287, z: 0.000000007555547, w: 0.96006256}
+  m_LocalRotation: {x: 0.27978545, y: -0.000000018612997, z: 0.0000000054242775, w: 0.96006256}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -23110,6 +23115,21 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 80780430939445504, guid: 41774dbba0303144384d4c50e80c9081,
         type: 3}
+      propertyPath: actionList.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 80780430939445504, guid: 41774dbba0303144384d4c50e80c9081,
+        type: 3}
+      propertyPath: actionList.Array.data[0].m_Id
+      value: 99d89796-0e7d-49b0-8ffd-6cddd2632bae
+      objectReference: {fileID: 0}
+    - target: {fileID: 80780430939445504, guid: 41774dbba0303144384d4c50e80c9081,
+        type: 3}
+      propertyPath: actionList.Array.data[0].m_Name
+      value: Element 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 80780430939445504, guid: 41774dbba0303144384d4c50e80c9081,
+        type: 3}
       propertyPath: platformWaypoints.Array.data[0]
       value: 
       objectReference: {fileID: 1276119242}
@@ -28647,7 +28667,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1925730614}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2797855, y: -0, z: -0, w: 0.96006256}
+  m_LocalRotation: {x: 0.27978545, y: -0.000000018612997, z: 0.0000000054242775, w: 0.96006256}
   m_LocalPosition: {x: 59.860912, y: 10.244604, z: 109.565186}
   m_LocalScale: {x: 1.0744894, y: 1.0744894, z: 1.0744894}
   m_ConstrainProportionsScale: 1
@@ -32157,6 +32177,11 @@ PrefabInstance:
       propertyPath: orientation
       value: 
       objectReference: {fileID: 131233795}
+    - target: {fileID: 5377224396335723128, guid: f8d32847c8e162e41954e8e64bb17e16,
+        type: 3}
+      propertyPath: m_TagString
+      value: Sara
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

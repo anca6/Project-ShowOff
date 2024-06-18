@@ -1,18 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.Universal.Internal;
 using UnityEngine.Windows;
 
 public class MovingPlatform : MonoBehaviour
 {
-    private PlayerInput playerInput;
-    private InputAction abilityAction;
+    //private PlayerInput playerInput;
+    //private InputAction abilityAction;
 
     //properties for moving platform mechanic
     [SerializeField] private List<Transform> platformWaypoints;
     [SerializeField] private List<GameObject> players;
     [SerializeField] private float movingSpeed;
     [SerializeField] private int allowedCharacter;
+
+    [SerializeField] private List<InputAction> actionList;
 
     private int targetWaypointIndex;
 
@@ -24,7 +27,7 @@ public class MovingPlatform : MonoBehaviour
 
     private bool onPlatform;
 
-    private PlayerInput currentPlayerInput;
+    // private PlayerInput currentPlayerInput;
 
     private void Awake()
     {
@@ -32,22 +35,37 @@ public class MovingPlatform : MonoBehaviour
 
         abilityAction = playerInput.actions["Ability"];
         abilityAction.performed += ctx => GoToNextWaypoint();*/
-        
-        foreach(GameObject player in players)
+
+        foreach (GameObject player in players)
         {
             var playerInput = player.GetComponent<PlayerInput>();
             var abilityAction = playerInput.actions["Ability"];
             abilityAction.performed += ctx => GoToNextWaypoint(playerInput);
+            actionList.Add(abilityAction);
         }
     }
     private void OnEnable()
     {
-        abilityAction.Enable();
+        if(actionList != null)
+        {
+        foreach (InputAction action in actionList)
+        {
+            action.Enable();
+        }
+
+        }
     }
 
     private void OnDisable()
     {
-       abilityAction.Disable();
+        if (actionList != null)
+        {
+            foreach (InputAction action in actionList)
+            {
+                action.Disable();
+            }
+
+        }
     }
 
     //setting up the first waypoint target in the list
@@ -68,7 +86,7 @@ public class MovingPlatform : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(onPlatform)
+        if (onPlatform)
         {
             MovePlatform();
         }
@@ -76,7 +94,7 @@ public class MovingPlatform : MonoBehaviour
 
     private void MovePlatform()
     {
-        if (!IsAllowedCharacter(currentPlayerInput)) return; //if the current character is not the character with this mechanic
+        //if (!IsAllowedCharacter(currentPlayerInput)) return; //if the current character is not the character with this mechanic
 
         elapsedTime += Time.deltaTime;
 
@@ -90,29 +108,27 @@ public class MovingPlatform : MonoBehaviour
     //calculates distance between previous waypoint and next waypoint
     private void GoToNextWaypoint(PlayerInput input)
     {
-        /* if (!onPlatform *//*|| playerSwitch == null || playerSwitch.currentCharacter != allowedCharacter*//*)
-         {
-
-             Debug.Log("something wrong here");
-             return;//if the current character is not the character with this mechanic
-         }*/
-        //return; //if the current character is not the character with this mechanic
-
-        if (!onPlatform || currentPlayerInput != input || !IsAllowedCharacter(input))
+        if (!onPlatform)
         {
-            Debug.Log("something wrong here");
+            Debug.Log("Not on platform");
+            return;
+        }
+       
+        if (!IsAllowedCharacter(input) == false)
+        {
+            Debug.Log("Not allowed character");
             return;
         }
 
 
         previousWaypoint = GetWaypointIndex(targetWaypointIndex);
-            targetWaypointIndex = GetNextWaypointIndex(targetWaypointIndex);
-            targetWaypoint = GetWaypointIndex(targetWaypointIndex);
+        targetWaypointIndex = GetNextWaypointIndex(targetWaypointIndex);
+        targetWaypoint = GetWaypointIndex(targetWaypointIndex);
 
-            elapsedTime = 0;
+        elapsedTime = 0;
 
-            float distanceToWaypoint = Vector3.Distance(previousWaypoint.position, targetWaypoint.position);
-            timeToWaypoint = distanceToWaypoint / movingSpeed;
+        float distanceToWaypoint = Vector3.Distance(previousWaypoint.position, targetWaypoint.position);
+        timeToWaypoint = distanceToWaypoint / movingSpeed;
 
         ///sara sound ability here
         //FindObjectOfType<AudioManager>().Play("Sara's ability");
@@ -145,7 +161,7 @@ public class MovingPlatform : MonoBehaviour
         {
             other.transform.SetParent(transform);
             onPlatform = true;
-            currentPlayerInput = other.gameObject.GetComponent<PlayerInput>();
+            //currentPlayerInput = other.gameObject.GetComponent<PlayerInput>();
         }
     }
 
@@ -155,7 +171,7 @@ public class MovingPlatform : MonoBehaviour
         {
             onPlatform = false;
             other.transform.SetParent(null);
-            currentPlayerInput = null;
+            //currentPlayerInput = null;
         }
     }
 
