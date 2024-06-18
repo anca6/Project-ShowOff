@@ -32,11 +32,13 @@ public class Character : PlayerMovement
 
     [Header("Animation")]
     public Animator CharacterAnimator;
-
+    
+    // Booleans in class scope to keep track of the general state of the character
     protected bool isGrounded;
     protected bool isMoving;
     protected bool jumpTriggered;
     
+    // Cache the hashes of our Animator parameters for performance reasons
     private static readonly int AnimFloat = Animator.StringToHash("Float");
     private static readonly int AnimWalk = Animator.StringToHash("Walk");
     private static readonly int AnimJump = Animator.StringToHash("Jump");
@@ -87,11 +89,14 @@ public class Character : PlayerMovement
     protected override void FixedUpdate()
     {
         ApplyGravity();
+        // Call the base class method we're overriding
         base.FixedUpdate();
+        // Update our character state booleans
         UpdateInternalStates();
     }
 
     protected void Update(){
+        // Update the animation parameters in Update() as it's a visual and not a physics-based operation
         UpdateAnimationParameters();
     }
 
@@ -160,10 +165,12 @@ public class Character : PlayerMovement
     }
 
     protected virtual void UpdateInternalStates(){
+        // Check if the jump InputAction is triggered
         jumpTriggered = Mathf.Approximately(jumpAction.ReadValue<float>(), 1);
     }
 
     protected virtual void UpdateAnimationParameters(){
+        // Assign all the animation parameters using our character state booleans
         CharacterAnimator.SetBool(AnimFloat, !isGrounded);
         CharacterAnimator.SetBool(AnimWalk, isMoving);
         CharacterAnimator.SetBool(AnimJump, jumpTriggered);

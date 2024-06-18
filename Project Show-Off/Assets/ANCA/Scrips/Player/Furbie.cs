@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class Furbie : Character
 {
-    
+    // The InputAction for the ability input
     private InputAction abilityAction;
     
     //properties for player jumping & dashing
@@ -14,18 +14,24 @@ public class Furbie : Character
     private float dashTimer;
     public AudioSource source;
     public AudioClip clip;
-
+    
+    // Ability animation trigger flag
     protected bool abilityTriggered;
     
+    // Cache the hash of the Ability bool for performance reasons
     private static readonly int Ability = Animator.StringToHash("Ability");
     
     protected override void Awake(){
+        // Call base class Awake method first
         base.Awake();
+        // Chain our own InputAction assignment onto it
         abilityAction = playerInput.actions["Ability"];
     }
-
+    
+    // Enable the InputAction when needed
     private void OnEnable() => abilityAction.Enable();
-
+    
+    // Disable the InputAction when needed
     private void OnDisable() => abilityAction.Disable();
 
     protected override void FixedUpdate()
@@ -59,14 +65,20 @@ public class Furbie : Character
             source.PlayOneShot(clip);
         }
     }
-
+    
+    // Override UpdateInternalStates in order to chain our own extra check onto it
     protected override void UpdateInternalStates(){
+        // Call the base class method we're overriding
         base.UpdateInternalStates();
+        // Check if the ability InputAction is triggered
         abilityTriggered = Mathf.Approximately(abilityAction.ReadValue<float>(), 1);
     }
-
+    
+    // Override UpdateAnimationParameters to chain our own animation bool assignment onto it
     protected override void UpdateAnimationParameters(){
+        // Call the base class method we're overriding
         base.UpdateAnimationParameters();
+        // Set the ability Animator boolean
         CharacterAnimator.SetBool(Ability, abilityTriggered);
     }
 
