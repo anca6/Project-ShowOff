@@ -152,7 +152,6 @@ MonoBehaviour:
   jumpForce: 0
   jumpCooldown: 0
   gravityScale: 1
-  CharacterAnimator: {fileID: 0}
   dashForce: 15
   dashUpwardForce: 40
   dashDuration: 0.5
@@ -582,7 +581,6 @@ MonoBehaviour:
   jumpForce: 60
   jumpCooldown: 0.4
   gravityScale: 1
-  CharacterAnimator: {fileID: 0}
 --- !u!1 &4446693439236821592
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,7 +775,6 @@ MonoBehaviour:
   jumpForce: 70
   jumpCooldown: 0.55
   gravityScale: 1
-  CharacterAnimator: {fileID: 0}
   explosionEffect: {fileID: 4050014539871452058, guid: 0e2084029d7141e4f80aa2a254f7c074,
     type: 3}
   minBreakSpeed: 1.5
