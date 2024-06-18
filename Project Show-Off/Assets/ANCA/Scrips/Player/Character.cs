@@ -171,15 +171,20 @@ public class Character : PlayerMovement
 
 
     // Method to modify the speed
-    public void ModifySpeed(float speedModifier)
+    public void IncreaseSpeed(float speedModifier)
     {
         moveSpeed += speedModifier;
     }
 
     // Method to reset the speed
-    public void ResetSpeed(float speedModifier)
+    public void DecreaseSpeed(float speedModifier)
     {
         moveSpeed -= speedModifier;
+    }
+
+    public void ModifySpeed(float speedModifier)
+    {
+        moveSpeed = speedModifier;
     }
 
     // Method to check if the player can collect
