@@ -1,29 +1,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-<<<<<<< HEAD
-=======
-using UnityEngine.Rendering.Universal.Internal;
->>>>>>> engineer
 using UnityEngine.Windows;
 
 public class MovingPlatform : MonoBehaviour
 {
-<<<<<<< HEAD
     private PlayerInput playerInput;
     private InputAction abilityAction;
-=======
-    //private PlayerInput playerInput;
-    //private InputAction abilityAction;
->>>>>>> engineer
 
     //properties for moving platform mechanic
     [SerializeField] private List<Transform> platformWaypoints;
     [SerializeField] private List<GameObject> players;
     [SerializeField] private float movingSpeed;
     [SerializeField] private int allowedCharacter;
-
-    [SerializeField] private List<InputAction> actionList;
 
     private int targetWaypointIndex;
 
@@ -35,7 +24,7 @@ public class MovingPlatform : MonoBehaviour
 
     private bool onPlatform;
 
-    // private PlayerInput currentPlayerInput;
+    private PlayerInput currentPlayerInput;
 
     private void Awake()
     {
@@ -43,45 +32,22 @@ public class MovingPlatform : MonoBehaviour
 
         abilityAction = playerInput.actions["Ability"];
         abilityAction.performed += ctx => GoToNextWaypoint();*/
-<<<<<<< HEAD
         
         foreach(GameObject player in players)
-=======
-
-        foreach (GameObject player in players)
->>>>>>> engineer
         {
             var playerInput = player.GetComponent<PlayerInput>();
             var abilityAction = playerInput.actions["Ability"];
             abilityAction.performed += ctx => GoToNextWaypoint(playerInput);
-<<<<<<< HEAD
-=======
-            actionList.Add(abilityAction);
->>>>>>> engineer
         }
     }
     private void OnEnable()
     {
-<<<<<<< HEAD
         abilityAction.Enable();
-=======
-        foreach (InputAction action in actionList)
-        {
-            action.Enable();
-        }
->>>>>>> engineer
     }
 
     private void OnDisable()
     {
-<<<<<<< HEAD
        abilityAction.Disable();
-=======
-        foreach (InputAction action in actionList)
-        {
-            action.Disable();
-        }
->>>>>>> engineer
     }
 
     //setting up the first waypoint target in the list
@@ -110,11 +76,7 @@ public class MovingPlatform : MonoBehaviour
 
     private void MovePlatform()
     {
-<<<<<<< HEAD
         if (!IsAllowedCharacter(currentPlayerInput)) return; //if the current character is not the character with this mechanic
-=======
-        //if (!IsAllowedCharacter(currentPlayerInput)) return; //if the current character is not the character with this mechanic
->>>>>>> engineer
 
         elapsedTime += Time.deltaTime;
 
@@ -128,7 +90,6 @@ public class MovingPlatform : MonoBehaviour
     //calculates distance between previous waypoint and next waypoint
     private void GoToNextWaypoint(PlayerInput input)
     {
-<<<<<<< HEAD
         /* if (!onPlatform *//*|| playerSwitch == null || playerSwitch.currentCharacter != allowedCharacter*//*)
          {
 
@@ -138,9 +99,6 @@ public class MovingPlatform : MonoBehaviour
         //return; //if the current character is not the character with this mechanic
 
         if (!onPlatform || currentPlayerInput != input || !IsAllowedCharacter(input))
-=======
-        if (/*!onPlatform ||*//* currentPlayerInput != input ||*/ IsAllowedCharacter(input) == false) //return;
->>>>>>> engineer
         {
             Debug.Log("something wrong here");
             return;
@@ -153,13 +111,8 @@ public class MovingPlatform : MonoBehaviour
 
             elapsedTime = 0;
 
-<<<<<<< HEAD
             float distanceToWaypoint = Vector3.Distance(previousWaypoint.position, targetWaypoint.position);
             timeToWaypoint = distanceToWaypoint / movingSpeed;
-=======
-        float distanceToWaypoint = Vector3.Distance(previousWaypoint.position, targetWaypoint.position);
-        timeToWaypoint = distanceToWaypoint / movingSpeed;
->>>>>>> engineer
 
         ///sara sound ability here
         //FindObjectOfType<AudioManager>().Play("Sara's ability");
@@ -192,11 +145,7 @@ public class MovingPlatform : MonoBehaviour
         {
             other.transform.SetParent(transform);
             onPlatform = true;
-<<<<<<< HEAD
             currentPlayerInput = other.gameObject.GetComponent<PlayerInput>();
-=======
-            //currentPlayerInput = other.gameObject.GetComponent<PlayerInput>();
->>>>>>> engineer
         }
     }
 
@@ -206,7 +155,7 @@ public class MovingPlatform : MonoBehaviour
         {
             onPlatform = false;
             other.transform.SetParent(null);
-            //currentPlayerInput = null;
+            currentPlayerInput = null;
         }
     }
 
