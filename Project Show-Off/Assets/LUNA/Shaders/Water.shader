@@ -11,7 +11,7 @@ Shader "Luna/Water"{
         _SurfaceNoiseScroll ("Noise Scroll Speed", Vector) = (0.3, 0.3, 0, 0)
         _SurfaceDistortion ("Surface Distortion Texture", 2D) = "white" {}
         _SurfaceDistortionAmount ("Distortion Amount", Range(0, 1)) = 0.27
-        _SurfaceNoiseAntiAliasing ("Noise Anti-Aliasing Threshold", Float) = 0.01
+        _FoamAntiAliasing ("Foam Anti-Aliasing Threshold", Float) = 0.01
     }
     SubShader{
         Tags{
@@ -59,7 +59,7 @@ Shader "Luna/Water"{
             float4 _SurfaceNoiseScroll;
             float4 _SurfaceDistortion_ST;
             float _SurfaceDistortionAmount;
-            float _SurfaceNoiseAntiAliasing;
+            float _FoamAntiAliasing;
             CBUFFER_END
 
             v2f Vertex(appdata input){
@@ -92,7 +92,7 @@ Shader "Luna/Water"{
                 
                 const float4 surfaceNoiseSample = tex2D(_SurfaceNoise, noiseUV);
                 float4 surfaceNoiseColour = _FoamColour;
-                surfaceNoiseColour.a *= smoothstep(surfaceNoiseCutoff - _SurfaceNoiseAntiAliasing, surfaceNoiseCutoff + _SurfaceNoiseAntiAliasing, surfaceNoiseSample);
+                surfaceNoiseColour.a *= smoothstep(surfaceNoiseCutoff - _FoamAntiAliasing, surfaceNoiseCutoff + _FoamAntiAliasing, surfaceNoiseSample);
                 
                 float4 colour = waterColour * (1 - surfaceNoiseColour.a) + surfaceNoiseColour * surfaceNoiseColour.a;
                 
