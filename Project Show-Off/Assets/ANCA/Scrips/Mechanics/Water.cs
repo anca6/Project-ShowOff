@@ -1,34 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class Water : MonoBehaviour
 {
-    [SerializeField] private float waterSpeed;
-   
-    private void OnCollisionStay(Collision collision)
-    {
-        if(collision.gameObject.CompareTag("Player"))
-        {
-            Character character = collision.gameObject.GetComponent<Character>();
-            if(character != null)
-            {
-                character.IncreaseSpeed(waterSpeed);
-            }
+    [SerializeField] private float waterSpeed = 2.0f;
 
-        }
-    }
-    private void OnCollisonExit(Collider collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Character character = collision.gameObject.GetComponent<Character>();
+            Character character = collision.gameObject.GetComponentInChildren<Character>();
             if (character != null)
             {
-                character.DecreaseSpeed(waterSpeed);
+                character.SetSpeed(waterSpeed);
             }
+        }
+    }
 
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Character character = collision.gameObject.GetComponentInChildren<Character>();
+            if (character != null)
+            {
+                character.ResetSpeed();
+            }
         }
     }
 }
