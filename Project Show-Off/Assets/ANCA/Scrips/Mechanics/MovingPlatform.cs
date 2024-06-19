@@ -19,36 +19,55 @@ public class MovingPlatform : MonoBehaviour
     private bool onPlatform;
     private PlayerInput currentPlayerInput;
 
-    private void Awake()
+    private Dictionary<PlayerInput, InputAction> playerInputActions;
+
+    /*private void Awake()
     {
         foreach (GameObject player in players)
         {
             var playerInput = player.GetComponent<PlayerInput>();
             var abilityAction = playerInput.actions["Ability"];
+            Debug.Log("Setting up ability action for: " + player.name);
+            // Explicitly naming the action for debugging purposes
+
             abilityAction.performed += ctx => TryGoToNextWaypoint(playerInput);
+
+
             actionList.Add(abilityAction);
+        }
+    }*/
+
+    private void Awake()
+    {
+        playerInputActions = new Dictionary<PlayerInput, InputAction>();
+
+        foreach (GameObject player in players)
+        {
+            var playerInput = player.GetComponent<PlayerInput>();
+            var abilityAction = playerInput.actions["Ability"];
+
+            Debug.Log("Setting up ability action for: " + player.name);
+
+            abilityAction.performed += ctx => TryGoToNextWaypoint(playerInput);
+            playerInputActions.Add(playerInput, abilityAction);
         }
     }
 
     private void OnEnable()
     {
-        if (actionList != null)
+        foreach (var entry in playerInputActions)
         {
-            foreach (InputAction action in actionList)
-            {
-                action.Enable();
-            }
+            Debug.Log("Enabling action for player: " + entry.Key.gameObject.name);
+            entry.Value.Enable();
         }
     }
 
     private void OnDisable()
     {
-        if (actionList != null)
+        foreach (var entry in playerInputActions)
         {
-            foreach (InputAction action in actionList)
-            {
-                action.Disable();
-            }
+            Debug.Log("Disabling action for player: " + entry.Key.gameObject.name);
+            entry.Value.Disable();
         }
     }
 
@@ -85,6 +104,8 @@ public class MovingPlatform : MonoBehaviour
 
     private void TryGoToNextWaypoint(PlayerInput input)
     {
+        Debug.Log("Ability action triggered by: " + input.gameObject.name);
+
         if (!onPlatform)
         {
             Debug.Log("Not on platform");
@@ -110,6 +131,8 @@ public class MovingPlatform : MonoBehaviour
 
         float distanceToWaypoint = Vector3.Distance(previousWaypoint.position, targetWaypoint.position);
         timeToWaypoint = distanceToWaypoint / movingSpeed;
+
+        Debug.Log("Moving to waypoint: " + targetWaypointIndex);
     }
 
     private bool IsAllowedCharacter(PlayerInput input)
@@ -130,6 +153,7 @@ public class MovingPlatform : MonoBehaviour
             }
         }
 
+        Debug.Log("Player: " + input.gameObject.name + ", Character Index: " + currentCharacterIndex + ", Allowed Character: " + allowedCharacter);
         return currentCharacterIndex == allowedCharacter;
     }
 
@@ -140,6 +164,8 @@ public class MovingPlatform : MonoBehaviour
             other.transform.SetParent(transform);
             currentPlayerInput = other.gameObject.GetComponent<PlayerInput>();
             onPlatform = IsAllowedCharacter(currentPlayerInput);
+
+            Debug.Log(other.gameObject.name + " entered platform. OnPlatform: " + onPlatform);
         }
     }
 
@@ -153,6 +179,8 @@ public class MovingPlatform : MonoBehaviour
                 currentPlayerInput = null;
                 onPlatform = false;
             }
+
+            Debug.Log(other.gameObject.name + " exited platform. OnPlatform: " + onPlatform);
         }
     }
 
