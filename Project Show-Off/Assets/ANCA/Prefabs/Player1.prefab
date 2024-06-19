@@ -441,10 +441,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.7948215
+  m_Height: 1.8273971
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.18424344, y: 0.030524135, z: -0.11057806}
 --- !u!114 &5324698195831183778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,7 +460,7 @@ MonoBehaviour:
   isGround:
     serializedVersion: 2
     m_Bits: 128
-  playerHeight: 2
+  playerHeight: 1
   canCollect: 1
   moveSpeed: 10
   acceleration: 2
@@ -470,7 +470,7 @@ MonoBehaviour:
   jumpForce: 35
   jumpCooldown: 0.25
   gravityScale: 1
-  CharacterAnimator: {fileID: 0}
+  CharacterAnimator: {fileID: 4813891075893565704}
 --- !u!1 &5758118615166095205
 GameObject:
   m_ObjectHideFlags: 0
@@ -972,6 +972,12 @@ PrefabInstance:
 --- !u!4 &1454184087868851058 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3646260983830600923, guid: af543e13a9fc5d6429a08f70ca22c191,
+    type: 3}
+  m_PrefabInstance: {fileID: 2788946096991510441}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4813891075893565704 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7240156385146242721, guid: af543e13a9fc5d6429a08f70ca22c191,
     type: 3}
   m_PrefabInstance: {fileID: 2788946096991510441}
   m_PrefabAsset: {fileID: 0}
