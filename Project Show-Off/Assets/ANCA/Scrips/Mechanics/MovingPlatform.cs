@@ -7,6 +7,8 @@ public class MovingPlatform : MonoBehaviour
     private PlayerInput playerInput;
     private List<InputAction> abilityActions = new List<InputAction>();
 
+    public AudioSource source;
+    public AudioClip clip;
     // properties for moving platform mechanic
     [SerializeField] private List<Transform> platformWaypoints;
     [SerializeField] private List<GameObject> players;
@@ -33,6 +35,7 @@ public class MovingPlatform : MonoBehaviour
             var abilityAction = playerInput.actions["Ability"];
             abilityAction.performed += ctx => GoToNextWaypoint(playerInput);
             abilityActions.Add(abilityAction);
+            source.PlayOneShot(clip);
         }
     }
 
