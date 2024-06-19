@@ -1,7 +1,10 @@
 using UnityEngine;
-
+using UnityEngine.InputSystem;
 public class Furbie : Character
 {
+    
+    private InputAction abilityAction;
+    
     //properties for player jumping & dashing
     [Header("Dashing")]
     [SerializeField] private float dashForce;
@@ -11,6 +14,20 @@ public class Furbie : Character
     private float dashTimer;
     public AudioSource source;
     public AudioClip clip;
+
+    protected bool abilityTriggered;
+    
+    private static readonly int Ability = Animator.StringToHash("Ability");
+    
+    protected override void Awake(){
+        base.Awake();
+        abilityAction = playerInput.actions["Ability"];
+    }
+
+    private void OnEnable() => abilityAction.Enable();
+
+    private void OnDisable() => abilityAction.Disable();
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
@@ -41,6 +58,16 @@ public class Furbie : Character
             ///furbie jump sound here
             source.PlayOneShot(clip);
         }
+    }
+
+    protected override void UpdateInternalStates(){
+        base.UpdateInternalStates();
+        abilityTriggered = Mathf.Approximately(abilityAction.ReadValue<float>(), 1);
+    }
+
+    protected override void UpdateAnimationParameters(){
+        base.UpdateAnimationParameters();
+        CharacterAnimator.SetBool(Ability, abilityTriggered);
     }
 
     private Vector3 delayedForceToApply;

@@ -33,6 +33,17 @@ public class Character : PlayerMovement
     [Header("Gravity Properties")]
     [SerializeField] private float gravityScale = 1f;
 
+    [Header("Animation")]
+    public Animator CharacterAnimator;
+
+    protected bool isGrounded;
+    protected bool isMoving;
+    protected bool jumpTriggered;
+    
+    private static readonly int AnimFloat = Animator.StringToHash("Float");
+    private static readonly int AnimWalk = Animator.StringToHash("Walk");
+    private static readonly int AnimJump = Animator.StringToHash("Jump");
+
     protected virtual void Awake()
     {
         playerInput = GetComponentInParent<PlayerInput>();
@@ -70,12 +81,25 @@ public class Character : PlayerMovement
         {
             Debug.LogError("Rigidbody component not found on the parent gameObject");
         }
+
+        if (CharacterAnimator != null) return;
+        Animator animator = GetComponentInChildren<Animator>();
+        if (animator == null){
+            Debug.LogWarning("No animator found assigned or in children.");
+            return;
+        }
+        CharacterAnimator = animator;
     }
 
     protected override void FixedUpdate()
     {
         ApplyGravity();
-        Movement();
+        base.FixedUpdate();
+        UpdateInternalStates();
+    }
+
+    protected void Update(){
+        UpdateAnimationParameters();
     }
 
     //player movement
@@ -83,10 +107,8 @@ public class Character : PlayerMovement
     {
         rb.constraints = RigidbodyConstraints.FreezeRotation;
 
-        if (IsGrounded())
-        {
-            rb.velocity *= grVelocityAmplifier;
-        }
+        isGrounded = IsGrounded();
+        if (isGrounded) rb.velocity *= grVelocityAmplifier;
 
         Vector3 input = moveAction.ReadValue<Vector3>();
 
@@ -96,7 +118,8 @@ public class Character : PlayerMovement
         //moving in the forward direction of the player
         Vector3 movementDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        if (movementDir != Vector3.zero)
+        isMoving = movementDir != Vector3.zero;
+        if (isMoving)
             rb.transform.forward = Vector3.Slerp(rb.transform.forward, movementDir.normalized, Time.deltaTime * rotationSpeed); //rotate the player parent directly, not the individual character children
 
         Vector3 horizontalVelocity = movementDir * moveSpeed;
@@ -143,7 +166,15 @@ public class Character : PlayerMovement
         return Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, playerHeight * 0.5f + 0.1f, isGround);
     }
 
-    //
+    protected virtual void UpdateInternalStates(){
+        jumpTriggered = Mathf.Approximately(jumpAction.ReadValue<float>(), 1);
+    }
+
+    protected virtual void UpdateAnimationParameters(){
+        CharacterAnimator.SetBool(AnimFloat, !isGrounded);
+        CharacterAnimator.SetBool(AnimWalk, isMoving);
+        CharacterAnimator.SetBool(AnimJump, jumpTriggered);
+    }
 
 
     // Method to modify the speed

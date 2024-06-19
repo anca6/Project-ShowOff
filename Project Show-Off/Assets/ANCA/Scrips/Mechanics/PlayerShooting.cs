@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+[RequireComponent(typeof(Furbie))]
+public class PlayerShooting : MonoBehaviour{
 
-public class PlayerShooting : MonoBehaviour
-{
+    private Furbie furbieInstance;
+    
     //properties for the projectile mechanic
     private PlayerInput playerInput;
     private InputAction abilityAction;
@@ -19,6 +21,11 @@ public class PlayerShooting : MonoBehaviour
     //private PlayerControls playerControls;
     public AudioSource source;
     public AudioClip clip;
+
+    private void Start(){
+        furbieInstance = GetComponent<Furbie>();
+    }
+
     private void Awake()
     {
         //playerControls = new PlayerControls();
