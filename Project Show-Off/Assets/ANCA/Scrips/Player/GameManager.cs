@@ -31,6 +31,6 @@ public class GameManager : MonoBehaviour
 
     public int GetPlayer2CharacterIndex()
     {
-        return player2CharacterIndex;
+        return player2CharacterIndex; 
     }
 }

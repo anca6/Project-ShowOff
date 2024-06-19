@@ -15,7 +15,7 @@ public class Collectible : MonoBehaviour
         {
             Debug.Log("Trigger entered with player.");
 
-            Character character = other.GetComponent<Character>();
+            Character character = other.GetComponentInChildren<Character>();
             if (character != null)
             {
                 Debug.Log("Character component found.");
@@ -38,10 +38,7 @@ public class Collectible : MonoBehaviour
     }
 
     IEnumerator Pickup(Character character)
-    {
-      
-        
-
+    { 
         // Randomly choose to speed up or slow down
         float speedBuff = Random.value > 0.3f ? speedBuffValue : -speedBuffValue;
         
@@ -71,6 +68,7 @@ public class Collectible : MonoBehaviour
 
         // Remove the power-up object
         Destroy(gameObject);
+     
     }
 }
 
