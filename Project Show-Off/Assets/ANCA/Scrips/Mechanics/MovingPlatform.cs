@@ -35,7 +35,7 @@ public class MovingPlatform : MonoBehaviour
             var abilityAction = playerInput.actions["Ability"];
             abilityAction.performed += ctx => GoToNextWaypoint(playerInput);
             abilityActions.Add(abilityAction);
-            source.PlayOneShot(clip);
+            
         }
     }
 
@@ -88,6 +88,7 @@ public class MovingPlatform : MonoBehaviour
         elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
         transform.position = Vector3.Lerp(previousWaypoint.position, targetWaypoint.position, elapsedPercentage);
         transform.rotation = Quaternion.Lerp(previousWaypoint.rotation, targetWaypoint.rotation, elapsedPercentage);
+        source.PlayOneShot(clip);
     }
 
     private void GoToNextWaypoint(PlayerInput input)
