@@ -29,6 +29,9 @@ public class Character : PlayerMovement
     [SerializeField] private float jumpCooldown;
     protected bool canJump = true;
 
+    public AudioSource source;
+    public AudioClip clip;
+
     // Custom gravity properties
     [Header("Gravity Properties")]
     [SerializeField] private float gravityScale = 1f;
@@ -151,7 +154,7 @@ public class Character : PlayerMovement
 
 
             ///jump sound here
-            //FindObjectOfType<AudioManager>().Play("jump");
+            source.PlayOneShot(clip);
         }
     }
 
