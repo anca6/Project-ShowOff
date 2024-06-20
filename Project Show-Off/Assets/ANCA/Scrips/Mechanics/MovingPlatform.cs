@@ -4,10 +4,15 @@ using UnityEngine.InputSystem;
 
 public class MovingPlatform : MonoBehaviour
 {
+    [Header("Platform properties")]
     [SerializeField] private List<Transform> platformWaypoints;
     [SerializeField] private List<GameObject> players;
     [SerializeField] private float movingSpeed;
     [SerializeField] private int allowedCharacter;
+
+    [Header("Sound")]
+    [SerializeField] private AudioSource source;
+    [SerializeField] private AudioClip clip;
 
     private int targetWaypointIndex;
     private Transform targetWaypoint;
@@ -80,6 +85,8 @@ public class MovingPlatform : MonoBehaviour
         elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
         transform.position = Vector3.Lerp(previousWaypoint.position, targetWaypoint.position, elapsedPercentage);
         transform.rotation = Quaternion.Lerp(previousWaypoint.rotation, targetWaypoint.rotation, elapsedPercentage);
+
+        source.PlayOneShot(clip);
     }
 
     private void TryGoToNextWaypoint(PlayerInput input)

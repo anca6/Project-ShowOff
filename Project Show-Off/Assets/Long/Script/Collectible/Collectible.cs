@@ -1,13 +1,21 @@
 using System.Collections;
+using UnityEditor.Search;
 using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    public float speedBuffValue = 1.0f; // Fixed speed buff/debuff value
-    public GameObject pickupEffectspeedup;
-    public GameObject pickupEffectslowdown;
-    public float duration = 4f;
-    public float pickupCooldown = 8f;
+    [Header("Collectible properties")]
+    [SerializeField] private float speedBuffValue = 1.0f; // Fixed speed buff/debuff value
+    [SerializeField] private float duration = 4f;
+    [SerializeField] private float pickupCooldown = 8f;
+
+    [Header("Pickup Effects")]
+    [SerializeField] private GameObject pickupEffectspeedup;
+    [SerializeField] private GameObject pickupEffectslowdown;
+
+    [Header("Sound")]
+    [SerializeField] private AudioSource source;
+    [SerializeField] private AudioClip clip;
 
     void OnTriggerEnter(Collider other)
     {
@@ -65,6 +73,9 @@ public class Collectible : MonoBehaviour
 
         // Set the character to be able to collect again
        character.SetCollectState(true);
+
+        //play pickup sound
+        source.PlayOneShot(clip);
 
         // Remove the power-up object
         Destroy(gameObject);
