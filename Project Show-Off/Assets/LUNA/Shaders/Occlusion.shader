@@ -13,8 +13,6 @@ Shader "Luna/Occlusion"{
         LOD 100
 
         Pass{
-            Cull Off
-            ZTest Off
             CGPROGRAM
             
             #pragma vertex Vertex
