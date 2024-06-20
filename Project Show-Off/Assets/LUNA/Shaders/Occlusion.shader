@@ -8,10 +8,13 @@ Shader "Luna/Occlusion"{
     SubShader{
         Tags{
             "RenderType" = "Opaque"
+            "Queue" = "Overlay"
         }
         LOD 100
 
         Pass{
+            Cull Off
+            ZTest Off
             CGPROGRAM
             
             #pragma vertex Vertex
@@ -54,6 +57,7 @@ Shader "Luna/Occlusion"{
             fixed4 Fragment(v2f input) : SV_Target{
                 // Sample the texture
                 fixed4 colour = tex2D(_MainTexture, input.uv);
+                colour *= _Colour;
                 // Apply fog
                 UNITY_APPLY_FOG(input.fogCoord, colour);
                 return colour;
