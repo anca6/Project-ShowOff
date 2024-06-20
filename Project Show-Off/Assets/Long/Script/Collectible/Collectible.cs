@@ -9,6 +9,8 @@ public class Collectible : MonoBehaviour
     public float duration = 4f;
     public float pickupCooldown = 8f;
 
+    public AudioSource source;
+    public AudioClip clip;
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -40,7 +42,7 @@ public class Collectible : MonoBehaviour
     IEnumerator Pickup(Character character)
     {
       
-        
+        source.PlayOneShot(clip);
 
         // Randomly choose to speed up or slow down
         float speedBuff = Random.value > 0.3f ? speedBuffValue : -speedBuffValue;
