@@ -4,12 +4,15 @@ using UnityEngine.InputSystem;
 
 public class MovingPlatform : MonoBehaviour
 {
+    [Header("Platform properties")]
     [SerializeField] private List<Transform> platformWaypoints;
     [SerializeField] private List<GameObject> players;
     [SerializeField] private float movingSpeed;
     [SerializeField] private int allowedCharacter;
 
-    [SerializeField] private List<InputAction> actionList;
+    [Header("Sound")]
+    [SerializeField] private AudioSource source;
+    [SerializeField] private AudioClip clip;
 
     private int targetWaypointIndex;
     private Transform targetWaypoint;
@@ -19,36 +22,35 @@ public class MovingPlatform : MonoBehaviour
     private bool onPlatform;
     private PlayerInput currentPlayerInput;
 
+    private Dictionary<PlayerInput, InputAction> playerInputActions;
+
     private void Awake()
     {
+        playerInputActions = new Dictionary<PlayerInput, InputAction>();
+
         foreach (GameObject player in players)
         {
             var playerInput = player.GetComponent<PlayerInput>();
             var abilityAction = playerInput.actions["Ability"];
+
             abilityAction.performed += ctx => TryGoToNextWaypoint(playerInput);
-            actionList.Add(abilityAction);
+            playerInputActions.Add(playerInput, abilityAction);
         }
     }
 
     private void OnEnable()
     {
-        if (actionList != null)
+        foreach (var entry in playerInputActions)
         {
-            foreach (InputAction action in actionList)
-            {
-                action.Enable();
-            }
+            entry.Value.Enable();
         }
     }
 
     private void OnDisable()
     {
-        if (actionList != null)
+        foreach (var entry in playerInputActions)
         {
-            foreach (InputAction action in actionList)
-            {
-                action.Disable();
-            }
+            entry.Value.Disable();
         }
     }
 
@@ -67,10 +69,12 @@ public class MovingPlatform : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (onPlatform && IsAllowedCharacter(currentPlayerInput))
-        {
-            MovePlatform();
-        }
+        /* if (onPlatform && IsAllowedCharacter(currentPlayerInput))
+         {
+             MovePlatform();
+         }*/
+        GamepadInput();
+        MovePlatform();
     }
 
     private void MovePlatform()
@@ -81,6 +85,8 @@ public class MovingPlatform : MonoBehaviour
         elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
         transform.position = Vector3.Lerp(previousWaypoint.position, targetWaypoint.position, elapsedPercentage);
         transform.rotation = Quaternion.Lerp(previousWaypoint.rotation, targetWaypoint.rotation, elapsedPercentage);
+
+        source.PlayOneShot(clip);
     }
 
     private void TryGoToNextWaypoint(PlayerInput input)
@@ -110,6 +116,8 @@ public class MovingPlatform : MonoBehaviour
 
         float distanceToWaypoint = Vector3.Distance(previousWaypoint.position, targetWaypoint.position);
         timeToWaypoint = distanceToWaypoint / movingSpeed;
+
+        Debug.Log("Moving to waypoint: " + targetWaypointIndex);
     }
 
     private bool IsAllowedCharacter(PlayerInput input)
@@ -169,5 +177,22 @@ public class MovingPlatform : MonoBehaviour
             nextWaypointIndex = 0;
         }
         return nextWaypointIndex;
+    }
+
+    private void GamepadInput()
+    {
+        foreach (var entry in playerInputActions)
+        {
+            var gamepad = entry.Key.devices[0] as Gamepad;
+            if (gamepad != null && gamepad.buttonSouth.wasPressedThisFrame)
+            {
+                // Check if the player associated with this gamepad is on the platform and allowed character
+                if (entry.Key == currentPlayerInput && IsAllowedCharacter(currentPlayerInput))
+                {
+                    Debug.Log("South button pressed on gamepad for player: " + entry.Key.gameObject.name);
+                    TryGoToNextWaypoint(entry.Key);
+                }
+            }
+        }
     }
 }
