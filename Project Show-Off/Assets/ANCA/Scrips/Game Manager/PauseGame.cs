@@ -9,5 +9,12 @@ public class PauseGame : MonoBehaviour
     public void Pause()
     {
         pausePanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void Continue()
+    {
+        pausePanel.SetActive(false);
+        Time.timeScale = 1f;
     }
 }
