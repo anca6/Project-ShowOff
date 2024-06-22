@@ -21,15 +21,13 @@ public class BackgroundSelect : MonoBehaviour
         // Loop through all backgrounds
         for (int i = 0; i < backgrounds.Length; i++)
         {
-            if (i == randomIndex)
+            if (backgrounds[i] != null)
             {
-                // Enable the randomly selected background
-                backgrounds[i].SetActive(true);
+                backgrounds[i].SetActive(i == randomIndex);
             }
             else
             {
-                // Disable all other backgrounds
-                backgrounds[i].SetActive(false);
+                Debug.LogWarning($"Background at index {i} is not assigned.");
             }
         }
     }
