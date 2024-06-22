@@ -145,24 +145,25 @@ public class MovingPlatform : MonoBehaviour
         return currentCharacterIndex == allowedCharacter;
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            other.transform.SetParent(transform);
-            currentPlayerInput = other.gameObject.GetComponent<PlayerInput>();
+            Debug.Log("should be on platform");
+            collision.transform.SetParent(transform);
+            currentPlayerInput = collision.gameObject.GetComponent<PlayerInput>();
             onPlatform = currentPlayerInput != null && IsAllowedCharacter(currentPlayerInput);
         }
     }
 
-    private void OnCollisionExit(Collision other)
+    private void OnCollisionExit(Collision collision)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            other.transform.SetParent(null);
+            collision.transform.SetParent(null);
             if (currentPlayerInput != null)
             {
-                if (currentPlayerInput == other.gameObject.GetComponent<PlayerInput>())
+                if (currentPlayerInput == collision.gameObject.GetComponent<PlayerInput>())
                 {
                     currentPlayerInput = null;
                     onPlatform = false;
