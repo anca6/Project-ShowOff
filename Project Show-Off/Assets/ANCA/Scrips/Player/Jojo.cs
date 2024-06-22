@@ -10,7 +10,8 @@ public class Jojo : Character
     [SerializeField] private float explosionDelay = 0.5f;
 
     bool StandupFinished = true;
-
+    public AudioClip clip2;
+    
     protected override void Start()
     {
         rb = GetComponentInParent<Rigidbody>();
@@ -111,6 +112,7 @@ public class Jojo : Character
 
     private IEnumerator DelayedExplosion(GameObject breakableObject)
     {
+        source.PlayOneShot(clip2);
         yield return new WaitForSeconds(explosionDelay);
         TriggerExplosion(transform.position);
         Destroy(breakableObject);
