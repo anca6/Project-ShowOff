@@ -27,10 +27,11 @@ public class PlayerController : MonoBehaviour
         var gamepad = playerInput.devices[0] as Gamepad;
         if (gamepad != null)
         {
-            return;
-            /*// Process gamepad input here
-            Vector3 move = gamepad.leftStick.ReadValue();
-            // Add gamepad-specific processing logic here*/
+            Debug.Log($"{gameObject.name} Gamepad Input Detected");
+            if (gamepad.buttonSouth.wasPressedThisFrame)
+            {
+                //Debug.Log($"{gameObject.name} Ability action triggered");
+            }
         }
     }
     private void KeyboardInput()
@@ -38,7 +39,12 @@ public class PlayerController : MonoBehaviour
         var keyboard = Keyboard.current;
         if (keyboard != null)
         {
-            return;
+            Debug.Log($"{gameObject.name} Keyboard Input Detected");
+            if (keyboard.spaceKey.wasPressedThisFrame)
+            {
+                Debug.Log($"{gameObject.name} Ability action triggered");
+                // Ability action logic here
+            }
         }
     }
 }

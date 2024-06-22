@@ -1946,7 +1946,7 @@ PrefabInstance:
     - target: {fileID: 1804700700847527998, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3124358522683529672, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
@@ -1971,12 +1971,12 @@ PrefabInstance:
     - target: {fileID: 3187326017898316113, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_DefaultActionMap
-      value: fe5f5ab1-04a6-4f01-a041-c68146b973ba
+      value: 3b588af6-33ad-42f7-beb0-64d2aa9481e4
       objectReference: {fileID: 0}
     - target: {fileID: 3187326017898316113, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_DefaultControlScheme
-      value: Keyboard
+      value: Gamepad
       objectReference: {fileID: 0}
     - target: {fileID: 3187326017898316113, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
@@ -3593,7 +3593,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 235275275}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2797855, y: -1e-45, z: -0, w: 0.96006256}
+  m_LocalRotation: {x: 0.2797855, y: 3e-45, z: -1e-45, w: 0.96006256}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4100,10 +4100,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedBuffValue: 1
-  pickupEffectspeedup: {fileID: 0}
-  pickupEffectslowdown: {fileID: 0}
   duration: 4
   pickupCooldown: 8
+  pickupEffectspeedup: {fileID: 0}
+  pickupEffectslowdown: {fileID: 0}
+  source: {fileID: 0}
+  clip: {fileID: 0}
 --- !u!65 &296640048
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7129,7 +7131,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlatform: {fileID: 0}
-  isHit: 0
 --- !u!1 &505649313
 GameObject:
   m_ObjectHideFlags: 0
@@ -16852,7 +16853,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1288712955}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2797855, y: -4e-45, z: 1e-45, w: 0.96006256}
+  m_LocalRotation: {x: 0.2797855, y: 4e-45, z: -1e-45, w: 0.96006256}
   m_LocalPosition: {x: 58.878918, y: 8.83, z: 108.71}
   m_LocalScale: {x: 1.0744894, y: 1.0744894, z: 1.0744894}
   m_ConstrainProportionsScale: 1
@@ -17000,7 +17001,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 767
+    m_Bits: 1791
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -20995,7 +20996,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634561582}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2797855, y: 1e-45, z: -0, w: 0.96006256}
+  m_LocalRotation: {x: 0.2797855, y: -3e-45, z: 1e-45, w: 0.96006256}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -23979,7 +23980,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1925730614}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2797855, y: -4e-45, z: 1e-45, w: 0.96006256}
+  m_LocalRotation: {x: 0.2797855, y: 4e-45, z: -1e-45, w: 0.96006256}
   m_LocalPosition: {x: 59.860912, y: 9.826, z: 109.18}
   m_LocalScale: {x: 1.0744894, y: 1.0744894, z: 1.0744894}
   m_ConstrainProportionsScale: 1
@@ -24111,7 +24112,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 511
+    m_Bits: 1535
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -24911,7 +24912,7 @@ PrefabInstance:
     - target: {fileID: 1804700700847527998, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3187326017898316113, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
@@ -24921,12 +24922,12 @@ PrefabInstance:
     - target: {fileID: 3187326017898316113, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_DefaultActionMap
-      value: 90d16388-db65-430c-b533-e794ff89308c
+      value: 3b588af6-33ad-42f7-beb0-64d2aa9481e4
       objectReference: {fileID: 0}
     - target: {fileID: 3187326017898316113, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}
       propertyPath: m_DefaultControlScheme
-      value: Keyboard
+      value: Gamepad
       objectReference: {fileID: 0}
     - target: {fileID: 3187326017898316113, guid: f8d32847c8e162e41954e8e64bb17e16,
         type: 3}

@@ -53,7 +53,7 @@ public class TargetPlatform : MonoBehaviour
     }
 
     //uncheck when we add the platform model
-  /*  private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
@@ -67,5 +67,5 @@ public class TargetPlatform : MonoBehaviour
         {
             collision.transform.SetParent(null);
         }
-    }*/
+    }
 }

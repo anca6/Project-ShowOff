@@ -4,58 +4,56 @@ using UnityEngine.InputSystem;
 
 public class MovingPlatform : MonoBehaviour
 {
-    private PlayerInput playerInput;
-    private List<InputAction> abilityActions = new List<InputAction>();
-
-    public AudioSource source;
-    public AudioClip clip;
-    // properties for moving platform mechanic
+    [Header("Platform properties")]
     [SerializeField] private List<Transform> platformWaypoints;
     [SerializeField] private List<GameObject> players;
     [SerializeField] private float movingSpeed;
     [SerializeField] private int allowedCharacter;
 
-    private int targetWaypointIndex;
+    [Header("Sound")]
+    [SerializeField] private AudioSource source;
+    [SerializeField] private AudioClip clip;
 
+    private int targetWaypointIndex;
     private Transform targetWaypoint;
     private Transform previousWaypoint;
-
     private float timeToWaypoint;
     private float elapsedTime;
-
     private bool onPlatform;
-
     private PlayerInput currentPlayerInput;
+
+    private Dictionary<PlayerInput, InputAction> playerInputActions;
 
     private void Awake()
     {
+        playerInputActions = new Dictionary<PlayerInput, InputAction>();
+
         foreach (GameObject player in players)
         {
-            playerInput = player.GetComponentInParent<PlayerInput>();
+            var playerInput = player.GetComponent<PlayerInput>();
             var abilityAction = playerInput.actions["Ability"];
-            abilityAction.performed += ctx => GoToNextWaypoint(playerInput);
-            abilityActions.Add(abilityAction);
-            
+
+            abilityAction.performed += ctx => TryGoToNextWaypoint(playerInput);
+            playerInputActions.Add(playerInput, abilityAction);
         }
     }
 
     private void OnEnable()
     {
-        foreach (var action in abilityActions)
+        foreach (var entry in playerInputActions)
         {
-            action.Enable();
+            entry.Value.Enable();
         }
     }
 
     private void OnDisable()
     {
-        foreach (var action in abilityActions)
+        foreach (var entry in playerInputActions)
         {
-            action.Disable();
+            entry.Value.Disable();
         }
     }
 
-    // Setting up the first waypoint target in the list
     private void Start()
     {
         if (platformWaypoints == null || platformWaypoints.Count == 0)
@@ -71,44 +69,49 @@ public class MovingPlatform : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (onPlatform)
-        {
-            MovePlatform();
-        }
+        /* if (onPlatform && IsAllowedCharacter(currentPlayerInput))
+         {
+             MovePlatform();
+         }*/
+        GamepadInput();
+        MovePlatform();
     }
 
     private void MovePlatform()
     {
-        if (!IsAllowedCharacter(currentPlayerInput)) return;
-
         elapsedTime += Time.deltaTime;
 
-        // Smoothly moving and rotating to the target waypoint
         float elapsedPercentage = elapsedTime / timeToWaypoint;
         elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
+
+        transform.SetPositionAndRotation(Vector3.Lerp(previousWaypoint.position, targetWaypoint.position, elapsedPercentage),
+            Quaternion.Lerp(previousWaypoint.rotation, targetWaypoint.rotation, elapsedPercentage));
+/*
         transform.position = Vector3.Lerp(previousWaypoint.position, targetWaypoint.position, elapsedPercentage);
-        transform.rotation = Quaternion.Lerp(previousWaypoint.rotation, targetWaypoint.rotation, elapsedPercentage);
+        transform.rotation = Quaternion.Lerp(previousWaypoint.rotation, targetWaypoint.rotation, elapsedPercentage);*/
+
         source.PlayOneShot(clip);
     }
 
-    private void GoToNextWaypoint(PlayerInput input)
+    private void TryGoToNextWaypoint(PlayerInput input)
     {
         if (!onPlatform)
         {
-            Debug.Log("not on platform");
-            return;
-        }
-        if (currentPlayerInput != input)
-        {
-            Debug.Log("no current player input");
-            return;
-        }
-        if (!IsAllowedCharacter(input))
-        {
-            Debug.Log("not allowed character");
+            Debug.Log("Not on platform");
             return;
         }
 
+        if (!IsAllowedCharacter(input))
+        {
+            Debug.Log("Not allowed character");
+            return;
+        }
+
+        GoToNextWaypoint();
+    }
+
+    private void GoToNextWaypoint()
+    {
         previousWaypoint = GetWaypointIndex(targetWaypointIndex);
         targetWaypointIndex = GetNextWaypointIndex(targetWaypointIndex);
         targetWaypoint = GetWaypointIndex(targetWaypointIndex);
@@ -117,6 +120,8 @@ public class MovingPlatform : MonoBehaviour
 
         float distanceToWaypoint = Vector3.Distance(previousWaypoint.position, targetWaypoint.position);
         timeToWaypoint = distanceToWaypoint / movingSpeed;
+
+        Debug.Log("Moving to waypoint: " + targetWaypointIndex);
     }
 
     private bool IsAllowedCharacter(PlayerInput input)
@@ -126,13 +131,13 @@ public class MovingPlatform : MonoBehaviour
         int player1CharacterIndex = GameManager.instance.GetPlayer1CharacterIndex();
         int player2CharacterIndex = GameManager.instance.GetPlayer2CharacterIndex();
 
-        // Get the index of the current player character
         int currentCharacterIndex = -1;
         for (int i = 0; i < players.Count; i++)
         {
-            if (players[i].GetComponentInParent<PlayerInput>() == input)
+            PlayerInput playerInput = players[i].GetComponent<PlayerInput>();
+            if (playerInput == input)
             {
-                currentCharacterIndex = i == 0 ? player1CharacterIndex : player2CharacterIndex;
+                currentCharacterIndex = (i == 0) ? player1CharacterIndex : player2CharacterIndex;
                 break;
             }
         }
@@ -140,23 +145,30 @@ public class MovingPlatform : MonoBehaviour
         return currentCharacterIndex == allowedCharacter;
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            other.transform.SetParent(transform);
-            onPlatform = true;
-            currentPlayerInput = other.gameObject.GetComponentInParent<PlayerInput>();
+            Debug.Log("should be on platform");
+            collision.transform.SetParent(transform);
+            currentPlayerInput = collision.gameObject.GetComponent<PlayerInput>();
+            onPlatform = currentPlayerInput != null && IsAllowedCharacter(currentPlayerInput);
         }
     }
 
-    private void OnCollisionExit(Collision other)
+    private void OnCollisionExit(Collision collision)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            onPlatform = false;
-            other.transform.SetParent(null);
-            currentPlayerInput = null;
+            collision.transform.SetParent(null);
+            if (currentPlayerInput != null)
+            {
+                if (currentPlayerInput == collision.gameObject.GetComponent<PlayerInput>())
+                {
+                    currentPlayerInput = null;
+                    onPlatform = false;
+                }
+            }
         }
     }
 
@@ -173,5 +185,29 @@ public class MovingPlatform : MonoBehaviour
             nextWaypointIndex = 0;
         }
         return nextWaypointIndex;
+    }
+
+    private void GamepadInput()
+    {
+        foreach (var entry in playerInputActions)
+        {
+            if (entry.Key.devices.Count > 0)
+            {
+                var gamepad = entry.Key.devices[0] as Gamepad;
+                if (gamepad != null && gamepad.buttonSouth.wasPressedThisFrame)
+                {
+                    // Check if the player associated with this gamepad is on the platform and allowed character
+                    if (entry.Key == currentPlayerInput && IsAllowedCharacter(currentPlayerInput))
+                    {
+                        Debug.Log("South button pressed on gamepad for player: " + entry.Key.gameObject.name);
+                        TryGoToNextWaypoint(entry.Key);
+                    }
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"No devices found for player: {entry.Key.gameObject.name}");
+            }
+        }
     }
 }

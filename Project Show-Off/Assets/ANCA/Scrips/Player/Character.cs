@@ -14,11 +14,14 @@ public class Character : PlayerMovement
     //properties for player movement
     [Header("Movement")]
     [SerializeField] protected float moveSpeed = 5f;
-
     [SerializeField] protected float acceleration = 10f;
     [SerializeField] protected float rotationSpeed = 5f;
     [SerializeField] protected Transform orientation;
     [SerializeField] protected float grVelocityAmplifier; //ground velocity amplifier
+
+    private float originalMoveSpeed;
+    private float originalAcceleration;
+    private float originalRotationSpeed;
 
     //properties for player jumping
     [Header("Jump Properties")]
@@ -53,6 +56,10 @@ public class Character : PlayerMovement
         lookAction = playerInput.actions["Look"];
 
         jumpAction.performed += ctx => Jump();
+
+        originalMoveSpeed = moveSpeed;
+        originalAcceleration = acceleration;
+        originalRotationSpeed = rotationSpeed;
     }
 
     private void OnEnable()
@@ -174,18 +181,29 @@ public class Character : PlayerMovement
 
 
     // Method to modify the speed
-    public void ModifySpeed(float speedModifier)
+    public void IncreaseSpeed(float speedModifier)
     {
         moveSpeed += speedModifier;
     }
 
     // Method to reset the speed
-    public void ResetSpeed(float speedModifier)
+    public void DecreaseSpeed(float speedModifier)
     {
         moveSpeed -= speedModifier;
     }
+    public void SetSpeed(float speed)
+    {
+        moveSpeed = speed;
+        acceleration = 0; 
+    }
+    public void ResetSpeed()
+    {
+        moveSpeed = originalMoveSpeed;
+        acceleration = originalAcceleration;
+        rotationSpeed = originalRotationSpeed;
+    }
 
-    // Method to check if the player can collect
+     // Method to check if the player can collect
     public bool CanCollect()
     {
         return canCollect;
@@ -196,5 +214,4 @@ public class Character : PlayerMovement
     {
         canCollect = state;
     }
-
 }

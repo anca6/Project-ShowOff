@@ -1,23 +1,29 @@
 using System.Collections;
+using UnityEditor.Search;
 using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    public float speedBuffValue = 1.0f; // Fixed speed buff/debuff value
-    public GameObject pickupEffectspeedup;
-    public GameObject pickupEffectslowdown;
-    public float duration = 4f;
-    public float pickupCooldown = 8f;
+    [Header("Collectible properties")]
+    [SerializeField] private float speedBuffValue = 1.0f; // Fixed speed buff/debuff value
+    [SerializeField] private float duration = 4f;
+    [SerializeField] private float pickupCooldown = 8f;
 
-    public AudioSource source;
-    public AudioClip clip;
+    [Header("Pickup Effects")]
+    [SerializeField] private GameObject pickupEffectspeedup;
+    [SerializeField] private GameObject pickupEffectslowdown;
+
+    [Header("Sound")]
+    [SerializeField] private AudioSource source;
+    [SerializeField] private AudioClip clip;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             Debug.Log("Trigger entered with player.");
 
-            Character character = other.GetComponent<Character>();
+            Character character = other.GetComponentInChildren<Character>();
             if (character != null)
             {
                 Debug.Log("Character component found.");
@@ -40,15 +46,12 @@ public class Collectible : MonoBehaviour
     }
 
     IEnumerator Pickup(Character character)
-    {
-      
-        source.PlayOneShot(clip);
-
+    { 
         // Randomly choose to speed up or slow down
         float speedBuff = Random.value > 0.3f ? speedBuffValue : -speedBuffValue;
         
         // Apply effect to the player
-       character.ModifySpeed(speedBuff);
+       character.IncreaseSpeed(speedBuff);
         if(speedBuff > 0.0f) 
         { Instantiate(pickupEffectspeedup, transform.position, transform.rotation); }
         else { Instantiate(pickupEffectslowdown, transform.position, transform.rotation); }
@@ -63,7 +66,7 @@ public class Collectible : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         // Reverse the effect on the player
-       character.ResetSpeed(speedBuff);
+       character.DecreaseSpeed(speedBuff);
 
         // Wait for the cooldown period before allowing the player to collect another collectible
         yield return new WaitForSeconds(pickupCooldown - duration);
@@ -71,8 +74,12 @@ public class Collectible : MonoBehaviour
         // Set the character to be able to collect again
        character.SetCollectState(true);
 
+        //play pickup sound
+        source.PlayOneShot(clip);
+
         // Remove the power-up object
         Destroy(gameObject);
+     
     }
 }
 

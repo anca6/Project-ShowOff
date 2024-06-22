@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ANCA/Character Selection.unity
-    guid: ce19e6a7705f6054c923ede1e4fe4112
+    path: Assets/STIJN/Character Selection Stijn.unity
+    guid: d9ebdb533b0ee4247bdd24cfd3b31828
   - enabled: 1
     path: Assets/ANCA/NEW_LongsLevel.unity
     guid: ca57ae409fd299e44a0fd2c300f04180
