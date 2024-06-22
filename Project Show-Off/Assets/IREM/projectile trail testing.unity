@@ -386,6 +386,51 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1134390742653671664, guid: 4a3bd2401d47b5040a4bb0362f48a3db,
+        type: 3}
+      propertyPath: RotationModule.x.scalar
+      value: 0.7853981
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134390742653671664, guid: 4a3bd2401d47b5040a4bb0362f48a3db,
+        type: 3}
+      propertyPath: RotationModule.y.scalar
+      value: 0.7853981
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134390742653671664, guid: 4a3bd2401d47b5040a4bb0362f48a3db,
+        type: 3}
+      propertyPath: RotationModule.curve.scalar
+      value: 1.2217305
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134390742653671664, guid: 4a3bd2401d47b5040a4bb0362f48a3db,
+        type: 3}
+      propertyPath: RotationModule.separateAxes
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134390742653671664, guid: 4a3bd2401d47b5040a4bb0362f48a3db,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134390742653671664, guid: 4a3bd2401d47b5040a4bb0362f48a3db,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134390742653671664, guid: 4a3bd2401d47b5040a4bb0362f48a3db,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime1
+      value: 40169
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134390742653671664, guid: 4a3bd2401d47b5040a4bb0362f48a3db,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key0.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3243009395930828170, guid: 4a3bd2401d47b5040a4bb0362f48a3db,
+        type: 3}
+      propertyPath: m_IsGlobal
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3945833144242561641, guid: 4a3bd2401d47b5040a4bb0362f48a3db,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -440,6 +485,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6688918104538800917, guid: 4a3bd2401d47b5040a4bb0362f48a3db,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6688918104538800917, guid: 4a3bd2401d47b5040a4bb0362f48a3db,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
