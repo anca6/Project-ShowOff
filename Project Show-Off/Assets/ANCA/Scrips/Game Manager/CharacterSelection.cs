@@ -26,6 +26,9 @@ public class CharacterSelection : MonoBehaviour
     private int player1Selection = 0; // Default to the first option for Player 1
     private int player2Selection = 0; // Default to the first option for Player 2
 
+    private bool player1Confirmed = false; //bool for player1 selection confirmation
+    private bool player2Confirmed = false; //bool for player2 selection confirmation
+
     private Gamepad gamepad1;
     private Gamepad gamepad2;
 
@@ -52,6 +55,7 @@ public class CharacterSelection : MonoBehaviour
     {
         HandlePlayer1Input();
         HandlePlayer2Input();
+        CheckStartGame();
     }
 
     private void HandlePlayer1Input()
@@ -61,12 +65,16 @@ public class CharacterSelection : MonoBehaviour
             if (gamepad1.dpad.up.wasPressedThisFrame)
             {
                 MoveSelectionUp(ref player1Selection, player1Images.Length);
+                player1Confirmed = false;
+                UpdateStartButtonState();
             }
             else if (gamepad1.dpad.down.wasPressedThisFrame)
             {
                 MoveSelectionDown(ref player1Selection, player1Images.Length);
+                player1Confirmed = false;
+                UpdateStartButtonState();
             }
-            else if (gamepad1.selectButton.wasPressedThisFrame)
+            else if (gamepad1.buttonSouth.wasPressedThisFrame) //ability button to select the character
             {
                 SelectCharacterP1(player1Selection);
             }
@@ -80,12 +88,16 @@ public class CharacterSelection : MonoBehaviour
             if (gamepad2.dpad.up.wasPressedThisFrame)
             {
                 MoveSelectionUp(ref player2Selection, player2Images.Length);
+                player2Confirmed = false;
+                UpdateStartButtonState();
             }
             else if (gamepad2.dpad.down.wasPressedThisFrame)
             {
                 MoveSelectionDown(ref player2Selection, player2Images.Length);
+                player2Confirmed = false;
+                UpdateStartButtonState();
             }
-            else if (gamepad2.selectButton.wasPressedThisFrame)
+            else if (gamepad2.buttonSouth.wasPressedThisFrame) //ability button to select the character
             {
                 SelectCharacterP2(player2Selection);
             }
@@ -134,7 +146,7 @@ public class CharacterSelection : MonoBehaviour
     {
         if (startButton != null)
         {
-            if (player1Selection >= 0 && player2Selection >= 0)
+            if (player1Confirmed && player2Confirmed)
             {
                 startButton.interactable = true;
                 if (feedbackText != null)
@@ -156,6 +168,7 @@ public class CharacterSelection : MonoBehaviour
     public void SelectCharacterP1(int index)
     {
         player1Selection = index;
+        player1Confirmed = true;
         UpdateSelectionImages(player1Images, player1Selection, player1HoverImages, player1CharacterImages);
         UpdateStartButtonState();
 
@@ -173,6 +186,7 @@ public class CharacterSelection : MonoBehaviour
     public void SelectCharacterP2(int index)
     {
         player2Selection = index;
+        player2Confirmed = true;
         UpdateSelectionImages(player2Images, player2Selection, player2HoverImages, player2CharacterImages);
         UpdateStartButtonState();
 
@@ -186,10 +200,20 @@ public class CharacterSelection : MonoBehaviour
             HighlightStartbuttonImage.SetActive(true);
         }
     }
+    private void CheckStartGame()
+    {
+        //jump button to start the game
+        if ((gamepad1 != null && gamepad1.buttonNorth.wasPressedThisFrame) ||
+            (gamepad2 != null && gamepad2.buttonNorth.wasPressedThisFrame))
+        {
+            StartGame();
+        }
+    }
+
 
     public void StartGame()
     {
-        if (player1Selection >= 0 && player2Selection >= 0)
+        if (player1Confirmed && player2Confirmed)
         {
             if (GameManager.instance != null)
             {
