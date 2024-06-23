@@ -31,7 +31,7 @@ public class Character : PlayerMovement
 
     public AudioSource source;
     public AudioClip clip;
-    
+
     // Custom gravity properties
     [Header("Gravity Properties")]
     [SerializeField] private float gravityScale = 1f;
