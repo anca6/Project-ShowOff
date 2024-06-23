@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class CharacterSelection : MonoBehaviour
 {
@@ -23,6 +24,13 @@ public class CharacterSelection : MonoBehaviour
 
     private int player1Selection = 0; // Default to the first option for Player 1
     private int player2Selection = 0; // Default to the first option for Player 2
+
+    private InputAction inputActions;
+
+    private void Awake()
+    {
+        inputActions = new InputAction();
+    }
 
     private void Start()
     {
