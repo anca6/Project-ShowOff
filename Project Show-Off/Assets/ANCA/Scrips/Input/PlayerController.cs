@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log($"{gameObject.name} Gamepad Input Detected");
             if (gamepad.buttonSouth.wasPressedThisFrame)
             {
-                //Debug.Log($"{gameObject.name} Ability action triggered");
+                Debug.Log($"{gameObject.name} Ability action triggered");
             }
         }
     }
