@@ -83,8 +83,12 @@ public class MovingPlatform : MonoBehaviour
 
         float elapsedPercentage = elapsedTime / timeToWaypoint;
         elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
+
+        transform.SetPositionAndRotation(Vector3.Lerp(previousWaypoint.position, targetWaypoint.position, elapsedPercentage),
+            Quaternion.Lerp(previousWaypoint.rotation, targetWaypoint.rotation, elapsedPercentage));
+/*
         transform.position = Vector3.Lerp(previousWaypoint.position, targetWaypoint.position, elapsedPercentage);
-        transform.rotation = Quaternion.Lerp(previousWaypoint.rotation, targetWaypoint.rotation, elapsedPercentage);
+        transform.rotation = Quaternion.Lerp(previousWaypoint.rotation, targetWaypoint.rotation, elapsedPercentage);*/
 
         source.PlayOneShot(clip);
     }
@@ -141,25 +145,29 @@ public class MovingPlatform : MonoBehaviour
         return currentCharacterIndex == allowedCharacter;
     }
 
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            other.transform.SetParent(transform);
-            currentPlayerInput = other.gameObject.GetComponent<PlayerInput>();
-            onPlatform = IsAllowedCharacter(currentPlayerInput);
+            Debug.Log("should be on platform");
+            collision.transform.SetParent(transform);
+            currentPlayerInput = collision.gameObject.GetComponent<PlayerInput>();
+            onPlatform = currentPlayerInput != null && IsAllowedCharacter(currentPlayerInput);
         }
     }
 
-    private void OnCollisionExit(Collision other)
+    private void OnCollisionExit(Collision collision)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            other.transform.SetParent(null);
-            if (currentPlayerInput == other.gameObject.GetComponent<PlayerInput>())
+            collision.transform.SetParent(null);
+            if (currentPlayerInput != null)
             {
-                currentPlayerInput = null;
-                onPlatform = false;
+                if (currentPlayerInput == collision.gameObject.GetComponent<PlayerInput>())
+                {
+                    currentPlayerInput = null;
+                    onPlatform = false;
+                }
             }
         }
     }
@@ -183,15 +191,22 @@ public class MovingPlatform : MonoBehaviour
     {
         foreach (var entry in playerInputActions)
         {
-            var gamepad = entry.Key.devices[0] as Gamepad;
-            if (gamepad != null && gamepad.buttonSouth.wasPressedThisFrame)
+            if (entry.Key.devices.Count > 0)
             {
-                // Check if the player associated with this gamepad is on the platform and allowed character
-                if (entry.Key == currentPlayerInput && IsAllowedCharacter(currentPlayerInput))
+                var gamepad = entry.Key.devices[0] as Gamepad;
+                if (gamepad != null && gamepad.buttonSouth.wasPressedThisFrame)
                 {
-                    Debug.Log("South button pressed on gamepad for player: " + entry.Key.gameObject.name);
-                    TryGoToNextWaypoint(entry.Key);
+                    // Check if the player associated with this gamepad is on the platform and allowed character
+                    if (entry.Key == currentPlayerInput && IsAllowedCharacter(currentPlayerInput))
+                    {
+                        Debug.Log("South button pressed on gamepad for player: " + entry.Key.gameObject.name);
+                        TryGoToNextWaypoint(entry.Key);
+                    }
                 }
+            }
+            else
+            {
+                Debug.LogWarning($"No devices found for player: {entry.Key.gameObject.name}");
             }
         }
     }

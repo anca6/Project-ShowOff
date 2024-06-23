@@ -150,23 +150,23 @@ MonoBehaviour:
   isGround:
     serializedVersion: 2
     m_Bits: 128
-  playerHeight: 2
+  playerHeight: 1
   canCollect: 1
-  moveSpeed: 10
-  acceleration: 2
+  moveSpeed: 2.4
+  acceleration: 1.2
   rotationSpeed: 7
   orientation: {fileID: 543141258364361218}
   grVelocityAmplifier: 0.95
   jumpForce: 0
   jumpCooldown: 0
-  gravityScale: 1
-  CharacterAnimator: {fileID: 0}
-  dashForce: 50
-  dashUpwardForce: 100
-  dashDuration: 0.1
-  dashCooldown: 1
   source: {fileID: 0}
   clip: {fileID: 0}
+  gravityScale: 0
+  CharacterAnimator: {fileID: 1975675518596720489}
+  dashForce: 10
+  dashUpwardForce: 15
+  dashDuration: 0.5
+  dashCooldown: 0.6
 --- !u!1 &3405990770881363056
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,19 +323,21 @@ MonoBehaviour:
     m_Bits: 128
   playerHeight: 1
   canCollect: 1
-  moveSpeed: 20
+  moveSpeed: 5
   acceleration: 0.4
   rotationSpeed: 7
   orientation: {fileID: 543141258364361218}
   grVelocityAmplifier: 1
-  jumpForce: 20
+  jumpForce: 10
   jumpCooldown: 0.25
+  source: {fileID: 0}
+  clip: {fileID: 0}
   gravityScale: 1
   CharacterAnimator: {fileID: 0}
   explosionEffect: {fileID: 4050014539871452058, guid: 0e2084029d7141e4f80aa2a254f7c074,
     type: 3}
-  minBreakSpeed: 12
-  explosionDelay: 0.5
+  minBreakSpeed: 7
+  explosionDelay: 0.3
 --- !u!1 &5377224396335723128
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,13 +464,15 @@ MonoBehaviour:
     m_Bits: 128
   playerHeight: 1
   canCollect: 1
-  moveSpeed: 10
-  acceleration: 2
+  moveSpeed: 2.4
+  acceleration: 1.2
   rotationSpeed: 7
   orientation: {fileID: 543141258364361218}
   grVelocityAmplifier: 0.95
-  jumpForce: 35
+  jumpForce: 12
   jumpCooldown: 0.25
+  source: {fileID: 0}
+  clip: {fileID: 0}
   gravityScale: 1
   CharacterAnimator: {fileID: 4813891075893565704}
 --- !u!1 &5758118615166095205
@@ -2171,6 +2175,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecbffb2fc50cc1a4f96900275f2b7b35, type: 3}
+--- !u!95 &1975675518596720489 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9098133086173264014, guid: ecbffb2fc50cc1a4f96900275f2b7b35,
+    type: 3}
+  m_PrefabInstance: {fileID: 7289091098640736231}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5587611156800437523 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2928222674316960500, guid: ecbffb2fc50cc1a4f96900275f2b7b35,
