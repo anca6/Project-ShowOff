@@ -9,6 +9,8 @@ public class PauseGame : MonoBehaviour
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private Button pauseButton;
 
+    private bool isPaused = false;
+
     private void Update()
     {
         if (Gamepad.current != null)
@@ -17,7 +19,7 @@ public class PauseGame : MonoBehaviour
             if (Gamepad.current.startButton.wasPressedThisFrame)
             {
                 Debug.Log("Start button pressed");
-                Pause();
+                TogglePause();
             }
         }
         else
@@ -31,6 +33,7 @@ public class PauseGame : MonoBehaviour
         pausePanel.SetActive(true);
         Time.timeScale = 0f;
         pauseButton.interactable = false;
+        isPaused = true;
     }
 
     public void Continue()
@@ -38,5 +41,18 @@ public class PauseGame : MonoBehaviour
         pausePanel.SetActive(false);
         Time.timeScale = 1f;
         pauseButton.interactable = true;
+        isPaused = false;
+    }
+
+    private void TogglePause()
+    {
+        if (isPaused)
+        {
+            Continue();
+        }
+        else
+        {
+            Pause();
+        }
     }
 }
