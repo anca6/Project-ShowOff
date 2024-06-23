@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 public class CharacterSelection : MonoBehaviour
 {
@@ -25,15 +26,17 @@ public class CharacterSelection : MonoBehaviour
     private int player1Selection = 0; // Default to the first option for Player 1
     private int player2Selection = 0; // Default to the first option for Player 2
 
-    private InputAction inputActions;
-
-    private void Awake()
-    {
-        inputActions = new InputAction();
-    }
+    private Gamepad gamepad1;
+    private Gamepad gamepad2;
 
     private void Start()
     {
+        if (Gamepad.all.Count > 0)
+        {
+            gamepad1 = Gamepad.all.Count > 0 ? Gamepad.all[0] : null;
+            gamepad2 = Gamepad.all.Count > 1 ? Gamepad.all[1] : null;
+        }
+
         if (player1Images != null && player1HoverImages != null && player1CharacterImages != null)
         {
             UpdateSelectionImages(player1Images, player1Selection, player1HoverImages, player1CharacterImages);
@@ -53,33 +56,39 @@ public class CharacterSelection : MonoBehaviour
 
     private void HandlePlayer1Input()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (gamepad1 != null)
         {
-            MoveSelectionUp(ref player1Selection, player1Images?.Length ?? 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            MoveSelectionDown(ref player1Selection, player1Images?.Length ?? 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            SelectCharacterP1(player1Selection);
+            if (gamepad1.dpad.up.wasPressedThisFrame)
+            {
+                MoveSelectionUp(ref player1Selection, player1Images.Length);
+            }
+            else if (gamepad1.dpad.down.wasPressedThisFrame)
+            {
+                MoveSelectionDown(ref player1Selection, player1Images.Length);
+            }
+            else if (gamepad1.selectButton.wasPressedThisFrame)
+            {
+                SelectCharacterP1(player1Selection);
+            }
         }
     }
 
     private void HandlePlayer2Input()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (gamepad2 != null)
         {
-            MoveSelectionUp(ref player2Selection, player2Images?.Length ?? 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            MoveSelectionDown(ref player2Selection, player2Images?.Length ?? 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            SelectCharacterP2(player2Selection);
+            if (gamepad2.dpad.up.wasPressedThisFrame)
+            {
+                MoveSelectionUp(ref player2Selection, player2Images.Length);
+            }
+            else if (gamepad2.dpad.down.wasPressedThisFrame)
+            {
+                MoveSelectionDown(ref player2Selection, player2Images.Length);
+            }
+            else if (gamepad2.selectButton.wasPressedThisFrame)
+            {
+                SelectCharacterP2(player2Selection);
+            }
         }
     }
 
@@ -90,14 +99,7 @@ public class CharacterSelection : MonoBehaviour
         {
             selection = maxIndex - 1; // Make it Loop back to the last option
         }
-        if (player1Images != null && player1HoverImages != null && player1CharacterImages != null)
-        {
-            UpdateSelectionImages(player1Images, player1Selection, player1HoverImages, player1CharacterImages);
-        }
-        if (player2Images != null && player2HoverImages != null && player2CharacterImages != null)
-        {
-            UpdateSelectionImages(player2Images, player2Selection, player2HoverImages, player2CharacterImages);
-        }
+        UpdateAllSelectionImages();
     }
 
     private void MoveSelectionDown(ref int selection, int maxIndex)
@@ -107,14 +109,13 @@ public class CharacterSelection : MonoBehaviour
         {
             selection = 0; // Make it Loop back to the first option
         }
-        if (player1Images != null && player1HoverImages != null && player1CharacterImages != null)
-        {
-            UpdateSelectionImages(player1Images, player1Selection, player1HoverImages, player1CharacterImages);
-        }
-        if (player2Images != null && player2HoverImages != null && player2CharacterImages != null)
-        {
-            UpdateSelectionImages(player2Images, player2Selection, player2HoverImages, player2CharacterImages);
-        }
+        UpdateAllSelectionImages();
+    }
+
+    private void UpdateAllSelectionImages()
+    {
+        UpdateSelectionImages(player1Images, player1Selection, player1HoverImages, player1CharacterImages);
+        UpdateSelectionImages(player2Images, player2Selection, player2HoverImages, player2CharacterImages);
     }
 
     private void UpdateSelectionImages(GameObject[] images, int selectedIndex, GameObject[] hoverImages, GameObject[] characterImages)
@@ -155,10 +156,7 @@ public class CharacterSelection : MonoBehaviour
     public void SelectCharacterP1(int index)
     {
         player1Selection = index;
-        if (player1Images != null && player1HoverImages != null && player1CharacterImages != null)
-        {
-            UpdateSelectionImages(player1Images, player1Selection, player1HoverImages, player1CharacterImages);
-        }
+        UpdateSelectionImages(player1Images, player1Selection, player1HoverImages, player1CharacterImages);
         UpdateStartButtonState();
 
         if (EventSystem.current != null && startButton != null)
@@ -175,10 +173,7 @@ public class CharacterSelection : MonoBehaviour
     public void SelectCharacterP2(int index)
     {
         player2Selection = index;
-        if (player2Images != null && player2HoverImages != null && player2CharacterImages != null)
-        {
-            UpdateSelectionImages(player2Images, player2Selection, player2HoverImages, player2CharacterImages);
-        }
+        UpdateSelectionImages(player2Images, player2Selection, player2HoverImages, player2CharacterImages);
         UpdateStartButtonState();
 
         if (EventSystem.current != null && startButton != null)
