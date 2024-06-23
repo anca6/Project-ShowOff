@@ -4,7 +4,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using System.Linq;
 
 public class CharacterSelection : MonoBehaviour
 {
