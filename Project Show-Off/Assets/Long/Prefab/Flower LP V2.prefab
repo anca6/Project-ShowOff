@@ -573,16 +573,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 369a8c43013fc7a488d609708950e15f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  source: {fileID: 5741575488142336714}
-  clip: {fileID: 8300000, guid: cd031591029492c439fb096c1f10bc1f, type: 3}
   platformWaypoints:
   - {fileID: 0}
   - {fileID: 0}
   players:
-  - {fileID: 8121802724417056503, guid: f8d32847c8e162e41954e8e64bb17e16, type: 3}
+  - {fileID: 0}
   - {fileID: 0}
   movingSpeed: 2
   allowedCharacter: 2
+  source: {fileID: 5741575488142336714}
+  clip: {fileID: 8300000, guid: fdcba1336d9643b46aa353e343db1549, type: 3}
 --- !u!65 &2981739676222628842
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -614,9 +614,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: cd031591029492c439fb096c1f10bc1f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: fdcba1336d9643b46aa353e343db1549, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.503
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -660,7 +660,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
