@@ -47,9 +47,17 @@ public class PlayerManager : MonoBehaviour
 
     private void AssignGamepad(PlayerInput playerInput, int index)
     {
-        var gamepad = Gamepad.all[index];
-        InputUser.PerformPairingWithDevice(gamepad, playerInput.user);
-        playerInput.SwitchCurrentControlScheme("Gamepad", gamepad);
+        if (Gamepad.all.Count > index)
+        {
+            var gamepad = Gamepad.all[index];
+            InputUser.PerformPairingWithDevice(gamepad, playerInput.user);
+            playerInput.SwitchCurrentControlScheme("Gamepad", gamepad);
+        }
+        else
+        {
+            Debug.LogWarning($"No gamepad found for player {index + 1}");
+            AssignKeyboard(playerInput, index); //fallback to keyboard control
+        }
     }
 
     private void AssignKeyboard(PlayerInput playerInput, int index)
