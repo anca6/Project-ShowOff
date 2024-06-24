@@ -25,15 +25,20 @@ public class CharacterSelection : MonoBehaviour
     private int player1Selection = 0; // Default to the first option for Player 1
     private int player2Selection = 0; // Default to the first option for Player 2
 
-    private InputAction inputActions;
+    private bool player1Confirmed = false; //bool for player1 selection confirmation
+    private bool player2Confirmed = false; //bool for player2 selection confirmation
 
-    private void Awake()
-    {
-        inputActions = new InputAction();
-    }
+    private Gamepad gamepad1;
+    private Gamepad gamepad2;
 
     private void Start()
     {
+        if (Gamepad.all.Count > 0)
+        {
+            gamepad1 = Gamepad.all.Count > 0 ? Gamepad.all[0] : null;
+            gamepad2 = Gamepad.all.Count > 1 ? Gamepad.all[1] : null;
+        }
+
         if (player1Images != null && player1HoverImages != null && player1CharacterImages != null)
         {
             UpdateSelectionImages(player1Images, player1Selection, player1HoverImages, player1CharacterImages);
@@ -49,37 +54,52 @@ public class CharacterSelection : MonoBehaviour
     {
         HandlePlayer1Input();
         HandlePlayer2Input();
+        CheckStartGame();
     }
 
     private void HandlePlayer1Input()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (gamepad1 != null)
         {
-            MoveSelectionUp(ref player1Selection, player1Images?.Length ?? 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            MoveSelectionDown(ref player1Selection, player1Images?.Length ?? 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            SelectCharacterP1(player1Selection);
+            if (gamepad1.dpad.up.wasPressedThisFrame)
+            {
+                MoveSelectionUp(ref player1Selection, player1Images.Length);
+                player1Confirmed = false;
+                UpdateStartButtonState();
+            }
+            else if (gamepad1.dpad.down.wasPressedThisFrame)
+            {
+                MoveSelectionDown(ref player1Selection, player1Images.Length);
+                player1Confirmed = false;
+                UpdateStartButtonState();
+            }
+            else if (gamepad1.buttonSouth.wasPressedThisFrame) //ability button to select the character
+            {
+                SelectCharacterP1(player1Selection);
+            }
         }
     }
 
     private void HandlePlayer2Input()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (gamepad2 != null)
         {
-            MoveSelectionUp(ref player2Selection, player2Images?.Length ?? 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            MoveSelectionDown(ref player2Selection, player2Images?.Length ?? 0);
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            SelectCharacterP2(player2Selection);
+            if (gamepad2.dpad.up.wasPressedThisFrame)
+            {
+                MoveSelectionUp(ref player2Selection, player2Images.Length);
+                player2Confirmed = false;
+                UpdateStartButtonState();
+            }
+            else if (gamepad2.dpad.down.wasPressedThisFrame)
+            {
+                MoveSelectionDown(ref player2Selection, player2Images.Length);
+                player2Confirmed = false;
+                UpdateStartButtonState();
+            }
+            else if (gamepad2.buttonSouth.wasPressedThisFrame) //ability button to select the character
+            {
+                SelectCharacterP2(player2Selection);
+            }
         }
     }
 
@@ -90,14 +110,7 @@ public class CharacterSelection : MonoBehaviour
         {
             selection = maxIndex - 1; // Make it Loop back to the last option
         }
-        if (player1Images != null && player1HoverImages != null && player1CharacterImages != null)
-        {
-            UpdateSelectionImages(player1Images, player1Selection, player1HoverImages, player1CharacterImages);
-        }
-        if (player2Images != null && player2HoverImages != null && player2CharacterImages != null)
-        {
-            UpdateSelectionImages(player2Images, player2Selection, player2HoverImages, player2CharacterImages);
-        }
+        UpdateAllSelectionImages();
     }
 
     private void MoveSelectionDown(ref int selection, int maxIndex)
@@ -107,6 +120,11 @@ public class CharacterSelection : MonoBehaviour
         {
             selection = 0; // Make it Loop back to the first option
         }
+        UpdateAllSelectionImages();
+    }
+
+    private void UpdateAllSelectionImages()
+    {
         if (player1Images != null && player1HoverImages != null && player1CharacterImages != null)
         {
             UpdateSelectionImages(player1Images, player1Selection, player1HoverImages, player1CharacterImages);
@@ -123,9 +141,12 @@ public class CharacterSelection : MonoBehaviour
 
         for (int i = 0; i < images.Length; i++)
         {
-            images[i].SetActive(i == selectedIndex);
-            hoverImages[i].SetActive(i == selectedIndex);
-            characterImages[i].SetActive(i == selectedIndex);
+            if (images[i] != null)
+                images[i].SetActive(i == selectedIndex);
+            if (hoverImages[i] != null)
+                hoverImages[i].SetActive(i == selectedIndex);
+            if (characterImages[i] != null)
+                characterImages[i].SetActive(i == selectedIndex);
         }
     }
 
@@ -133,7 +154,7 @@ public class CharacterSelection : MonoBehaviour
     {
         if (startButton != null)
         {
-            if (player1Selection >= 0 && player2Selection >= 0)
+            if (player1Confirmed && player2Confirmed)
             {
                 startButton.interactable = true;
                 if (feedbackText != null)
@@ -155,6 +176,7 @@ public class CharacterSelection : MonoBehaviour
     public void SelectCharacterP1(int index)
     {
         player1Selection = index;
+        player1Confirmed = true;
         if (player1Images != null && player1HoverImages != null && player1CharacterImages != null)
         {
             UpdateSelectionImages(player1Images, player1Selection, player1HoverImages, player1CharacterImages);
@@ -175,6 +197,7 @@ public class CharacterSelection : MonoBehaviour
     public void SelectCharacterP2(int index)
     {
         player2Selection = index;
+        player2Confirmed = true;
         if (player2Images != null && player2HoverImages != null && player2CharacterImages != null)
         {
             UpdateSelectionImages(player2Images, player2Selection, player2HoverImages, player2CharacterImages);
@@ -192,9 +215,19 @@ public class CharacterSelection : MonoBehaviour
         }
     }
 
+    private void CheckStartGame()
+    {
+        //jump button to start the game
+        if ((gamepad1 != null && gamepad1.buttonNorth.wasPressedThisFrame) ||
+            (gamepad2 != null && gamepad2.buttonNorth.wasPressedThisFrame))
+        {
+            StartGame();
+        }
+    }
+
     public void StartGame()
     {
-        if (player1Selection >= 0 && player2Selection >= 0)
+        if (player1Confirmed && player2Confirmed)
         {
             if (GameManager.instance != null)
             {
@@ -206,5 +239,6 @@ public class CharacterSelection : MonoBehaviour
         {
             feedbackText.text = feedbackMessage;
         }
+        GameManager.instance.StartGame();
     }
 }
