@@ -125,8 +125,14 @@ public class CharacterSelection : MonoBehaviour
 
     private void UpdateAllSelectionImages()
     {
-        UpdateSelectionImages(player1Images, player1Selection, player1HoverImages, player1CharacterImages);
-        UpdateSelectionImages(player2Images, player2Selection, player2HoverImages, player2CharacterImages);
+        if (player1Images != null && player1HoverImages != null && player1CharacterImages != null)
+        {
+            UpdateSelectionImages(player1Images, player1Selection, player1HoverImages, player1CharacterImages);
+        }
+        if (player2Images != null && player2HoverImages != null && player2CharacterImages != null)
+        {
+            UpdateSelectionImages(player2Images, player2Selection, player2HoverImages, player2CharacterImages);
+        }
     }
 
     private void UpdateSelectionImages(GameObject[] images, int selectedIndex, GameObject[] hoverImages, GameObject[] characterImages)
@@ -135,9 +141,12 @@ public class CharacterSelection : MonoBehaviour
 
         for (int i = 0; i < images.Length; i++)
         {
-            images[i].SetActive(i == selectedIndex);
-            hoverImages[i].SetActive(i == selectedIndex);
-            characterImages[i].SetActive(i == selectedIndex);
+            if (images[i] != null)
+                images[i].SetActive(i == selectedIndex);
+            if (hoverImages[i] != null)
+                hoverImages[i].SetActive(i == selectedIndex);
+            if (characterImages[i] != null)
+                characterImages[i].SetActive(i == selectedIndex);
         }
     }
 
@@ -168,7 +177,10 @@ public class CharacterSelection : MonoBehaviour
     {
         player1Selection = index;
         player1Confirmed = true;
-        UpdateSelectionImages(player1Images, player1Selection, player1HoverImages, player1CharacterImages);
+        if (player1Images != null && player1HoverImages != null && player1CharacterImages != null)
+        {
+            UpdateSelectionImages(player1Images, player1Selection, player1HoverImages, player1CharacterImages);
+        }
         UpdateStartButtonState();
 
         if (EventSystem.current != null && startButton != null)
@@ -186,7 +198,10 @@ public class CharacterSelection : MonoBehaviour
     {
         player2Selection = index;
         player2Confirmed = true;
-        UpdateSelectionImages(player2Images, player2Selection, player2HoverImages, player2CharacterImages);
+        if (player2Images != null && player2HoverImages != null && player2CharacterImages != null)
+        {
+            UpdateSelectionImages(player2Images, player2Selection, player2HoverImages, player2CharacterImages);
+        }
         UpdateStartButtonState();
 
         if (EventSystem.current != null && startButton != null)
@@ -199,6 +214,7 @@ public class CharacterSelection : MonoBehaviour
             HighlightStartbuttonImage.SetActive(true);
         }
     }
+
     private void CheckStartGame()
     {
         //jump button to start the game
@@ -208,7 +224,6 @@ public class CharacterSelection : MonoBehaviour
             StartGame();
         }
     }
-
 
     public void StartGame()
     {
@@ -224,5 +239,6 @@ public class CharacterSelection : MonoBehaviour
         {
             feedbackText.text = feedbackMessage;
         }
+        GameManager.instance.StartGame();
     }
 }

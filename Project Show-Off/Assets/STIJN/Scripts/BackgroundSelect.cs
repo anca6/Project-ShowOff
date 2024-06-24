@@ -25,10 +25,6 @@ public class BackgroundSelect : MonoBehaviour
             {
                 backgrounds[i].SetActive(i == randomIndex);
             }
-            else
-            {
-                Debug.LogWarning($"Background at index {i} is not assigned.");
-            }
         }
     }
 }
