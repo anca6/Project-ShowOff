@@ -48,13 +48,15 @@ public class CharacterSelection : MonoBehaviour
             UpdateSelectionImages(player2Images, player2Selection, player2HoverImages, player2CharacterImages);
         }
         UpdateStartButtonState();
+
+        startButton.onClick.AddListener(OnStartButtonClicked);
     }
 
     private void Update()
     {
         HandlePlayer1Input();
         HandlePlayer2Input();
-        StartGame();
+        CheckGamepadStart();
     }
 
     private void HandlePlayer1Input()
@@ -215,25 +217,40 @@ public class CharacterSelection : MonoBehaviour
         }
     }
 
-    public void StartGame()
+    private void OnStartButtonClicked()
+    {
+        if (player1Confirmed && player2Confirmed)
+        {
+            StartGame();
+        }
+        else if (feedbackText != null)
+        {
+            feedbackText.text = feedbackMessage;
+        }
+    }
+
+    private void CheckGamepadStart()
     {
         if ((gamepad1 != null && gamepad1.startButton.wasPressedThisFrame) ||
-           (gamepad2 != null && gamepad2.startButton.wasPressedThisFrame))
+            (gamepad2 != null && gamepad2.startButton.wasPressedThisFrame))
         {
-
             if (player1Confirmed && player2Confirmed)
             {
-                if (GameManager.instance != null)
-                {
-                    GameManager.instance.SetPlayerSelection(player1Selection, player2Selection);
-                }
-                SceneManager.LoadScene(gameScene);
+                StartGame();
             }
             else if (feedbackText != null)
             {
                 feedbackText.text = feedbackMessage;
             }
-            GameManager.instance.StartGame();
         }
+    }
+
+    public void StartGame()
+    {
+        if (GameManager.instance != null)
+        {
+            GameManager.instance.SetPlayerSelection(player1Selection, player2Selection);
+        }
+        SceneManager.LoadScene(gameScene);
     }
 }
