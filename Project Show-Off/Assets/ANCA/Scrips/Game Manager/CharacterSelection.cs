@@ -4,7 +4,6 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using System.Linq;
 
 public class CharacterSelection : MonoBehaviour
 {
@@ -55,7 +54,7 @@ public class CharacterSelection : MonoBehaviour
     {
         HandlePlayer1Input();
         HandlePlayer2Input();
-        CheckStartGame();
+        StartGame();
     }
 
     private void HandlePlayer1Input()
@@ -74,7 +73,7 @@ public class CharacterSelection : MonoBehaviour
                 player1Confirmed = false;
                 UpdateStartButtonState();
             }
-            else if (gamepad1.buttonSouth.wasPressedThisFrame) //ability button to select the character
+            else if (gamepad1.buttonNorth.wasPressedThisFrame) //ability button to select the character
             {
                 SelectCharacterP1(player1Selection);
             }
@@ -97,7 +96,7 @@ public class CharacterSelection : MonoBehaviour
                 player2Confirmed = false;
                 UpdateStartButtonState();
             }
-            else if (gamepad2.buttonSouth.wasPressedThisFrame) //ability button to select the character
+            else if (gamepad2.buttonNorth.wasPressedThisFrame) //ability button to select the character
             {
                 SelectCharacterP2(player2Selection);
             }
@@ -126,8 +125,14 @@ public class CharacterSelection : MonoBehaviour
 
     private void UpdateAllSelectionImages()
     {
-        UpdateSelectionImages(player1Images, player1Selection, player1HoverImages, player1CharacterImages);
-        UpdateSelectionImages(player2Images, player2Selection, player2HoverImages, player2CharacterImages);
+        if (player1Images != null && player1HoverImages != null && player1CharacterImages != null)
+        {
+            UpdateSelectionImages(player1Images, player1Selection, player1HoverImages, player1CharacterImages);
+        }
+        if (player2Images != null && player2HoverImages != null && player2CharacterImages != null)
+        {
+            UpdateSelectionImages(player2Images, player2Selection, player2HoverImages, player2CharacterImages);
+        }
     }
 
     private void UpdateSelectionImages(GameObject[] images, int selectedIndex, GameObject[] hoverImages, GameObject[] characterImages)
@@ -136,9 +141,12 @@ public class CharacterSelection : MonoBehaviour
 
         for (int i = 0; i < images.Length; i++)
         {
-            images[i].SetActive(i == selectedIndex);
-            hoverImages[i].SetActive(i == selectedIndex);
-            characterImages[i].SetActive(i == selectedIndex);
+            if (images[i] != null)
+                images[i].SetActive(i == selectedIndex);
+            if (hoverImages[i] != null)
+                hoverImages[i].SetActive(i == selectedIndex);
+            if (characterImages[i] != null)
+                characterImages[i].SetActive(i == selectedIndex);
         }
     }
 
@@ -169,7 +177,10 @@ public class CharacterSelection : MonoBehaviour
     {
         player1Selection = index;
         player1Confirmed = true;
-        UpdateSelectionImages(player1Images, player1Selection, player1HoverImages, player1CharacterImages);
+        if (player1Images != null && player1HoverImages != null && player1CharacterImages != null)
+        {
+            UpdateSelectionImages(player1Images, player1Selection, player1HoverImages, player1CharacterImages);
+        }
         UpdateStartButtonState();
 
         if (EventSystem.current != null && startButton != null)
@@ -187,7 +198,10 @@ public class CharacterSelection : MonoBehaviour
     {
         player2Selection = index;
         player2Confirmed = true;
-        UpdateSelectionImages(player2Images, player2Selection, player2HoverImages, player2CharacterImages);
+        if (player2Images != null && player2HoverImages != null && player2CharacterImages != null)
+        {
+            UpdateSelectionImages(player2Images, player2Selection, player2HoverImages, player2CharacterImages);
+        }
         UpdateStartButtonState();
 
         if (EventSystem.current != null && startButton != null)
@@ -200,30 +214,26 @@ public class CharacterSelection : MonoBehaviour
             HighlightStartbuttonImage.SetActive(true);
         }
     }
-    private void CheckStartGame()
-    {
-        //jump button to start the game
-        if ((gamepad1 != null && gamepad1.buttonNorth.wasPressedThisFrame) ||
-            (gamepad2 != null && gamepad2.buttonNorth.wasPressedThisFrame))
-        {
-            StartGame();
-        }
-    }
-
 
     public void StartGame()
     {
-        if (player1Confirmed && player2Confirmed)
+        if ((gamepad1 != null && gamepad1.startButton.wasPressedThisFrame) ||
+           (gamepad2 != null && gamepad2.startButton.wasPressedThisFrame))
         {
-            if (GameManager.instance != null)
+
+            if (player1Confirmed && player2Confirmed)
             {
-                GameManager.instance.SetPlayerSelection(player1Selection, player2Selection);
+                if (GameManager.instance != null)
+                {
+                    GameManager.instance.SetPlayerSelection(player1Selection, player2Selection);
+                }
+                SceneManager.LoadScene(gameScene);
             }
-            SceneManager.LoadScene(gameScene);
-        }
-        else if (feedbackText != null)
-        {
-            feedbackText.text = feedbackMessage;
+            else if (feedbackText != null)
+            {
+                feedbackText.text = feedbackMessage;
+            }
+            GameManager.instance.StartGame();
         }
     }
 }
