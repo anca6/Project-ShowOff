@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(instance);  
     }
 
+    private void Start()
+    {
+        disableScript.enabled = true;
+    }
+
     public void SetPlayerSelection(int p1index,  int p2index)
     {
         player1CharacterIndex = p1index;

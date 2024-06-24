@@ -11,6 +11,12 @@ public class PauseGame : MonoBehaviour
 
     private bool isPaused = false;
 
+    private void Start()
+    {
+        isPaused = false;
+        Time.timeScale = 1.0f;
+    }
+
     private void Update()
     {
         if (Gamepad.current != null)
@@ -26,6 +32,8 @@ public class PauseGame : MonoBehaviour
         {
             Debug.Log("No gamepad connected");
         }
+
+
     }
 
     public void Pause()
