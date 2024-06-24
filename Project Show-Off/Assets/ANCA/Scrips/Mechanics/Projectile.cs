@@ -27,13 +27,14 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Collision detected with " + collision.gameObject.name);
         Target target = collision.gameObject.GetComponent<Target>();
         if (target != null)
         {
-            target.MarkAsHit(); //colliding with the target makes the target invisible to the player
-            
             Debug.Log("should be destroyed");
             Destroy(gameObject); //destroy the projectile on collision with target
+            target.MarkAsHit(); //colliding with the target makes the target invisible to the player
+            
         }
     }
 }
