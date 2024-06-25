@@ -61,8 +61,6 @@ public class Collectible : MonoBehaviour
         GetComponent<Collider>().enabled = false;
 
         pinkCloudVFX.Play();
-        //play pickup sound
-        source.PlayOneShot(clip);
 
         // Set the character to not able to collect more
         character.SetCollectState(false);
@@ -79,7 +77,9 @@ public class Collectible : MonoBehaviour
         // Set the character to be able to collect again
        character.SetCollectState(true);
 
-        
+        //play pickup sound
+        source.PlayOneShot(clip);
+
         // Remove the power-up object
         Destroy(gameObject);
      
