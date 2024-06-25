@@ -8,14 +8,16 @@ public class Collectible : MonoBehaviour
     [SerializeField] private float speedBuffValue = 1.0f; // Fixed speed buff/debuff value
     [SerializeField] private float duration = 4f;
     [SerializeField] private float pickupCooldown = 8f;
-
+/*
     [Header("Pickup Effects")]
     [SerializeField] private GameObject pickupEffectspeedup;
     [SerializeField] private GameObject pickupEffectslowdown;
-
+*/
     [Header("Sound")]
     [SerializeField] private AudioSource source;
     [SerializeField] private AudioClip clip;
+
+    [SerializeField] private ParticleSystem pinkCloud;
 
     void OnTriggerEnter(Collider other)
     {
@@ -52,12 +54,14 @@ public class Collectible : MonoBehaviour
         
         // Apply effect to the player
        character.IncreaseSpeed(speedBuff);
-        if(speedBuff > 0.0f) 
+       /* if(speedBuff > 0.0f)
         { Instantiate(pickupEffectspeedup, transform.position, transform.rotation); }
-        else { Instantiate(pickupEffectslowdown, transform.position, transform.rotation); }
+        else { Instantiate(pickupEffectslowdown, transform.position, transform.rotation); }*/
         // Disable the collectible's visual representation and collider
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
+
+        pinkCloud.Play();
 
         // Set the character to not able to collect more
         character.SetCollectState(false);

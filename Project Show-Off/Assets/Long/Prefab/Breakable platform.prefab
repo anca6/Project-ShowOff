@@ -1,5 +1,115 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2792476260713218700
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4253096686357721220}
+    m_Modifications:
+    - target: {fileID: 5641323305860879156, guid: d2627b3274d1dc84787bdb85ea584ea8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641323305860879156, guid: d2627b3274d1dc84787bdb85ea584ea8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641323305860879156, guid: d2627b3274d1dc84787bdb85ea584ea8,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641323305860879156, guid: d2627b3274d1dc84787bdb85ea584ea8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0057
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641323305860879156, guid: d2627b3274d1dc84787bdb85ea584ea8,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00002
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641323305860879156, guid: d2627b3274d1dc84787bdb85ea584ea8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00554
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641323305860879156, guid: d2627b3274d1dc84787bdb85ea584ea8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641323305860879156, guid: d2627b3274d1dc84787bdb85ea584ea8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641323305860879156, guid: d2627b3274d1dc84787bdb85ea584ea8,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641323305860879156, guid: d2627b3274d1dc84787bdb85ea584ea8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641323305860879156, guid: d2627b3274d1dc84787bdb85ea584ea8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641323305860879156, guid: d2627b3274d1dc84787bdb85ea584ea8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641323305860879156, guid: d2627b3274d1dc84787bdb85ea584ea8,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5641323305860879156, guid: d2627b3274d1dc84787bdb85ea584ea8,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700774255613479922, guid: d2627b3274d1dc84787bdb85ea584ea8,
+        type: 3}
+      propertyPath: autoRandomSeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6700774255613479922, guid: d2627b3274d1dc84787bdb85ea584ea8,
+        type: 3}
+      propertyPath: ShapeModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7249813771092267673, guid: d2627b3274d1dc84787bdb85ea584ea8,
+        type: 3}
+      propertyPath: m_Name
+      value: JojoDustKickAnimation
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d2627b3274d1dc84787bdb85ea584ea8, type: 3}
+--- !u!4 &7533079572095275448 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5641323305860879156, guid: d2627b3274d1dc84787bdb85ea584ea8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2792476260713218700}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &8808250269703424382 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6700774255613479922, guid: d2627b3274d1dc84787bdb85ea584ea8,
+    type: 3}
+  m_PrefabInstance: {fileID: 2792476260713218700}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4363057416129173359
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76,16 +186,24 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 90d4e3363499a6d4c9fdf09723d1d867,
         type: 3}
       propertyPath: m_TagString
-      value: BreakObj
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 90d4e3363499a6d4c9fdf09723d1d867,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7533079572095275448}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 90d4e3363499a6d4c9fdf09723d1d867,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8596534747315925339}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 90d4e3363499a6d4c9fdf09723d1d867,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6636162203936598509}
   m_SourcePrefab: {fileID: 100100000, guid: 90d4e3363499a6d4c9fdf09723d1d867, type: 3}
 --- !u!1 &3480675906262821438 stripped
 GameObject:
@@ -114,3 +232,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.01651306, y: 0.016061895, z: 0.0019548426}
   m_Center: {x: -0.006809199, y: -4.656612e-10, z: -0.00057725376}
+--- !u!114 &6636162203936598509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3480675906262821438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c19f60d40052cb94e80a3782e156b61d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  breakDelay: 1
+  respawnTime: 2
+  breakingVFX: {fileID: 8808250269703424382}
+--- !u!4 &4253096686357721220 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 90d4e3363499a6d4c9fdf09723d1d867,
+    type: 3}
+  m_PrefabInstance: {fileID: 4363057416129173359}
+  m_PrefabAsset: {fileID: 0}

@@ -7,6 +7,8 @@ public class BreakablePlatform : MonoBehaviour
     [SerializeField] private float breakDelay;
     [SerializeField] private float respawnTime;
 
+    [SerializeField] private ParticleSystem breakingVFX;
+
     private Collider platformCollider;
     private Renderer platformRenderer;
 
@@ -32,6 +34,8 @@ public class BreakablePlatform : MonoBehaviour
         // Disable the platform by disabling the Collider and Renderer
         platformCollider.enabled = false;
         platformRenderer.enabled = false;
+
+        breakingVFX.Play();
 
         // Wait for the specified respawn time
         yield return new WaitForSeconds(respawnTime);

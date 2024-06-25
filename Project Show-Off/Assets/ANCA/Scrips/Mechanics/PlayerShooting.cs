@@ -16,6 +16,8 @@ public class PlayerShooting : MonoBehaviour{
     [SerializeField] private float shootingRadius = 15f;
     [SerializeField] private LayerMask targetsLayer;
 
+    [SerializeField] private ParticleSystem lightningVFX;
+
     //private PlayerControls playerControls;
     public AudioSource source;
     public AudioClip clip;
@@ -62,6 +64,7 @@ public class PlayerShooting : MonoBehaviour{
         if (target != null)
         {
             target.MarkAsHit(); //setting the target to isHit so we don't try to shoot at it again
+            lightningVFX.Play();
         }
 
         ///furbie shooting sound here
