@@ -314,6 +314,11 @@ PrefabInstance:
       propertyPath: ShapeModule.enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2971444572060991213, guid: 362cdccc1db0bec47a4bdf0c3ec70b81,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6443500279659974304, guid: 362cdccc1db0bec47a4bdf0c3ec70b81,
         type: 3}
       propertyPath: m_LocalScale.x
