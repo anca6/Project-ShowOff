@@ -78,6 +78,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7889746713387279240, guid: 67731b235f3339145af6fef91da7d0b5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 67731b235f3339145af6fef91da7d0b5,
         type: 3}
       propertyPath: m_Name
@@ -88,6 +93,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: BreakObj
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67731b235f3339145af6fef91da7d0b5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 9017681663805940801, guid: 67731b235f3339145af6fef91da7d0b5,
         type: 3}
       propertyPath: m_Layer
@@ -97,6 +107,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 9017681663805940801, guid: 67731b235f3339145af6fef91da7d0b5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
