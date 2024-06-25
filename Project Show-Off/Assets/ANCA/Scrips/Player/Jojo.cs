@@ -25,14 +25,14 @@ public class Jojo : Character
         rb = GetComponentInParent<Rigidbody>();
         if (rb == null)
         {
-            Debug.LogError("Rigidbody component not found on the parent gameObject");
+            Debug.LogError("rigidbody component not found on parent gameObject");
         }
 
         if (CharacterAnimator != null) return;
         Animator animator = GetComponent<Animator>();
         if (animator == null)
         {
-            Debug.LogWarning("No animator found assigned");
+            Debug.LogWarning("no animator assigned");
             return;
         }
         CharacterAnimator = animator;
@@ -136,10 +136,22 @@ public class Jojo : Character
                 // vector projection: how hard do we hit the wall?
 
                 float impactSpeed = Mathf.Abs(Vector3.Dot(collision.contacts[0].normal, collision.relativeVelocity));
-                Debug.Log("Speed on impact: " + impactSpeed + " normal: " + collision.contacts[0].normal + " velocity: " + collision.relativeVelocity);
+                //Debug.Log("Speed on impact: " + impactSpeed + " normal: " + collision.contacts[0].normal + " velocity: " + collision.relativeVelocity);
                 if (impactSpeed > minBreakSpeed)
                 {
                     StartCoroutine(DelayedExplosion(collision.gameObject));
+                }
+                //Destroy(explosionEffect);
+            }
+
+
+            if (collision.gameObject.CompareTag("BreakWall"))
+            {
+                float impactSpeed = Mathf.Abs(Vector3.Dot(collision.contacts[0].normal, collision.relativeVelocity));
+                if (impactSpeed > minBreakSpeed)
+                {
+                    Destructable destructable = collision.gameObject.GetComponent<Destructable>();
+                    destructable.DestroyWall();
                 }
                 //Destroy(explosionEffect);
             }
@@ -153,6 +165,7 @@ public class Jojo : Character
         Destroy(breakableObject);
         source.PlayOneShot(clip);
     }
+
 
 
     private void TriggerExplosion(Vector3 position)

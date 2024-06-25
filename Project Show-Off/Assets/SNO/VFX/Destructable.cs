@@ -7,7 +7,7 @@ public class Destructable : MonoBehaviour
 
     public GameObject destroyedVersion;
 
-    void OnMouseDown()
+    public void DestroyWall()
     {
         Instantiate(destroyedVersion, transform.position, transform.rotation);
         Destroy(gameObject);
