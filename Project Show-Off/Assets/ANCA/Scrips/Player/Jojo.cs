@@ -150,6 +150,7 @@ public class Jojo : Character
                 float impactSpeed = Mathf.Abs(Vector3.Dot(collision.contacts[0].normal, collision.relativeVelocity));
                 if (impactSpeed > minBreakSpeed)
                 {
+                    source.PlayOneShot(clip2);
                     Destructable destructable = collision.gameObject.GetComponent<Destructable>();
                     destructable.DestroyWall();
                 }
@@ -163,7 +164,7 @@ public class Jojo : Character
         yield return new WaitForSeconds(explosionDelay);
         TriggerExplosion(transform.position);
         Destroy(breakableObject);
-        source.PlayOneShot(clip);
+        source.PlayOneShot(clip2);
     }
 
 
