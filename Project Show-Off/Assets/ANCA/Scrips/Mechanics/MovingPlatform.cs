@@ -126,6 +126,8 @@ public class MovingPlatform : MonoBehaviour
         float distanceToWaypoint = Vector3.Distance(previousWaypoint.position, targetWaypoint.position);
         timeToWaypoint = distanceToWaypoint / movingSpeed;
 
+        petalsVFX.Play();
+
         Debug.Log("Moving to waypoint: " + targetWaypointIndex);
     }
 
