@@ -14,6 +14,11 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private AudioSource source;
     [SerializeField] private AudioClip clip;
 
+    [Header("VFX")]
+    [SerializeField] private ParticleSystem petalsVFX;
+
+
+
     private int targetWaypointIndex;
     private Transform targetWaypoint;
     private Transform previousWaypoint;

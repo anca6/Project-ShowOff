@@ -17,7 +17,7 @@ public class Collectible : MonoBehaviour
     [SerializeField] private AudioSource source;
     [SerializeField] private AudioClip clip;
 
-    [SerializeField] private ParticleSystem pinkCloud;
+    [SerializeField] private ParticleSystem pinkCloudVFX;
 
     void OnTriggerEnter(Collider other)
     {
@@ -61,7 +61,7 @@ public class Collectible : MonoBehaviour
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
 
-        pinkCloud.Play();
+        pinkCloudVFX.Play();
 
         // Set the character to not able to collect more
         character.SetCollectState(false);
