@@ -9,8 +9,12 @@ public class Jojo : Character
     [SerializeField] float minBreakSpeed = 10;
     [SerializeField] private float explosionDelay = 0.5f;
 
-    //bool StandupFinished = true;
     public AudioClip clip2;
+
+
+
+    //bool StandupFinished = true;
+
    /* protected override void Start()
     {
         rb = GetComponentInParent<Rigidbody>();
