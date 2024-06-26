@@ -58,7 +58,13 @@ public class PauseButtonNav : MonoBehaviour
 
         if (Gamepad.current.buttonNorth.wasPressedThisFrame) //select button
         {
-            buttons[currentIndex].onClick.Invoke();
+            if (buttons[currentIndex].gameObject.activeInHierarchy)
+            {
+                buttons[currentIndex].onClick.Invoke();
+            } else
+            {
+                Debug.Log("Nope");
+            }
         }
     }
 

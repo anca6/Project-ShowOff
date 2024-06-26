@@ -72,13 +72,18 @@ public class MovingPlatform : MonoBehaviour
         previousWaypoint = targetWaypoint;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         /* if (onPlatform && IsAllowedCharacter(currentPlayerInput))
          {
              MovePlatform();
          }*/
         GamepadInput();
+    }
+    private void FixedUpdate()
+    {
+        
+    
         MovePlatform();
     }
 
@@ -89,6 +94,7 @@ public class MovingPlatform : MonoBehaviour
         float elapsedPercentage = elapsedTime / timeToWaypoint;
         elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
 
+        // hm
         transform.SetPositionAndRotation(Vector3.Lerp(previousWaypoint.position, targetWaypoint.position, elapsedPercentage),
             Quaternion.Lerp(previousWaypoint.rotation, targetWaypoint.rotation, elapsedPercentage));
 /*
@@ -111,15 +117,23 @@ public class MovingPlatform : MonoBehaviour
             Debug.Log("Not allowed character");
             return;
         }
+        if (elapsedTime < timeToWaypoint)
+        {
+            Debug.Log("Sorry still moving. Please wait");
 
-        GoToNextWaypoint();
+        }
+        else
+        {
+            Debug.Log("Moving to next waypoint");
+            GoToNextWaypoint();
+        }
     }
 
     private void GoToNextWaypoint()
     {
-        previousWaypoint = GetWaypointIndex(targetWaypointIndex);
+        previousWaypoint = GetWaypointTransform(targetWaypointIndex);
         targetWaypointIndex = GetNextWaypointIndex(targetWaypointIndex);
-        targetWaypoint = GetWaypointIndex(targetWaypointIndex);
+        targetWaypoint = GetWaypointTransform(targetWaypointIndex);
 
         elapsedTime = 0;
 
@@ -158,8 +172,13 @@ public class MovingPlatform : MonoBehaviour
         {
             Debug.Log("should be on platform");
             collision.transform.SetParent(transform);
-            currentPlayerInput = collision.gameObject.GetComponent<PlayerInput>();
-            onPlatform = currentPlayerInput != null && IsAllowedCharacter(currentPlayerInput);
+            var newPlayerInput = collision.gameObject.GetComponent<PlayerInput>();
+            if (newPlayerInput!=null && IsAllowedCharacter(newPlayerInput)) // two Saras: still bug probably - fix later
+            {
+                Debug.Log("Sara has entered the platform");
+                currentPlayerInput = newPlayerInput; // collision.gameObject.GetComponent<PlayerInput>();
+                onPlatform = currentPlayerInput != null;
+            }
         }
     }
 
@@ -172,6 +191,7 @@ public class MovingPlatform : MonoBehaviour
             {
                 if (currentPlayerInput == collision.gameObject.GetComponent<PlayerInput>())
                 {
+                    Debug.Log("No one on platform");
                     currentPlayerInput = null;
                     onPlatform = false;
                 }
@@ -179,7 +199,7 @@ public class MovingPlatform : MonoBehaviour
         }
     }
 
-    private Transform GetWaypointIndex(int waypointIndex)
+    private Transform GetWaypointTransform(int waypointIndex)
     {
         return platformWaypoints[waypointIndex].transform;
     }
@@ -203,10 +223,16 @@ public class MovingPlatform : MonoBehaviour
                 var gamepad = entry.Key.devices[0] as Gamepad;
                 if (gamepad != null && gamepad.buttonSouth.wasPressedThisFrame)
                 {
+                    string cpname = " ? ";
+                    if (currentPlayerInput!=null)
+                    {
+                        cpname = currentPlayerInput.gameObject.name;
+                    }
+                    Debug.Log("South button pressed on gamepad for player: " + entry.Key.gameObject.name+ " currentPlayerInput is "+cpname);
+
                     // Check if the player associated with this gamepad is on the platform and allowed character
                     if (entry.Key == currentPlayerInput && IsAllowedCharacter(currentPlayerInput))
                     {
-                        Debug.Log("South button pressed on gamepad for player: " + entry.Key.gameObject.name);
                         TryGoToNextWaypoint(entry.Key);
                     }
                 }
