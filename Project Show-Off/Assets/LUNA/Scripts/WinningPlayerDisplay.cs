@@ -1,3 +1,3 @@
-using UnityEngine;\
+using UnityEngine;
 public class WinningPlayerDisplay : MonoBehaviour{
 }
