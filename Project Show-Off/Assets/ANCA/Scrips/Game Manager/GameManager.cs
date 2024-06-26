@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     //[SerializeField] private MonoBehaviour disableScript;
     
-    public GameObject Victor{ get; set; }
+    public string VictorName{ get; set; }
     
     private void Awake()
     {

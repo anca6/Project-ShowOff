@@ -19,8 +19,8 @@ public class FinishLine : MonoBehaviour{
 
     public void FinishGame(GameObject winningPlayer){
         if (GameManager.instance == null) throw new Exception("GameManager not initialised!");
-        GameManager.instance.Victor = winningPlayer;
-        Debug.Log($"{GameManager.instance.Victor.name} wins!");
+        GameManager.instance.VictorName = winningPlayer.name;
+        Debug.Log($"{GameManager.instance.VictorName} wins!");
         SceneManager.LoadScene(EndingSceneName);
     }
 }
