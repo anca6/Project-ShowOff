@@ -8,6 +8,7 @@ TagManager:
   - Sara
   - BreakObj
   - JumpTipBox
+  - BreakWall
   layers:
   - Default
   - TransparentFX

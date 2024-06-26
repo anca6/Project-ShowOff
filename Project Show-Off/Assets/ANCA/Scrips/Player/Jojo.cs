@@ -9,20 +9,37 @@ public class Jojo : Character
     [SerializeField] float minBreakSpeed = 10;
     [SerializeField] private float explosionDelay = 0.5f;
 
-    bool StandupFinished = true;
+    //bool StandupFinished = true;
     public AudioClip clip2;
-    protected override void Start()
+   /* protected override void Start()
     {
         rb = GetComponentInParent<Rigidbody>();
     }
-
+*/
     protected override void Awake()
     {
         base.Awake();
     }
+    protected override void Start()
+    {
+        rb = GetComponentInParent<Rigidbody>();
+        if (rb == null)
+        {
+            Debug.LogError("rigidbody component not found on parent gameObject");
+        }
+
+        if (CharacterAnimator != null) return;
+        Animator animator = GetComponent<Animator>();
+        if (animator == null)
+        {
+            Debug.LogWarning("no animator assigned");
+            return;
+        }
+        CharacterAnimator = animator;
+    }
 
 
-    void StandupStraight()
+    /*void StandupStraight()
     {
         //rb.MoveRotation(Quaternion.identity); // maybe this works?
         if (StandupFinished && !Input.GetKey(KeyCode.LeftShift))
@@ -30,63 +47,83 @@ public class Jojo : Character
             Debug.Log("Jojo stands up"); // TODO: work with state machine
             StartCoroutine(StandupRoutine());
         }
-    }
+    }*/
 
 
-    IEnumerator StandupRoutine()
-    {
-        StandupFinished = false;
-        Quaternion startRotation = transform.rotation;
-        Vector3 lookDir = rb.velocity.magnitude > 0 ? rb.velocity.normalized : Vector3.forward;
+    /* IEnumerator StandupRoutine()
+     {
+         StandupFinished = false;
+         Quaternion startRotation = transform.rotation;
+         Vector3 lookDir = rb.velocity.magnitude > 0 ? rb.velocity.normalized : Vector3.forward;
 
-        for (int i=0;i<=20;i++) // TODO: Maybe make framerate independent: use delta time
-        {
-            //Debug.Log("Delta time: " + Time.deltaTime);
-            rb.MoveRotation(Quaternion.Slerp(startRotation, Quaternion.LookRotation(lookDir), i / 20f));
+         for (int i=0;i<=20;i++) // TODO: Maybe make framerate independent: use delta time
+         {
+             //Debug.Log("Delta time: " + Time.deltaTime);
+             rb.MoveRotation(Quaternion.Slerp(startRotation, Quaternion.LookRotation(lookDir), i / 20f));
 
-            yield return new WaitForEndOfFrame();
-        }
-        StandupFinished = true;
-    }
+             yield return new WaitForEndOfFrame();
+         }
+         StandupFinished = true;
+     }
+ */
+    /* protected override void Movement()
+     {
+         //TODO: Add rolling state machine here
 
+         rb.constraints = RigidbodyConstraints.None;
+
+         if (IsGrounded())
+         {
+             rb.velocity *= grVelocityAmplifier;
+
+
+            *//* if (rb.velocity.magnitude<0.5f) // now hard coded.. // TODO: state machine. Only do this code when currently rolling
+             {
+                 StandupStraight();
+             }*//*
+         }
+
+         Vector2 input = moveAction.ReadValue<Vector3>();
+
+         float horizontalInput = input.x;
+         float verticalInput = input.y;
+
+ *//*        float horizontalInput = playerControls.Gameplay.Movement.ReadValue<Vector3>().x;
+         float verticalInput = playerControls.Gameplay.Movement.ReadValue<Vector3>().y;
+ *//*
+         //moving in the forward direction of the player
+         Vector3 movementDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
+
+         //if (movementDir != Vector3.zero)
+
+             //rb.transform.forward = Vector3.Slerp(rb.transform.forward, movementDir.normalized, Time.deltaTime * rotationSpeed); //rotate the player parent directly, not the individual character children
+
+         rb.velocity += movementDir * acceleration;
+         rb.velocity = Vector3.ClampMagnitude(rb.velocity, moveSpeed);
+
+     }*/
     protected override void Movement()
     {
-        //TODO: Add rolling state machine here
-
         rb.constraints = RigidbodyConstraints.None;
 
-        if (IsGrounded())
-        {
-            rb.velocity *= grVelocityAmplifier;
+        isGrounded = IsGrounded();
+        if (isGrounded) rb.velocity *= grVelocityAmplifier;
 
-            
-            if (rb.velocity.magnitude<0.5f) // now hard coded.. // TODO: state machine. Only do this code when currently rolling
-            {
-                StandupStraight();
-            }
-        }
-
-        Vector2 input = moveAction.ReadValue<Vector3>();
+        Vector3 input = moveAction.ReadValue<Vector3>();
 
         float horizontalInput = input.x;
         float verticalInput = input.y;
 
-/*        float horizontalInput = playerControls.Gameplay.Movement.ReadValue<Vector3>().x;
-        float verticalInput = playerControls.Gameplay.Movement.ReadValue<Vector3>().y;
-*/
         //moving in the forward direction of the player
         Vector3 movementDir = orientation.forward * verticalInput + orientation.right * horizontalInput;
 
-        //if (movementDir != Vector3.zero)
+        isMoving = movementDir != Vector3.zero;
+        if (isMoving)
+            rb.transform.forward = Vector3.Slerp(rb.transform.forward, movementDir.normalized, Time.deltaTime * rotationSpeed); //rotate the player parent directly, not the individual character children
 
-            //rb.transform.forward = Vector3.Slerp(rb.transform.forward, movementDir.normalized, Time.deltaTime * rotationSpeed); //rotate the player parent directly, not the individual character children
+        Vector3 horizontalVelocity = movementDir * moveSpeed;
 
-        rb.velocity += movementDir * acceleration;
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, moveSpeed);
-
-        //check for momentum
-
-
+        rb.velocity = new Vector3(horizontalVelocity.x, rb.velocity.y, horizontalVelocity.z);
     }
 
     public void HandleCollision(Collision collision)
@@ -99,10 +136,23 @@ public class Jojo : Character
                 // vector projection: how hard do we hit the wall?
 
                 float impactSpeed = Mathf.Abs(Vector3.Dot(collision.contacts[0].normal, collision.relativeVelocity));
-                Debug.Log("Speed on impact: " + impactSpeed + " normal: " + collision.contacts[0].normal + " velocity: " + collision.relativeVelocity);
+                //Debug.Log("Speed on impact: " + impactSpeed + " normal: " + collision.contacts[0].normal + " velocity: " + collision.relativeVelocity);
                 if (impactSpeed > minBreakSpeed)
                 {
                     StartCoroutine(DelayedExplosion(collision.gameObject));
+                }
+                //Destroy(explosionEffect);
+            }
+
+
+            if (collision.gameObject.CompareTag("BreakWall"))
+            {
+                float impactSpeed = Mathf.Abs(Vector3.Dot(collision.contacts[0].normal, collision.relativeVelocity));
+                if (impactSpeed > minBreakSpeed)
+                {
+                    source.PlayOneShot(clip2);
+                    Destructable destructable = collision.gameObject.GetComponent<Destructable>();
+                    destructable.DestroyWall();
                 }
                 //Destroy(explosionEffect);
             }
@@ -114,8 +164,9 @@ public class Jojo : Character
         yield return new WaitForSeconds(explosionDelay);
         TriggerExplosion(transform.position);
         Destroy(breakableObject);
-        source.PlayOneShot(clip);
+        source.PlayOneShot(clip2);
     }
+
 
 
     private void TriggerExplosion(Vector3 position)

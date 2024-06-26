@@ -62,6 +62,7 @@ public class PlayerShooting : MonoBehaviour{
         if (target != null)
         {
             target.MarkAsHit(); //setting the target to isHit so we don't try to shoot at it again
+            target.lightningVFX.Play();
         }
 
         ///furbie shooting sound here

@@ -1,5 +1,4 @@
 using System.Collections;
-using UnityEditor.Search;
 using UnityEngine;
 
 public class Collectible : MonoBehaviour
@@ -8,14 +7,16 @@ public class Collectible : MonoBehaviour
     [SerializeField] private float speedBuffValue = 1.0f; // Fixed speed buff/debuff value
     [SerializeField] private float duration = 4f;
     [SerializeField] private float pickupCooldown = 8f;
-
+/*
     [Header("Pickup Effects")]
     [SerializeField] private GameObject pickupEffectspeedup;
     [SerializeField] private GameObject pickupEffectslowdown;
-
+*/
     [Header("Sound")]
     [SerializeField] private AudioSource source;
     [SerializeField] private AudioClip clip;
+
+    [SerializeField] private ParticleSystem pinkCloudVFX;
 
     void OnTriggerEnter(Collider other)
     {
@@ -52,12 +53,16 @@ public class Collectible : MonoBehaviour
         
         // Apply effect to the player
        character.IncreaseSpeed(speedBuff);
-        if(speedBuff > 0.0f) 
+       /* if(speedBuff > 0.0f)
         { Instantiate(pickupEffectspeedup, transform.position, transform.rotation); }
-        else { Instantiate(pickupEffectslowdown, transform.position, transform.rotation); }
+        else { Instantiate(pickupEffectslowdown, transform.position, transform.rotation); }*/
         // Disable the collectible's visual representation and collider
         GetComponent<MeshRenderer>().enabled = false;
         GetComponent<Collider>().enabled = false;
+
+        pinkCloudVFX.Play();
+        //play pickup sound
+        source.PlayOneShot(clip);
 
         // Set the character to not able to collect more
         character.SetCollectState(false);
@@ -74,9 +79,7 @@ public class Collectible : MonoBehaviour
         // Set the character to be able to collect again
        character.SetCollectState(true);
 
-        //play pickup sound
-        source.PlayOneShot(clip);
-
+        
         // Remove the power-up object
         Destroy(gameObject);
      

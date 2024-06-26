@@ -32,7 +32,7 @@ public class Character : PlayerMovement
     public AudioSource source;
     public AudioClip clip;
 
-    // Custom gravity properties
+    //custom gravity properties
     [Header("Gravity Properties")]
     [SerializeField] private float gravityScale = 1f;
 
@@ -134,7 +134,7 @@ public class Character : PlayerMovement
     {
         if (!IsGrounded())
         {
-            rb.velocity += Vector3.down * gravityScale * Time.deltaTime;
+            rb.velocity += gravityScale * Time.deltaTime * Vector3.down;
         }
     }
 
@@ -151,8 +151,6 @@ public class Character : PlayerMovement
 
             Debug.Log("character jump");
 
-
-
             ///jump sound here
             source.PlayOneShot(clip);
         }
@@ -166,7 +164,7 @@ public class Character : PlayerMovement
     //checking if the player is on the ground
     protected bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, playerHeight * 0.5f + 0.1f, isGround);
+        return Physics.Raycast(transform.position, Vector3.down, out _, playerHeight * 0.5f + 0.1f, isGround);
     }
 
     protected virtual void UpdateInternalStates(){
@@ -174,6 +172,11 @@ public class Character : PlayerMovement
     }
 
     protected virtual void UpdateAnimationParameters(){
+        if (CharacterAnimator == null)
+        {
+            //Debug.LogWarning("animator not assigned");
+            return;
+        }
         CharacterAnimator.SetBool(AnimFloat, !isGrounded);
         CharacterAnimator.SetBool(AnimWalk, isMoving);
         CharacterAnimator.SetBool(AnimJump, jumpTriggered);
