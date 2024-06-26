@@ -27,7 +27,7 @@ public class TargetPlatform : MonoBehaviour
         targetPos = endPos;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (isMoving)
         {

@@ -71,7 +71,7 @@ public class Collectible : MonoBehaviour
         yield return new WaitForSeconds(duration);
 
         // Reverse the effect on the player
-       character.DecreaseSpeed(speedBuff);
+       character.ResetSpeed();
 
         // Wait for the cooldown period before allowing the player to collect another collectible
         yield return new WaitForSeconds(pickupCooldown - duration);
