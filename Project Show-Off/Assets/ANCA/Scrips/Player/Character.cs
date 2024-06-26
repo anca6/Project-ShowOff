@@ -95,6 +95,10 @@ public class Character : PlayerMovement
         {
             Debug.LogError("Rigidbody component not found on the parent gameObject");
         }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
 
         if (CharacterAnimator != null) return;
         Animator animator = GetComponentInChildren<Animator>();
@@ -204,12 +208,6 @@ public class Character : PlayerMovement
     public void IncreaseSpeed(float speedModifier)
     {
         moveSpeed += speedModifier;
-    }
-
-    // Method to reset the speed
-    public void DecreaseSpeed(float speedModifier)
-    {
-        moveSpeed -= speedModifier;
     }
     public void SetSpeed(float speed)
     {
