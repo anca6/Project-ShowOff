@@ -49,7 +49,7 @@ public class Collectible : MonoBehaviour
     IEnumerator Pickup(Character character)
     { 
         // Randomly choose to speed up or slow down
-        float speedBuff = Random.value > 0.3f ? speedBuffValue : -speedBuffValue;
+        float speedBuff = speedBuffValue;
         
         // Apply effect to the player
        character.IncreaseSpeed(speedBuff);

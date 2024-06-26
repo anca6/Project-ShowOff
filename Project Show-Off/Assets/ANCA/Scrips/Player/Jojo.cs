@@ -9,13 +9,17 @@ public class Jojo : Character
     [SerializeField] float minBreakSpeed = 10;
     [SerializeField] private float explosionDelay = 0.5f;
 
-    //bool StandupFinished = true;
     public AudioClip clip2;
-   /* protected override void Start()
-    {
-        rb = GetComponentInParent<Rigidbody>();
-    }
-*/
+
+
+
+    //bool StandupFinished = true;
+
+    /* protected override void Start()
+     {
+         rb = GetComponentInParent<Rigidbody>();
+     }
+ */
     protected override void Awake()
     {
         base.Awake();
@@ -162,7 +166,7 @@ public class Jojo : Character
     private IEnumerator DelayedExplosion(GameObject breakableObject)
     {
         yield return new WaitForSeconds(explosionDelay);
-        TriggerExplosion(transform.position);
+        TriggerExplosion(new Vector3(breakableObject.transform.position.x, breakableObject.transform.position.y + 0.5f, breakableObject.transform.position.z));
         Destroy(breakableObject);
         source.PlayOneShot(clip2);
     }

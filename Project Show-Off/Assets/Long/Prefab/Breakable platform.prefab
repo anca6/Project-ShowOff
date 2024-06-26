@@ -93,6 +93,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: JojoDustKickAnimation
       objectReference: {fileID: 0}
+    - target: {fileID: 7249813771092267673, guid: d2627b3274d1dc84787bdb85ea584ea8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -187,6 +192,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 90d4e3363499a6d4c9fdf09723d1d867,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

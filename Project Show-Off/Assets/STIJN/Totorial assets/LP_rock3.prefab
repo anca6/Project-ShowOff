@@ -58,6 +58,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -4.484
       objectReference: {fileID: 0}
+    - target: {fileID: -5125260784612964543, guid: b79c44ea00a73314a81343fc6e8e37c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b79c44ea00a73314a81343fc6e8e37c5,
         type: 3}
       propertyPath: m_Name
@@ -67,6 +72,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b79c44ea00a73314a81343fc6e8e37c5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
