@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     private int player2CharacterIndex;
 
     //[SerializeField] private MonoBehaviour disableScript;
-
+    
+    public GameObject Victor{ get; set; }
     
     private void Awake()
     {
