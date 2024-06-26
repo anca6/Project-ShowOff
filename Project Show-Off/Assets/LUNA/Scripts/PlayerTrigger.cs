@@ -10,12 +10,12 @@ public class PlayerTrigger : MonoBehaviour{
     public bool Triggered{ get; private set; }
 
     private void OnTriggerEnter(Collider other){
-        if (TriggerOnce && Triggered || !other.gameObject.CompareTag(PlayerTag)) return;
+        if ((TriggerOnce && Triggered) || !other.gameObject.CompareTag(PlayerTag)) return;
         OnPlayerEnter.Invoke();
     }
 
     private void OnTriggerExit(Collider other){
-        if (TriggerOnce && Triggered || !other.gameObject.CompareTag(PlayerTag)) return;
+        if ((TriggerOnce && Triggered) || !other.gameObject.CompareTag(PlayerTag)) return;
         Triggered = true;
         OnPlayerLeave.Invoke();
     }
