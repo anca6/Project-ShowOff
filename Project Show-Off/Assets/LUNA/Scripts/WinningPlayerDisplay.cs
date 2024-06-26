@@ -1,3 +1,5 @@
 using UnityEngine;
-public class WinningPlayerDisplay : MonoBehaviour{
+namespace LUNA.Scripts{
+    public class WinningPlayerDisplay : MonoBehaviour{
+    }
 }
