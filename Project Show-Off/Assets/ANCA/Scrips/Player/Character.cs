@@ -55,11 +55,22 @@ public class Character : PlayerMovement
         jumpAction = playerInput.actions["Jump"];
         lookAction = playerInput.actions["Look"];
 
-        jumpAction.performed += ctx => Jump();
+        jumpAction.performed += OnJumpAction; // ctx => Jump();
+        
 
         originalMoveSpeed = moveSpeed;
         originalAcceleration = acceleration;
         originalRotationSpeed = rotationSpeed;
+    }
+
+    private void OnDestroy()
+    {
+        jumpAction.performed -= OnJumpAction;
+    }
+
+    void OnJumpAction(InputAction.CallbackContext context)
+    {
+        Jump();
     }
 
     private void OnEnable()
@@ -142,6 +153,12 @@ public class Character : PlayerMovement
     {
         if (IsGrounded() && canJump) //if the player is not mid-air and can jump
         {
+            if (rb==null)
+            {
+                Debug.Log("Something is wrong in Character Jump - exit");
+                return;
+            }
+
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z); // Reset vertical velocity before jump
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             canJump = false;
