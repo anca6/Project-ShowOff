@@ -27,10 +27,9 @@ public class PlayerController : MonoBehaviour
         var gamepad = playerInput.devices[0] as Gamepad;
         if (gamepad != null)
         {
-            Debug.Log($"{gameObject.name} Gamepad Input Detected");
+            Debug.Log($"{gameObject.name} gamepad input");
             if (gamepad.buttonSouth.wasPressedThisFrame)
             {
-                //Debug.Log($"{gameObject.name} Ability action triggered");
             }
         }
     }
@@ -39,11 +38,10 @@ public class PlayerController : MonoBehaviour
         var keyboard = Keyboard.current;
         if (keyboard != null)
         {
-            Debug.Log($"{gameObject.name} Keyboard Input Detected");
+            Debug.Log($"{gameObject.name} keyboard input");
             if (keyboard.spaceKey.wasPressedThisFrame)
             {
-                Debug.Log($"{gameObject.name} Ability action triggered");
-                // Ability action logic here
+                Debug.Log($"{gameObject.name} ability action triggered");
             }
         }
     }

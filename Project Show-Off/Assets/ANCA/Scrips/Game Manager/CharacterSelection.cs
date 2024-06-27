@@ -22,8 +22,8 @@ public class CharacterSelection : MonoBehaviour
 
     [SerializeField] private GameObject HighlightStartbuttonImage;
 
-    private int player1Selection = 0; // Default to the first option for Player 1
-    private int player2Selection = 0; // Default to the first option for Player 2
+    private int player1Selection = 0; //default to the first option for player1
+    private int player2Selection = 0; //default to the first option for player2
 
     private bool player1Confirmed = false; //bool for player1 selection confirmation
     private bool player2Confirmed = false; //bool for player2 selection confirmation
@@ -59,6 +59,7 @@ public class CharacterSelection : MonoBehaviour
         CheckGamepadStart();
     }
 
+    //player1 input with gamepad - up/down buttons on the dpad
     private void HandlePlayer1Input()
     {
         if (gamepad1 != null)
@@ -82,6 +83,7 @@ public class CharacterSelection : MonoBehaviour
         }
     }
 
+    //player2 input with gamepad - up/down buttons on the dpad
     private void HandlePlayer2Input()
     {
         if (gamepad2 != null)
@@ -110,7 +112,7 @@ public class CharacterSelection : MonoBehaviour
         selection--;
         if (selection < 0)
         {
-            selection = maxIndex - 1; // Make it Loop back to the last option
+            selection = maxIndex - 1; //make it loop back to the last option
         }
         UpdateAllSelectionImages();
     }
@@ -120,7 +122,7 @@ public class CharacterSelection : MonoBehaviour
         selection++;
         if (selection >= maxIndex)
         {
-            selection = 0; // Make it Loop back to the first option
+            selection = 0; //make it loop back to the first option
         }
         UpdateAllSelectionImages();
     }
@@ -229,6 +231,7 @@ public class CharacterSelection : MonoBehaviour
         }
     }
 
+    //game can only start when both players selected their character
     private void CheckGamepadStart()
     {
         if ((gamepad1 != null && gamepad1.startButton.wasPressedThisFrame) ||

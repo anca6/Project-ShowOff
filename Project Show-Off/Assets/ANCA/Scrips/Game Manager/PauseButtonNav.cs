@@ -14,13 +14,11 @@ public class PauseButtonNav : MonoBehaviour
     {
         if (buttons == null || buttons.Length == 0)
         {
-            Debug.LogError("No buttons assigned.");
             return;
         }
 
         if (hoverImages == null || hoverImages.Length != buttons.Length)
         {
-            Debug.LogError("Hover images array must match the buttons array length.");
             return;
         }
 
@@ -31,7 +29,6 @@ public class PauseButtonNav : MonoBehaviour
     {
         if (Gamepad.current == null)
         {
-            Debug.LogWarning("No current gamepad found.");
             return;
         }
 

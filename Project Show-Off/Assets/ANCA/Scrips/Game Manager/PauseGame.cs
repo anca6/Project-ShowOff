@@ -21,16 +21,16 @@ public class PauseGame : MonoBehaviour
     {
         if (Gamepad.current != null)
         {
-            Debug.Log("Gamepad connected: " + Gamepad.current);
+            Debug.Log("gamepad connected: " + Gamepad.current);
             if (Gamepad.current.startButton.wasPressedThisFrame)
             {
-                Debug.Log("Start button pressed");
+                Debug.Log("start button pressed");
                 TogglePause();
             }
         }
         else
         {
-            Debug.Log("No gamepad connected");
+            Debug.Log("no gamepad connected");
         }
 
 
@@ -39,7 +39,7 @@ public class PauseGame : MonoBehaviour
     public void Pause()
     {
         pausePanel.SetActive(true);
-        Time.timeScale = 0f;
+        Time.timeScale = 0f; //pausing the time in game
         pauseButton.interactable = false;
         isPaused = true;
     }
@@ -47,7 +47,7 @@ public class PauseGame : MonoBehaviour
     public void Continue()
     {
         pausePanel.SetActive(false);
-        Time.timeScale = 1f;
+        Time.timeScale = 1f; //continuing the game
         pauseButton.interactable = true;
         isPaused = false;
     }

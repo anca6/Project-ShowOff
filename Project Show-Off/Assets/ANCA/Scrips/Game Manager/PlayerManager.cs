@@ -22,7 +22,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (index >= playerObjects.Count)
         {
-            Debug.LogWarning("Not enough player objects");
+            Debug.LogWarning("not enough player objects");
             return;
         }
 
@@ -41,7 +41,7 @@ public class PlayerManager : MonoBehaviour
         }
 
         players.Add(playerInput);
-        playerObject.name = "Player" + (index + 1);
+        playerObject.name = "player" + (index + 1);
         Debug.Log("Added: " + playerObject.name);
     }
 

@@ -10,20 +10,19 @@ public class GameManager : MonoBehaviour
     private int player1CharacterIndex;
     private int player2CharacterIndex;
 
-    //[SerializeField] private MonoBehaviour disableScript;
-    
-    public string VictorName{ get; set; }
-    
+
+    public string VictorName { get; set; }
+
     private void Awake()
     {
         if (instance == null)
             instance = this;
         else
             Destroy(gameObject);
-        DontDestroyOnLoad(instance);  
+        DontDestroyOnLoad(instance);
     }
 
-    public void SetPlayerSelection(int p1index,  int p2index)
+    public void SetPlayerSelection(int p1index, int p2index)
     {
         player1CharacterIndex = p1index;
         player2CharacterIndex = p2index;
@@ -36,19 +35,7 @@ public class GameManager : MonoBehaviour
 
     public int GetPlayer2CharacterIndex()
     {
-        return player2CharacterIndex; 
+        return player2CharacterIndex;
     }
 
-  /*  public void StartGame()
-    {
-        if (disableScript != null)
-        {
-            disableScript.enabled = false;
-        }
-    }*/
-
-    /*public void ResumeCharSelect()
-    {
-        disableScript.enabled = true;
-    }*/
 }
