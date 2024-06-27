@@ -190,8 +190,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedBuffValue: 1
-  duration: 2.5
-  pickupCooldown: 4
+  duration: 1
+  pickupCooldown: 1
   source: {fileID: 8468786318747080769}
   clip: {fileID: 8300000, guid: e031503b4f087a94d9543a6a8543e245, type: 3}
   pinkCloudVFX: {fileID: 1363885584678607123}
