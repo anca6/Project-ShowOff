@@ -605,7 +605,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 129.96, y: 21.70602, z: 135.1}
-  m_Center: {x: 0, y: 172.70532, z: 0}
+  m_Center: {x: 0, y: 174.68, z: 0}
 --- !u!82 &5741575488142336714
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1031,12 +1031,12 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 48.38889, y: 186.46248, z: 47.65384}
-  m_Center: {x: 0, y: 87.97723, z: 0}
+  m_Size: {x: 48.38889, y: 181.32027, z: 47.65384}
+  m_Center: {x: 0, y: 85.40615, z: 0}
 --- !u!1 &5441758383138300583
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,6 +1787,26 @@ PrefabInstance:
         type: 3}
       propertyPath: EmissionModule.enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906639905643515809, guid: f32b6592c089db943a9f713e7fc0f03b,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 4.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906639905643515809, guid: f32b6592c089db943a9f713e7fc0f03b,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906639905643515809, guid: f32b6592c089db943a9f713e7fc0f03b,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.42830187
+      objectReference: {fileID: 0}
+    - target: {fileID: 4906639905643515809, guid: f32b6592c089db943a9f713e7fc0f03b,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0.89349574
       objectReference: {fileID: 0}
     - target: {fileID: 7433223819443570462, guid: f32b6592c089db943a9f713e7fc0f03b,
         type: 3}
