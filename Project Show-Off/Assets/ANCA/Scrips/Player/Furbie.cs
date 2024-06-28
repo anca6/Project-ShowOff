@@ -54,7 +54,6 @@ public class Furbie : Character
             Invoke(nameof(DelayedDashForce), 0.025f);
             Invoke(nameof(ResetJump), dashDuration);
 
-            ///furbie jump sound here
             source.PlayOneShot(clip);
         }
     }

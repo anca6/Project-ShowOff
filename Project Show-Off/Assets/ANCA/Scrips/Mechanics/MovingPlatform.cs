@@ -18,7 +18,6 @@ public class MovingPlatform : MonoBehaviour
     [SerializeField] private ParticleSystem petalsVFX;
 
 
-
     private int targetWaypointIndex;
     private Transform targetWaypoint;
     private Transform previousWaypoint;
@@ -74,16 +73,10 @@ public class MovingPlatform : MonoBehaviour
 
     private void Update()
     {
-        /* if (onPlatform && IsAllowedCharacter(currentPlayerInput))
-         {
-             MovePlatform();
-         }*/
         GamepadInput();
     }
     private void FixedUpdate()
     {
-        
-    
         MovePlatform();
     }
 
@@ -94,12 +87,8 @@ public class MovingPlatform : MonoBehaviour
         float elapsedPercentage = elapsedTime / timeToWaypoint;
         elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
 
-        // hm
-        transform.SetPositionAndRotation(Vector3.Lerp(previousWaypoint.position, targetWaypoint.position, elapsedPercentage),
-            Quaternion.Lerp(previousWaypoint.rotation, targetWaypoint.rotation, elapsedPercentage));
-/*
         transform.position = Vector3.Lerp(previousWaypoint.position, targetWaypoint.position, elapsedPercentage);
-        transform.rotation = Quaternion.Lerp(previousWaypoint.rotation, targetWaypoint.rotation, elapsedPercentage);*/
+        transform.rotation = Quaternion.Lerp(previousWaypoint.rotation, targetWaypoint.rotation, elapsedPercentage);
 
         source.PlayOneShot(clip);
     }
@@ -173,10 +162,10 @@ public class MovingPlatform : MonoBehaviour
             Debug.Log("should be on platform");
             collision.transform.SetParent(transform);
             var newPlayerInput = collision.gameObject.GetComponent<PlayerInput>();
-            if (newPlayerInput!=null && IsAllowedCharacter(newPlayerInput)) // two Saras: still bug probably - fix later
+            if (newPlayerInput!=null && IsAllowedCharacter(newPlayerInput)) // two Saras: still bug - didnt fix
             {
                 Debug.Log("Sara has entered the platform");
-                currentPlayerInput = newPlayerInput; // collision.gameObject.GetComponent<PlayerInput>();
+                currentPlayerInput = newPlayerInput;
                 onPlatform = currentPlayerInput != null;
             }
         }
@@ -230,7 +219,7 @@ public class MovingPlatform : MonoBehaviour
                     }
                     Debug.Log("South button pressed on gamepad for player: " + entry.Key.gameObject.name+ " currentPlayerInput is "+cpname);
 
-                    // Check if the player associated with this gamepad is on the platform and allowed character
+                    //check if the player with this gamepad is on the platform and allowed character
                     if (entry.Key == currentPlayerInput && IsAllowedCharacter(currentPlayerInput))
                     {
                         TryGoToNextWaypoint(entry.Key);

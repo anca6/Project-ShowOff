@@ -16,20 +16,15 @@ public class PlayerShooting : MonoBehaviour{
     [SerializeField] private float shootingRadius = 15f;
     [SerializeField] private LayerMask targetsLayer;
 
-    //private PlayerControls playerControls;
     public AudioSource source;
     public AudioClip clip;
 
     private void Awake()
     {
-        //playerControls = new PlayerControls();
-
         playerInput = GetComponentInParent<PlayerInput>();
 
         abilityAction = playerInput.actions["Ability"];
-        abilityAction.performed += ctx => ShootProjectile();
-
-        //playerControls.Gameplay.Ability.performed += ctx => ShootProjectile(); //calling the shoot projectile method when the ability button is pressed
+        abilityAction.performed += ctx => ShootProjectile(); //calling the shoot projectile method when the ability button is pressed
     }
 
     private void OnEnable()

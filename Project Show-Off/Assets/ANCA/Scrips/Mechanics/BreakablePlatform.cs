@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BreakablePlatform : MonoBehaviour
@@ -28,19 +27,19 @@ public class BreakablePlatform : MonoBehaviour
 
     private IEnumerator BreakPlatform()
     {
-        // Wait for the specified break delay
+        //wait for the break delay
         yield return new WaitForSeconds(breakDelay);
 
-        // Disable the platform by disabling the Collider and Renderer
+        //disabling the platform
         platformCollider.enabled = false;
         platformRenderer.enabled = false;
 
         breakingVFX.Play();
 
-        // Wait for the specified respawn time
+        //wait for the respawn time
         yield return new WaitForSeconds(respawnTime);
 
-        // Re-enable the platform by enabling the Collider and Renderer
+        //re-enable the platform
         platformCollider.enabled = true;
         platformRenderer.enabled = true;
     }

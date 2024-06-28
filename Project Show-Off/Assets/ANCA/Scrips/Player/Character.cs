@@ -163,16 +163,13 @@ public class Character : PlayerMovement
                 return;
             }
 
-            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z); // Reset vertical velocity before jump
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z); //reset y velocity before jump
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             canJump = false;
             Invoke(nameof(ResetJump), jumpCooldown);
 
             EnableJumpingTip.CharacterJumpNotifier.NotifyCharacterJump();
 
-            Debug.Log("character jump");
-
-            ///jump sound here
             source.PlayOneShot(clip);
         }
     }
@@ -195,7 +192,6 @@ public class Character : PlayerMovement
     protected virtual void UpdateAnimationParameters(){
         if (CharacterAnimator == null)
         {
-            //Debug.LogWarning("animator not assigned");
             return;
         }
         CharacterAnimator.SetBool(AnimFloat, !isGrounded);
@@ -203,8 +199,6 @@ public class Character : PlayerMovement
         CharacterAnimator.SetBool(AnimJump, jumpTriggered);
     }
 
-
-    // Method to modify the speed
     public void IncreaseSpeed(float speedModifier)
     {
         moveSpeed += speedModifier;
@@ -221,13 +215,11 @@ public class Character : PlayerMovement
         rotationSpeed = originalRotationSpeed;
     }
 
-     // Method to check if the player can collect
     public bool CanCollect()
     {
         return canCollect;
     }
 
-    // Method to set the collect state
     public void SetCollectState(bool state)
     {
         canCollect = state;
